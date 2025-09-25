@@ -14,7 +14,6 @@
     padding: 2rem 1rem;
 }
 
-/* LEVEL BOX DEFAULT (dark-mode friendly by default) */
 .level-box {
     display: flex;
     align-items: center;
@@ -25,18 +24,16 @@
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
 }
 
 .level-box:hover {
     background-color: rgba(0, 0, 0, 0.25);
 }
 
-/* LIGHT MODE OVERRIDES */
 main:not(.dark) .level-box {
     background-color: #ffffff;
     color: #000000;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
 }
 
 .thumbnail {
@@ -81,27 +78,10 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
-/* Published by text */
-.level-info .author-wrapper {
-    margin-top: 4px; /* separates from level title */
+.level-info .author {
     font-size: 1rem;
-    color: inherit; /* inherits from box (dark/light mode) */
-}
-
-.level-info .author-wrapper .published-by {
-    font-style: normal; /* "Published by" not italic */
-    margin-right: 4px;
-}
-
-.level-info .author-wrapper .author-name {
+    font-weight: 400;
+    color: inherit;
+    margin-top: 2px; /* keeps it slightly below title */
     font-style: italic; /* only author name italic */
-}
-
-/* Light/dark mode color handling for author */
-main.dark .author-wrapper .author-name {
-    color: var(--color-on-primary);
-}
-
-main:not(.dark) .author-wrapper .author-name {
-    color: #000000;
 }
