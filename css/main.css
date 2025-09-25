@@ -43,7 +43,7 @@ header {
     min-height: 4.5rem;
     background-color: rgba(0, 0, 0, 0.7);
     color: var(--color-on-primary);
-    position: fixed; /* always visible */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -57,7 +57,7 @@ header .logo {
 .nav {
     display: flex;
     flex: 1;
-    justify-content: center; /* center main buttons */
+    justify-content: center;
     height: 100%;
     align-items: center;
 }
@@ -65,16 +65,15 @@ header .logo {
 .nav-buttons {
     display: flex;
     height: 100%;
-    gap: 0.3rem;
+    margin: 0;
 }
 
-/* Equal-width main buttons based on widest text */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__cta {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-basis: 13rem; /* slightly wider for breathing space */
+    flex-basis: auto;
     height: 100%;
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.15);
@@ -83,8 +82,14 @@ header .logo {
     border: none;
     margin: 0;
     transition: background-color 0.2s;
-    border-radius: 0; /* remove rounded corners */
+    border-radius: 0;
     box-sizing: border-box;
+    white-space: nowrap; /* prevents text wrapping */
+}
+
+.nav-buttons .nav__tab:last-child,
+.nav-buttons .nav__cta:last-child {
+    flex-basis: 16rem; /* wider for Submit Record */
 }
 
 .nav-buttons .nav__tab:hover,
@@ -115,7 +120,7 @@ header .logo {
     align-items: center;
     gap: 0.8rem;
     height: 100%;
-    margin-left: 0.5rem; /* shift slightly to the left to center header content */
+    margin-left: 0.5rem;
 }
 
 .nav__icon {
@@ -141,7 +146,7 @@ main {
     background-color: var(--color-background);
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
-    padding-top: 4.5rem; /* prevent content from being hidden under header */
+    padding-top: 4.5rem;
 }
 
 main > div {
