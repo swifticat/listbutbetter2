@@ -3,7 +3,7 @@
     display: flex;
     justify-content: flex-start; /* levels left, guidelines right */
     gap: 2rem;
-    align-items: flex-start; /* ensures top alignment */
+    align-items: flex-start;
 }
 
 .page-list .list-container {
@@ -115,8 +115,8 @@ main:not(.dark) .level-info .author {
     text-align: center;
     justify-content: flex-start;
     align-items: stretch;
-    margin-top: 2rem; /* moves the box down to match #1 level */
-    margin-left: auto; /* pushes the box further to the right */
+    margin-top: 2rem; /* keeps box top aligned with #1 level */
+    margin-left: 1rem; /* slightly to the right of Submit Record button */
 }
 
 main:not(.dark) .guidelines-box {
@@ -129,7 +129,7 @@ main:not(.dark) .guidelines-box {
 .guidelines-box h2 {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    margin-top: 0.5rem; /* pushes heading downward */
+    margin-top: 1.5rem; /* moved further down for spacing */
 }
 
 .guidelines-box hr {
