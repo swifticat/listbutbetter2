@@ -13,35 +13,36 @@ const scale = 3;
  */
 export function score(rank, percent, minPercent, listlen) {
     let returnval = 0;
-    if (rank!== null && rank <= 150){
-        if (rank > 75){
+
+    // Ranks 151 and above are Legacy
+    if (rank === null || rank > 150) {
+        returnval = 0; // No points for Legacy
+    } else {
+        if (rank > 75) {
             minPercent = 100;
         }
-        /* Old Formula
-        let maximum_points = 250; //change this to change points of top 1
-        let score = ((140 * maximum_points + 7000) / Math.sqrt(3157 * (rank - 1) + 19600) - 50) *
-            ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
-        */
-        let score = 3615.96/(rank+9.33109)-0.00722289*rank;
-        score = Math.max(0, score);
-        if (isNaN(score)) {
-            score = 0;
+        // Scoring formula for ranks 1–150
+        let scoreValue = 3615.96 / (rank + 9.33109) - 0.00722289 * rank;
+        scoreValue = Math.max(0, scoreValue);
+        if (isNaN(scoreValue)) {
+            scoreValue = 0;
         }
 
-        if (percent != 100) {
-            returnval = round(score - score / 3);
-        }
-        else {
-            returnval = round(score);
+        if (percent !== 100) {
+            returnval = round(scoreValue - scoreValue / 3);
+        } else {
+            returnval = round(scoreValue);
         }
     }
-    else {
-        let score = 14 * (rank - 151) / (151 - listlen) + 15;
-        returnval = round(score);
-    }
+
     return returnval;
 }
 
+/**
+ * Round a number to a fixed number of decimal digits
+ * @param {Number} num
+ * @returns {Number}
+ */
 export function round(num) {
     if (!('' + num).includes('e')) {
         return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
@@ -57,4 +58,13 @@ export function round(num) {
             scale
         );
     }
+}
+
+/**
+ * Utility function to display rank label
+ * @param {Number} rank
+ * @returns {String}
+ */
+export function rankLabel(rank) {
+    return (rank !== null && rank <= 150) ? `#${rank}` : "Legacy";
 }
