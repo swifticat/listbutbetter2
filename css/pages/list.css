@@ -1,16 +1,16 @@
 .page-list {
     width: 100%;
     display: flex;
-    justify-content: flex-end; /* keeps list on right */
+    justify-content: flex-start; /* levels left, guidelines right */
+    gap: 2rem;
 }
 
 .page-list .list-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 80%;
+    width: 60%;
     max-width: 2000px;
-    margin-left: auto;
     padding: 2rem 1rem;
 }
 
@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 45%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.15);
     color: var(--color-on-primary);
     padding: 1rem;
@@ -34,10 +34,10 @@
 
 /* LIGHT MODE OVERRIDES */
 main:not(.dark) .level-box {
-    background-color: #ffffff; /* white boxes */
-    color: #000000;            /* black text */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05); /* subtle light-mode shadow */
-    border: 1px dashed #f0f0f0; /* very light gray dashed border */
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #f0f0f0;
 }
 
 .thumbnail {
@@ -73,7 +73,7 @@ main:not(.dark) .level-box {
     overflow-wrap: anywhere;
     line-height: 1.4;
     position: relative;
-    top: 8px; /* moves the rank, dash, and name downward by 8px */
+    top: 8px;
 }
 
 .level-info .title .rank {
@@ -84,21 +84,54 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
-/* Author text: italic only for the name, color depends on mode */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 16px; /* move author text downward */
-}
-
-.level-info .author .author-name {
+    margin-top: 16px;
     font-style: italic;
 }
 
 main.dark .level-info .author {
-    color: var(--color-on-primary); /* light color in dark mode */
+    color: var(--color-on-primary);
 }
 
 main:not(.dark) .level-info .author {
-    color: #000000; /* black in light mode */
+    color: #000000;
+}
+
+/* GUIDELINES BOX */
+.guidelines-box {
+    width: 300px;
+    background-color: rgba(0,0,0,0.15);
+    color: var(--color-on-primary);
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* LIGHT MODE OVERRIDES FOR GUIDELINES BOX */
+main:not(.dark) .guidelines-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #f0f0f0;
+}
+
+.guidelines-box h2 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.guidelines-box hr {
+    border: 0.5px solid rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+}
+
+.guidelines-box p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
 }
