@@ -50,7 +50,9 @@ export default {
                             <span class="rank">#{{ rank }}</span> –
                             <span class="name">{{ level.name }}</span>
                         </p>
-                        <p class="author">Published by <span class="author-name">{{ level.author }}</span></p>
+                        <p class="author">
+                            Published by <span class="author-name">{{ level.author }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
