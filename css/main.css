@@ -63,25 +63,47 @@ header .logo {
     gap: 0.3rem;
 }
 
-/* Equal-width main buttons based on widest text */
+/* Equal-width main buttons with fade effect */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__cta {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-basis: 13rem; /* slightly wider for breathing space and to fit Submit Record */
+    flex-basis: 13rem; /* consistent width */
     height: 100%;
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.15);
     color: var(--color-on-primary);
-    text-decoration: none;
     border: none;
     margin: 0;
-    transition: background-color 0.2s;
-    border-radius: 0; /* remove rounded corners */
+    border-radius: 0;
     box-sizing: border-box;
+    text-decoration: none !important;
+
+    /* smooth fade-in/out */
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* Remove underline everywhere */
+.nav-buttons .nav__tab,
+.nav-buttons .nav__tab span,
+.nav-buttons .nav__cta,
+.nav-buttons .nav__cta span,
+.nav-buttons .nav__tab:link,
+.nav-buttons .nav__tab:visited,
+.nav-buttons .nav__tab:hover,
+.nav-buttons .nav__tab:active,
+.nav-buttons .nav__tab:focus,
+.nav-buttons .nav__cta:link,
+.nav-buttons .nav__cta:visited,
+.nav-buttons .nav__cta:hover,
+.nav-buttons .nav__cta:active,
+.nav-buttons .nav__cta:focus {
+    text-decoration: none !important;
+    outline: none;
+}
+
+/* Hover + active fade effect */
 .nav-buttons .nav__tab:hover,
 .nav-buttons .nav__cta:hover {
     background-color: rgba(255, 255, 255, 0.25);
@@ -90,18 +112,6 @@ header .logo {
 .nav-buttons .nav__tab:active,
 .nav-buttons .nav__cta:active {
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Remove underlines globally for all main buttons */
-.nav-buttons .nav__tab,
-.nav-buttons .nav__tab span,
-.nav-buttons .nav__cta,
-.nav-buttons .nav__cta span {
-    text-decoration: none !important;
-}
-
-.nav__tab span {
-    text-decoration: none !important;
 }
 
 /* Right utilities (discord & dark mode toggle) */
@@ -120,6 +130,7 @@ header .logo {
     padding: 0.5rem;
     display: flex;
     align-items: center;
+    transition: background-color 0.25s ease; /* optional fade effect */
 }
 
 .nav__icon img {
@@ -179,7 +190,11 @@ input[type="checkbox"] {
 }
 
 /* Remove underlines globally */
-a, a:visited, a:hover, a:active, button {
+a,
+a:visited,
+a:hover,
+a:active,
+button {
     text-decoration: none;
     outline: none;
 }
