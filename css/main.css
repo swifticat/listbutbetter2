@@ -10,10 +10,11 @@
     --color-on-error: white;
 }
 
+/* Dark-mode variables when applied to the main/header element that has .dark */
 main.dark,
 header.dark {
     color-scheme: dark;
-    --color-background: #36393F; /* updated dark mode background */
+    --color-background: #36393F; /* updated dark background */
     --color-on-background: white;
     --color-background-hover: #27262c;
     --color-on-background-hover: white;
@@ -196,82 +197,6 @@ a, a:visited, a:hover, a:active, button {
     outline: none;
 }
 
-/* LEVEL BOXES */
+/* LEVEL BOXES - default (dark-mode friendly default values) */
 .page-list .level-box {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 45%;
-    background-color: rgba(0,0,0,0.15); /* dark mode default */
-    color: var(--color-on-background);
-    padding: 1rem;
-    gap: 1rem;
-    transition: background-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05); /* subtle shadow */
-}
-
-.page-list .level-box:hover {
-    background-color: rgba(0,0,0,0.25);
-}
-
-/* LIGHT MODE OVERRIDES FOR LEVEL BOXES */
-body:not(.dark) .page-list .level-box {
-    background-color: #ffffff;
-    color: #000000;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.05); /* bigger area, weaker strength */
-}
-
-.thumbnail {
-    flex-shrink: 0;
-    width: 160px;
-    height: 90px;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.level-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    min-width: 0;
-}
-
-.level-info .title {
-    font-family: "Lexend Deca", sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0;
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: anywhere;
-    line-height: 1.4;
-}
-
-.level-info .title .rank {
-    font-weight: 700;
-}
-
-.level-info .title .name {
-    font-weight: 500;
-}
-
-/* "Published by" author text */
-.level-info .author {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 0.25rem;
-    font-style: italic;
-}
-
-/* LIGHT MODE OVERRIDES FOR AUTHOR */
-body:not(.dark) .level-info .author {
-    color: #000000;
-}
+    d
