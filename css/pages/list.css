@@ -116,7 +116,7 @@ main:not(.dark) .level-info .author {
     justify-content: flex-start;
     align-items: stretch;
     margin-top: 2rem; /* keeps box top aligned with #1 level */
-    margin-left: 1rem; /* slightly to the right of Submit Record button */
+    margin-left: 0.5rem; /* moved closer to the levels, but still separated */
 }
 
 main:not(.dark) .guidelines-box {
