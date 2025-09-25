@@ -37,7 +37,7 @@ main:not(.dark) .level-box {
     background-color: #ffffff; /* white boxes */
     color: #000000;            /* black text */
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05); /* subtle light-mode shadow */
-    border: 1px dashed #999999; /* thin gray dashed border */
+    border: 1px dashed #e0e0e0; /* very light gray dashed border */
 }
 
 .thumbnail {
