@@ -1,5 +1,5 @@
 .page-list {
-    width: 100%; /* full width of viewport */
+    width: 100%;
     display: flex;
     justify-content: flex-end; /* pushes content to the right */
 }
@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 80%; /* keeps boxes from being full width */
+    width: 80%;
     max-width: 2000px;
     margin-left: auto; /* push to right */
     padding: 2rem 1rem;
@@ -18,13 +18,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 45%; /* fill container width */
+    width: 45%;
     background-color: rgba(0, 0, 0, 0.15);
     color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s;
-    /* removed border-radius for sharp edges */
 }
 
 .level-box:hover {
@@ -51,7 +50,7 @@
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    min-width: 0; /* allows text to shrink */
+    min-width: 0;
 }
 
 .level-info .title {
@@ -78,4 +77,8 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 0.25rem;
+}
+
+.level-info .author .author-name {
+    font-style: italic;
 }
