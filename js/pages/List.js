@@ -33,6 +33,7 @@ export default {
             <p style="text-align:center; margin-top: 2rem;">Loading...</p>
         </main>
         <main v-else class="page-list">
+            <!-- Levels list -->
             <div class="list-container">
                 <div
                     class="level-box"
@@ -50,11 +51,22 @@ export default {
                             <span class="rank">#{{ rank }}</span> –
                             <span class="name">{{ level.name }}</span>
                         </p>
-                        <p class="author">
-                            Published by <span class="author-name">{{ level.author }}</span>
-                        </p>
+                        <p class="author">Published by <span class="author-name">{{ level.author }}</span></p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Guidelines box -->
+            <div class="guidelines-box">
+                <h2>Guidelines</h2>
+                <hr />
+                <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
+                <p>CBF usage is permitted.</p>
+                <p>Make sure to include split audio tracks for a faster review of your record.</p>
+                <p>For a level harder than Carmine Clutter, you must also include raw footage of your recording.</p>
+                <p>Physics Bypass is not allowed and will get your record rejected.</p>
+                <p>If you have Mega Hack, make sure to enable cheat indicator upon reaching the end screen, as well as the ingame clock.</p>
+                <p>Make sure that the recording shows a few frames of the end card dropping down.</p>
             </div>
         </main>
     `
