@@ -34,7 +34,6 @@ body {
     margin: 0;
 }
 
-/* Sticky Header */
 header {
     display: flex;
     align-items: center;
@@ -44,8 +43,10 @@ header {
     min-height: 4.5rem;
     background-color: rgba(0, 0, 0, 0.7);
     color: var(--color-on-primary);
-    position: sticky;
+    position: fixed; /* always visible */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -56,7 +57,7 @@ header .logo {
 .nav {
     display: flex;
     flex: 1;
-    justify-content: center;
+    justify-content: center; /* center main buttons */
     height: 100%;
     align-items: center;
 }
@@ -64,7 +65,7 @@ header .logo {
 .nav-buttons {
     display: flex;
     height: 100%;
-    gap: 0; /* buttons touch each other */
+    gap: 0.3rem;
 }
 
 /* Equal-width main buttons based on widest text */
@@ -73,7 +74,7 @@ header .logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-basis: 14rem; /* slightly wider for Submit Record */
+    flex-basis: 13rem; /* slightly wider for breathing space */
     height: 100%;
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.15);
@@ -101,6 +102,10 @@ header .logo {
 .nav-buttons .nav__tab span,
 .nav-buttons .nav__cta,
 .nav-buttons .nav__cta span {
+    text-decoration: none !important;
+}
+
+.nav__tab span {
     text-decoration: none !important;
 }
 
@@ -136,7 +141,7 @@ main {
     background-color: var(--color-background);
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
-    padding-top: 4.5rem; /* avoid content being hidden behind sticky header */
+    padding-top: 4.5rem; /* prevent content from being hidden under header */
 }
 
 main > div {
