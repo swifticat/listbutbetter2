@@ -14,13 +14,14 @@
     padding: 2rem 1rem;
 }
 
+/* Default dark mode styles */
 .level-box {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 45%;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--color-on-primary);
+    background-color: rgba(0, 0, 0, 0.15); /* dark mode box */
+    color: var(--color-on-primary); /* dark mode text */
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s;
@@ -73,13 +74,13 @@
     font-weight: 500;
 }
 
-/* Author text: only the name is italic, slight downward position adjustment */
+/* Author text: italic only for author name, moved downward */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    color: inherit;
-    margin-top: 4px; /* moved slightly downward */
-    font-style: italic; /* only the author name is italic */
+    color: inherit; /* inherits proper color based on mode */
+    margin-top: 7px; /* slightly downward */
+    font-style: italic; /* only author name italic */
 }
 
 /* Light mode overrides */
@@ -90,4 +91,14 @@ body:not(.dark) .level-box {
 
 body:not(.dark) .level-info .author {
     color: #000000; /* author text black in light mode */
+}
+
+/* Dark mode explicit overrides (optional but ensures correctness) */
+body.dark .level-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--color-on-primary);
+}
+
+body.dark .level-info .author {
+    color: var(--color-on-primary);
 }
