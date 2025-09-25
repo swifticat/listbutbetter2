@@ -116,7 +116,8 @@ main:not(.dark) .level-info .author {
     justify-content: flex-start;
     align-items: stretch;
     margin-top: 2rem; /* keeps box top aligned with #1 level */
-    margin-left: 0.5rem; /* moved closer to the levels, but still separated */
+    position: relative; /* enable manual positioning */
+    left: -50px; /* adjust horizontally: negative = move left, positive = move right */
 }
 
 main:not(.dark) .guidelines-box {
