@@ -10,10 +10,10 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 50%; /* reduced width for better centering */
-    max-width: 1200px; /* tighter box */
+    width: 45%; /* narrower container for level boxes */
+    max-width: 700px;
     padding: 2rem 1rem;
-    align-items: center; /* center level boxes horizontally */
+    align-items: center;
 }
 
 /* LEVEL BOX DEFAULT (dark-mode friendly by default) */
@@ -21,8 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 90%; /* narrower than before */
-    max-width: 700px;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.15);
     color: var(--color-on-primary);
     padding: 1rem;
@@ -90,7 +89,7 @@ main:not(.dark) .level-box {
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 16px; /* moves author downward */
+    margin-top: 16px;
     font-style: italic;
 }
 
@@ -116,7 +115,8 @@ main:not(.dark) .level-info .author {
     text-align: center;
     justify-content: flex-start;
     align-items: stretch;
-    margin-top: 1rem; /* space below header */
+    margin-top: 2rem; /* moves the box down to match #1 level */
+    margin-left: auto; /* pushes the box further to the right */
 }
 
 main:not(.dark) .guidelines-box {
@@ -129,11 +129,12 @@ main:not(.dark) .guidelines-box {
 .guidelines-box h2 {
     font-weight: bold;
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem; /* pushes heading downward */
 }
 
 .guidelines-box hr {
     border: none;
-    border-top: 1px solid rgba(0,0,0,0.2); /* subtle visible line */
+    border-top: 1px solid rgba(0,0,0,0.2);
     margin-bottom: 1rem;
 }
 
