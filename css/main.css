@@ -13,7 +13,7 @@
 main.dark,
 header.dark {
     color-scheme: dark;
-    --color-background: #1c1b1f;
+    --color-background: #36393F; /* updated dark background */
     --color-on-background: white;
     --color-background-hover: #27262c;
     --color-on-background-hover: white;
@@ -32,6 +32,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    color: var(--color-on-background); /* light mode text black */
 }
 
 header {
@@ -84,12 +85,12 @@ header .logo {
     transition: background-color 0.2s;
     border-radius: 0;
     box-sizing: border-box;
-    white-space: nowrap; /* prevents text wrapping */
+    white-space: nowrap;
 }
 
 .nav-buttons .nav__tab:last-child,
 .nav-buttons .nav__cta:last-child {
-    flex-basis: 16rem; /* wider for Submit Record */
+    flex-basis: 16rem;
 }
 
 .nav-buttons .nav__tab:hover,
@@ -102,7 +103,6 @@ header .logo {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Remove underlines globally for all main buttons */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__tab span,
 .nav-buttons .nav__cta,
@@ -114,7 +114,6 @@ header .logo {
     text-decoration: none !important;
 }
 
-/* Right utilities (discord & dark mode toggle) */
 .utilities {
     display: flex;
     align-items: center;
@@ -137,7 +136,6 @@ header .logo {
     width: auto;
 }
 
-/* Main content */
 main {
     flex: 1;
     display: grid;
@@ -167,7 +165,6 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-/* Flag Styling for Leaderboard */
 .country-flag {
     width: 2rem;
     height: auto;
@@ -193,4 +190,10 @@ input[type="checkbox"] {
 a, a:visited, a:hover, a:active, button {
     text-decoration: none;
     outline: none;
+}
+
+/* LEVEL BOX ADJUSTMENTS FOR LIGHT MODE */
+.page-list .level-box {
+    background-color: #ffffff; /* fully white in light mode */
+    color: #000000; /* black text */
 }
