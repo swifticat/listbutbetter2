@@ -8,7 +8,7 @@
 /* Navigation container */
 .nav {
     display: flex;
-    column-gap: 2rem;
+    column-gap: 0; /* remove space so buttons touch */
 }
 
 /* Navigation tabs (List, Leaderboard, Roulette, etc.) */
@@ -20,11 +20,11 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 0.15);
     color: var(--color-on-primary);
-    border: none !important;         /* no borders (remove underline effect) */
-    border-radius: 0;                /* no rounded corners */
+    border: none !important;
+    border-radius: 0;
     box-shadow: none;
     cursor: pointer;
-    transition: background-color 0.2s ease; /* smooth fade hover */
+    transition: background-color 0.2s ease;
     text-decoration: none !important;
 }
 
@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.8rem;
+    gap: 0; /* no gap so buttons touch */
 }
 
 /* Icon buttons (Discord + Dark/Light mode) */
@@ -68,7 +68,7 @@
 
 /* Submit Record button */
 .nav .nav__actions .nav__cta {
-    margin-left: 1rem;
+    margin-left: 0; /* make it touch others */
     padding: 0 1.5rem;
     height: 100%;
     display: flex;
@@ -77,10 +77,14 @@
     background-color: var(--color-on-primary);
     color: var(--color-primary);
     border: none;
-    border-radius: 0; /* match other buttons */
+    border-radius: 0;
     box-shadow: 0 1px 0.5rem 0 rgba(0, 0, 102, 0.5);
     transition: background-color 0.2s ease, transform 100ms ease;
     text-decoration: none !important;
+
+    /* Ensure text fits in one line */
+    white-space: nowrap;
+    min-width: 12rem;
 }
 
 .nav .nav__actions .nav__cta:hover:not(:active) {
