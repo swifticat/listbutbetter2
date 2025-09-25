@@ -37,7 +37,7 @@ main:not(.dark) .level-box {
     background-color: #ffffff; /* white boxes */
     color: #000000;            /* black text */
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05); /* subtle light-mode shadow */
-    border: 1px dashed #e0e0e0; /* very light gray dashed border */
+    border: 1px dashed #f0f0f0; /* very light gray dashed border */
 }
 
 .thumbnail {
@@ -84,11 +84,14 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
-/* Author text: italic always, color depends on mode */
+/* Author text: italic only for the name, color depends on mode */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 16px; /* move author text downward */
+}
+
+.level-info .author .author-name {
     font-style: italic;
 }
 
