@@ -71,6 +71,8 @@ main:not(.dark) .level-box {
     word-break: break-word;
     overflow-wrap: anywhere;
     line-height: 1.4;
+    position: relative;
+    top: 4px; /* moves the rank, dash, and name downward by 4px */
 }
 
 .level-info .title .rank {
@@ -85,7 +87,7 @@ main:not(.dark) .level-box {
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 0.25rem;
+    margin-top: 11px; /* move author text downward by 11px */
     font-style: italic;
 }
 
