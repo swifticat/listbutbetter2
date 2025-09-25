@@ -1,7 +1,7 @@
 .page-list {
     width: 100%;
     display: flex;
-    justify-content: flex-end; /* pushes content to the right */
+    justify-content: flex-end; /* keeps list on right */
 }
 
 .page-list .list-container {
@@ -14,22 +14,29 @@
     padding: 2rem 1rem;
 }
 
-/* Default dark mode styles */
+/* LEVEL BOX DEFAULT (dark-mode friendly by default) */
 .level-box {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 45%;
-    background-color: rgba(0, 0, 0, 0.15); /* dark mode box */
-    color: var(--color-on-primary); /* dark mode text */
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
-    transition: background-color 0.2s;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* subtle shadow */
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .level-box:hover {
     background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* LIGHT MODE OVERRIDES */
+main:not(.dark) .level-box {
+    background-color: #ffffff; /* white boxes */
+    color: #000000;            /* black text */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05); /* subtle light-mode shadow */
 }
 
 .thumbnail {
@@ -74,31 +81,18 @@
     font-weight: 500;
 }
 
-/* Author text: italic only for author name, moved downward */
+/* Author text: italic always, color depends on mode */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    color: inherit; /* inherits proper color based on mode */
-    margin-top: 7px; /* slightly downward */
-    font-style: italic; /* only author name italic */
+    margin-top: 0.25rem;
+    font-style: italic;
 }
 
-/* Light mode overrides */
-body:not(.dark) .level-box {
-    background-color: #ffffff; /* boxes white */
-    color: #000000; /* text black */
+main.dark .level-info .author {
+    color: var(--color-on-primary); /* light color in dark mode */
 }
 
-body:not(.dark) .level-info .author {
-    color: #000000; /* author text black in light mode */
-}
-
-/* Dark mode explicit overrides (optional but ensures correctness) */
-body.dark .level-box {
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--color-on-primary);
-}
-
-body.dark .level-info .author {
-    color: var(--color-on-primary);
+main:not(.dark) .level-info .author {
+    color: #000000; /* black in light mode */
 }
