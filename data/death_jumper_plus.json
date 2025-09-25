@@ -1,0 +1,31 @@
+
+{
+    "id": 1378,
+    "name": "Death Jumper Plus",
+    "author": "Mathey",
+    "creators": [],
+    "verifier": "Mathey",
+    "verification": "https://www.youtube.com/watch?v=LmRK8-DE_H0",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Kyy",
+			"link": "https://www.youtube.com/watch?v=IzUaIWnk7nI",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1g8pOx5zcNk",
+			"percent": 100,
+			"hz": 999
+		},
+	      {
+			"user": "Awennue",
+			"link": "https://youtu.be/PK4bjAfMdhM",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

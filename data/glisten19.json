@@ -1,0 +1,30 @@
+{
+    "id": 2087,
+    "name": "GLISTEN19",
+    "author": "Rae",
+    "creators": ["Rae","Zud"],
+    "verifier": "Rae",
+    "verification": "https://youtu.be/ugRGnzF4k88",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "viridian",
+			"link": "https://youtu.be/7-uFwFoUIxk",
+			"percent": 100,
+			"hz": 180
+		 },
+         {
+			"user": "doom",
+			"link": "https://youtu.be/fuGSvwtKPXs",
+			"percent": 100,
+			"hz": 240
+		},
+	      {
+			"user": "ZorpikGMD",
+			"link": "https://youtu.be/X1fDvrhKE8c",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

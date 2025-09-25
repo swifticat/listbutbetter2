@@ -1,0 +1,24 @@
+{
+    "id": 939,
+    "name": "Kari",
+    "author": "DubbyBall",
+    "creators": [],
+    "verifier": "DubbyBall",
+    "verification": "https://www.youtube.com/watch?v=Y2VVpIzXMKE",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+               {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=HDjt0Rz0u_8",
+			"percent": 100,
+			"hz": 999
+		},
+             {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=U9mAg7r1IgE",
+			"percent": 100,
+			"hz": 240
+		}
+	]
+}

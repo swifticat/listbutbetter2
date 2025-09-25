@@ -1,0 +1,18 @@
+{
+    "id": 2555,
+    "name": "ON1Y B4LL",
+    "author": "ImNotCriko",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/iiPUgc8v7PQ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/VqLnHl3T9L4",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

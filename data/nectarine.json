@@ -1,0 +1,18 @@
+{
+    "id": 2708,
+    "name": "Nectarine",
+    "author": "Xanv2",
+    "creators": [],
+    "verifier": "probablyAleksandra",
+    "verification": "https://drive.google.com/file/d/1n52vV_ZGHcG2SYSV0rXD9h4f0R8ZPN25/view?usp=sharing",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Luna",
+			"link": "https://www.youtube.com/watch?v=7cLf0ZrxXak&t=18s&pp=0gcJCb8Ag7Wk3p_U",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

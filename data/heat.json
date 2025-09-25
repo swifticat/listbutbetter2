@@ -1,0 +1,24 @@
+{
+    "id": 2189,
+    "name": "HEAT",
+    "author": "Filipogem",
+    "creators": [],
+    "verifier": "Filipogem",
+    "verification": "https://www.youtube.com/watch?v=u8jXW6-fsg8&ab_channel=AnotherGem",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/VJshWxpNzbs",
+			"percent": 100,
+			"hz": 144
+		},
+	     {
+			"user": "Krieger",
+			"link": "https://youtu.be/cmYfcO_UJMw?si=LWkArKw8VfjdAG-u",
+			"percent": 100,
+			"hz": 60
+		}
+    ]
+}

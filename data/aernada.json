@@ -1,0 +1,18 @@
+{
+    "id": 1485,
+    "name": "Aernada",
+    "author": "Furrious",
+    "creators": ["Furrious","Skoe"],
+    "verifier": "Mathey",
+    "verification": "https://www.youtube.com/watch?v=G_zHj9hwUUc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1g8pOx5zcNk",
+			"percent": 100,
+			"hz": 999
+		}
+    ]
+}

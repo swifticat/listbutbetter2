@@ -1,0 +1,185 @@
+:root {
+    --color-background: white;
+    --color-on-background: black;
+    --color-background-hover: #eee;
+    --color-on-background-hover: black;
+    --color-primary: #000000;
+    --color-on-primary: white;
+    --color-primary-disabled: #1f213c;
+    --color-error: #de0000;
+    --color-on-error: white;
+}
+
+main.dark,
+header.dark {
+    color-scheme: dark;
+    --color-background: #1c1b1f;
+    --color-on-background: white;
+    --color-background-hover: #27262c;
+    --color-on-background-hover: white;
+    --color-primary: #000000;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 4.5rem; /* adjusted header height */
+    min-height: 4.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--color-on-primary);
+}
+
+header .logo {
+    display: none;
+}
+
+.nav {
+    display: flex;
+    flex: 1;
+    justify-content: center; /* center main buttons */
+    height: 100%;
+    align-items: center;
+}
+
+.nav-buttons {
+    display: flex;
+    height: 100%;
+    gap: 0.3rem;
+}
+
+/* Equal-width main buttons based on widest text */
+.nav-buttons .nav__tab,
+.nav-buttons .nav__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 13rem; /* slightly wider for breathing space and to fit Submit Record */
+    height: 100%;
+    padding: 0 1.5rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-on-primary);
+    text-decoration: none;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+    border-radius: 0; /* remove rounded corners */
+    box-sizing: border-box;
+}
+
+.nav-buttons .nav__tab:hover,
+.nav-buttons .nav__cta:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-buttons .nav__tab:active,
+.nav-buttons .nav__cta:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove underlines globally for all main buttons */
+.nav-buttons .nav__tab,
+.nav-buttons .nav__tab span,
+.nav-buttons .nav__cta,
+.nav-buttons .nav__cta span {
+    text-decoration: none !important;
+}
+
+.nav__tab span {
+    text-decoration: none !important;
+}
+
+/* Right utilities (discord & dark mode toggle) */
+.utilities {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    height: 100%;
+    margin-left: 0.5rem; /* shift slightly to the left to center header content */
+}
+
+.nav__icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav__icon img {
+    height: 2rem;
+    width: auto;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
+    column-gap: 2rem;
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    grid-template-rows: minmax(0, 1fr);
+}
+
+main > div {
+    overflow-y: auto;
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 3;
+}
+
+input[type="checkbox"] {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Flag Styling for Leaderboard */
+.country-flag {
+    width: 2rem;
+    height: auto;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flag-icon {
+    border-radius: 5px;
+    width: 24px;
+    height: 16px;
+    display: inline-block;
+}
+
+/* Remove underlines globally */
+a, a:visited, a:hover, a:active, button {
+    text-decoration: none;
+    outline: none;
+}

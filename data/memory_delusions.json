@@ -1,0 +1,18 @@
+{
+    "id": 1264,
+    "name": "memory delusions",
+    "author": "Kubikk",
+    "creators": [],
+    "verifier": "Kubikk",
+    "verification": "https://www.youtube.com/watch?v=73C0WF90UYc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/VSKq7-U80ak",
+			"percent": 100,
+			"hz": 144
+		}
+	]
+}

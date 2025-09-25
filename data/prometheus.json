@@ -1,0 +1,42 @@
+{
+    "id": 1561,
+    "name": "Prometheus",
+    "author": "Kubikk",
+    "creators": [],
+    "verifier": "Kubikk",
+    "verification": "https://www.youtube.com/watch?v=ui00dXwskFc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Mathey",
+			"link": "https://www.youtube.com/watch?v=ZjbBOcV3IS8",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "Skylar",
+			"link": "https://www.dropbox.com/scl/fi/i5n8bd4414fxx8svpa2sz/2024-12-02-18-58-33.mp4?rlkey=glo4wjzgiw22ahgktzu1bcdqt&st=m4zfznq9&dl=0",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=6-QwVtquv5I",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "C1GAMER",
+			"link": "https://youtu.be/Ulv_gncvPPg",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "Luna",
+			"link": "https://youtu.be/2u9CLwQd06A",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

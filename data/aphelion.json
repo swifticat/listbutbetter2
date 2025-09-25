@@ -1,0 +1,18 @@
+{
+    "id": 3320,
+    "name": "Aphelion",
+    "author": "kubikk",
+    "creators": ["kubikk","mathey","Furrious","shib"],
+    "verifier": "mathey",
+    "verification": "https://www.youtube.com/watch?v=h-Z0rAZ47Zs",
+    "percentToQualify": 60,
+    "password": "Copyable",
+    "records": [
+                {
+			"user": "MechanicGD",
+			"link": "https://youtu.be/p7qj9CS-mJ8",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

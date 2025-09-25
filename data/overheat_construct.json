@@ -1,0 +1,18 @@
+{
+    "id": 1899,
+    "name": "overheat CONSTRUCT",
+    "author": "Kubikk",
+    "creators": [],
+    "verifier": "Kubikk",
+    "verification": "https://youtu.be/ljWf9HIelXg",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=utTYjevYrRk",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

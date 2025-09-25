@@ -1,0 +1,36 @@
+{
+    "id": 1769,
+    "name": "Question Of Fate",
+    "author": "Schlong",
+    "creators": [],
+    "verifier": "mathey",
+    "verification": "https://www.youtube.com/watch?v=kGrDNKec7Nk&ab_channel=Mathey",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=49TWiHYlajw",
+			"percent": 100,
+			"hz": 240
+		},
+           {
+			"user": "Slopes",
+			"link": "https://youtu.be/CiE8MficEbY",
+			"percent": 100,
+			"hz": 240
+		},
+         {
+			"user": "Firelia",
+			"link": "hhttps://youtu.be/sTj_6wQbgd8",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "kubikk",
+			"link": "https://www.youtube.com/watch?v=DQOjcb4hofY",
+			"percent": 100,
+			"hz": 480
+		}
+	]
+}

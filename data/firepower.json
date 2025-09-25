@@ -1,0 +1,18 @@
+{
+    "id": 3392,
+    "name": "FIREPOWER",
+    "author": "gamecheese",
+    "creators": ["gamecheese","Triscis","deilyyxx","Bogar1kad"],
+    "verifier": "Kuramishiro",
+    "verification": "https://youtu.be/mOpTi5Kgmfc?si=EfuGXnyCu_Texr2Z",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+            {
+			"user": "MihaMilos",
+			"link": "https://www.youtube.com/watch?v=EewStwHRkDA",
+			"percent": 100,
+			"hz": 825
+		}
+    ]
+}

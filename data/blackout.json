@@ -1,0 +1,24 @@
+{
+    "id": 1830,
+    "name": "Blackout",
+    "author": "copper",
+    "creators": [],
+    "verifier": "12s",
+    "verification": "https://youtu.be/8JzeOruAvaY ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "kubikk",
+			"link": "https://medal.tv/games/geometry-dash/clips/jcI1agWSj3S4eB6Ih?invite=cr-MSxiNGosMjU5NzQ1NzUyLA",
+			"percent": 100,
+			"hz": 165
+		},
+	       {
+			"user": "Krieger",
+			"link": "https://youtu.be/SjKCx688jlY?si=QOBXrImKihOW56lE",
+			"percent": 100,
+			"hz": 120
+		}
+    ]
+}

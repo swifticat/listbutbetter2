@@ -1,0 +1,24 @@
+{
+    "id": 2160,
+    "name": "Endless Goobering",
+    "author": "Luna",
+    "creators": [],
+    "verifier": "Luna",
+    "verification": "discordmp4",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+            "user": "Rae",
+            "link": "https://youtu.be/Lf_2S_agD6w",
+            "percent": 100,
+            "hz": 360
+        },
+        {
+            "user": "doom",
+            "link": "https://www.youtube.com/watch?v=MnHbZuIGMwI",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 2146,
+    "name": "Space Invaders",
+    "author": "RedAmitieGD",
+    "creators": [],
+    "verifier": "Rae",
+    "verification": "https://youtu.be/VxT4jOqiVac?si=iRCVLegso4TgN8PJ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=7OUs2oSwOas",
+			"percent": 100,
+			"hz": 240
+        }
+    ]
+}

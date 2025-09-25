@@ -1,0 +1,18 @@
+{
+    "id": 2407,
+    "name": "Disruption",
+    "author": "syrcx",
+    "creators": ["kwipcat"],
+    "verifier": "syrcx",
+    "verification": "https://youtu.be/I0nXXCFYu4A?si=FqtzF5U_DxYO0Jmw",
+    "percentToQualify": 73,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/nZSoRhStO-I",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "id": 1946,
+    "name": "Birds",
+    "author": "ImNotCriko",
+    "creators": [],
+    "verifier": "ImNotCriko",
+    "verification": "https://youtu.be/6BSTxfj1CUc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+            "user": "Luna",
+            "link": "https://cdn.discordapp.com/attachments/1259932507202126014/1317164627640979587/birbs.mp4?ex=675db0a6&is=675c5f26&hm=6847455519e05bcd0db06c708fdcf1a7b3bff1f5abc35d5d9e947ddd18ce1982&",
+            "percent": 100,
+            "hz": 240
+        },
+         {
+			"user": "Mathey",
+			"link": "https://youtu.be/HnFPlPiYMBg",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+            "user": "Firelia",
+            "link": "https://youtu.be/Vi-yELPq4w4",
+            "percent": 100,
+            "hz": 240
+        },
+          {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1jXphFo3-MMmopV0a4Mmdepw71pCS0rso/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		},
+	     {
+			"user": "Krieger",
+			"link": "https://youtu.be/uQ4rLQ6KK-Y?si=J3nM8_gTyZ-Ruyq0",
+			"percent": 100,
+			"hz": 120
+		}
+    ]
+}

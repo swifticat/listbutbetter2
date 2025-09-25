@@ -1,0 +1,18 @@
+{
+    "id": 1176,
+    "name": "Dark Red",
+    "author": "Catty",
+    "creators": [],
+    "verifier": "Catty",
+    "verification": "https://www.youtube.com/watch?v=mz_Dqh2EjRc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "doom",
+			"link": "https://youtu.be/zItSUO7j4gE",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

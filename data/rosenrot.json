@@ -1,0 +1,24 @@
+{
+    "id": 2462,
+    "name": "Rosenrot",
+    "author": "kubikk",
+    "creators": ["Luna"],
+    "verifier": "Luna",
+    "verification": "https://youtu.be/ZPqykLRIXHc",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+                   {
+			"user": "Firelia",
+			"link": "https://youtu.be/j3Dv7Xbx30o",
+			"percent": 100,
+			"hz": 240
+		},
+                   {
+			"user": "Awennue",
+			"link": "https://youtu.be/M2GN8lXmWPQ",
+			"percent": 100,
+			"hz": 360
+		}
+	]
+}

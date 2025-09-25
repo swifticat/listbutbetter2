@@ -1,0 +1,24 @@
+{
+    "id": 1224,
+    "name": "MindBreaker",
+    "author": "KuraTheGuy",
+    "creators": [],
+    "verifier": "Luna",
+    "verification": "https://cdn.discordapp.com/attachments/1260290704421294150/1322253809573171221/mindblown.mp4?ex=6770dd12&is=676f8b92&hm=c2d3709142d3734bb87e5a53211cb286b3a5e3dbe4cc924afe13c7a8ffffc316&",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+           {
+			"user": "Krieger",
+			"link": "https://youtu.be/MjmTmTopT_E",
+			"percent": 100,
+			"hz": 60
+		},
+          {
+			"user": "Kuramishiro",
+			"link": "https://www.youtube.com/watch?v=dAu5GaZE4Oc",
+			"percent": 100,
+			"hz": 144
+		}
+    ]
+}

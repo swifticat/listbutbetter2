@@ -1,0 +1,25 @@
+{
+    "id": 1153,
+    "name": "MUTE",
+    "author": "DeepStrider2",
+    "creators": [],
+    "verifier": "Rae",
+    "verification": "https://www.youtube.com/watch?v=M5Ct1ySlWxU",
+    "percentToQualify": 71,
+    "password": "Copyable",
+    "records": [
+		{
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=akEG_UwlJJE",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "syrcx",
+			"link": "https://youtu.be/j7ZoC9RwFLQ",
+			"percent": 100,
+			"hz": 240
+		}
+	],
+		"tags": ["Former Top 1"]
+}

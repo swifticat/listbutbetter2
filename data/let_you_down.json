@@ -1,0 +1,18 @@
+{
+    "id": 2782,
+    "name": "let you down",
+    "author": "Hexy",
+    "creators": [],
+    "verifier": "Hexy",
+    "verification": "https://youtu.be/QvLi7HdAeEY",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+       {
+			"user": "Rae",
+			"link": "https://m.youtube.com/watch?v=dqzOgs91XpU&feature=youtu.be",
+			"percent": 100,
+			"hz": 360
+	   }
+    ]
+}

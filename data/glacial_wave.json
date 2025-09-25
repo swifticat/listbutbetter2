@@ -1,0 +1,42 @@
+{
+    "id": 996,
+    "name": "Glacial Wave",
+    "author": "Skylar",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/MZVCJKqTQDQ?si=4WlS6pJ9WTWAlAPG",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=ySD8H9dh1f8",
+			"percent": 100,
+			"hz": 240
+		},
+          {
+			"user": "mathey",
+			"link": "https://youtu.be/3Iu__DgS4qU",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1jXphFo3-MMmopV0a4Mmdepw71pCS0rso/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		},
+	    {
+			"user": "Luna",
+			"link": "https://www.youtube.com/watch?v=7cLf0ZrxXak&t=18s&pp=0gcJCb8Ag7Wk3p_U",
+			"percent": 100,
+			"hz": 480
+		},
+	      {
+			"user": "C1GAMER",
+			"link": "https://www.youtube.com/watch?v=8UyX-HUiygk",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

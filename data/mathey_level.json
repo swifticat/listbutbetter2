@@ -1,0 +1,18 @@
+{
+    "id": 2032,
+    "name": "Mathey Level",
+    "author": "Blam",
+    "creators": ["Blam"],
+    "verifier": "Mathey",
+    "verification": "https://youtu.be/lrFMOlI5ByY",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=utTYjevYrRk",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

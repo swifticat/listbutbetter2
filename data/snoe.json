@@ -1,0 +1,48 @@
+{
+    "id": 2115,
+    "name": "snoe",
+    "author": "kal",
+    "creators": [],
+    "verifier": "kal",
+    "verification": "https://www.youtube.com/watch?v=9gIyMET9ueM",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "Mathey",
+			"link": "https://youtu.be/r7HwHhYClRY?si=T1Q_OsAjESmqagnC",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "Luna",
+			"link": "https://cdn.discordapp.com/attachments/860513078109798421/1323380260078620692/iforgottoturnoffdisableall.mp4?ex=67744d69&is=6772fbe9&hm=7c3f38d0be572b102109a9316739f4aed2f3bd75b34f42603efb1ab8cc5314d2&",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "Rae",
+			"link": "https://www.youtube.com/watch?v=aLLouZ8v4Fw",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "doom",
+			"link": "https://youtu.be/pzDRG61Dfo4",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "C1GAMER",
+			"link": "https://youtu.be/vOQohm6fcDo",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "DawiGD",
+			"link": "https://youtu.be/AltDX8WxR88?si=NUgTL_z-Ae92LmM1",
+			"percent": 100,
+			"hz": 144
+		}
+    ]
+}

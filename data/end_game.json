@@ -1,0 +1,18 @@
+{
+    "id": 1580,
+    "name": "End Game",
+    "author": "Th3K1ll3r72",
+    "creators": [],
+    "verifier": "kubikk",
+    "verification": "https://youtu.be/VqGn7XfqMBM",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+          {
+			"user": "Firelia",
+			"link": "youtu.be/tYjN4vyPV5A",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

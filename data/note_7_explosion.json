@@ -1,0 +1,30 @@
+{
+    "id": 1412,
+    "name": "Note 7 Explosion",
+    "author": "SkoesAlt",
+    "creators": ["solicoli"],
+    "verifier": "mathey",
+    "verification": "https://youtu.be/YRoVFY2QGB0",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=utTYjevYrRk",
+			"percent": 100,
+			"hz": 240
+		},
+	       {
+            "user": "Firelia",
+            "link": "https://youtu.be/sCEP3J0ntYI",
+            "percent": 100,
+            "hz": 240
+        },
+	     {
+            "user": "Luna",
+            "link": "https://www.youtube.com/watch?v=M60tuTTBsO0",
+            "percent": 100,
+            "hz": 480
+        }
+    ]
+}

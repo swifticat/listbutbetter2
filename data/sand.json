@@ -1,0 +1,18 @@
+{
+    "id": 2487,
+    "name": "sand",
+    "author": "spectrum",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/5cznvSUjEkQ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "kubikk",
+			"link": "https://www.youtube.com/watch?v=WGY92hMPwjU&ab_channel=KubixGD",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

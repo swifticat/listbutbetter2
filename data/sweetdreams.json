@@ -1,0 +1,18 @@
+{
+    "id": 3309,
+    "name": "SWEETDREAMS",
+    "author": "Furrious",
+    "creators": [],
+    "verifier": "Luna",
+    "verification": "https://www.youtube.com/watch?v=HNLQ-GRqaLQ&pp=0gcJCYQJAYcqIYzv",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "doom",
+			"link": "https://youtu.be/uec5fhfHTio",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

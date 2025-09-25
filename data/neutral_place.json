@@ -1,0 +1,18 @@
+{
+    "id": 1248,
+    "name": "neutral place",
+    "author": "Furrious",
+    "creators": [],
+    "verifier": "Kasia",
+    "verification": "https://www.youtube.com/watch?v=NlAj8Z_nLiI&t=1s",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=6sqlKJzJ4jc",
+			"percent": 100,
+			"hz": 240
+		}
+	]
+}

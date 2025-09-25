@@ -1,0 +1,24 @@
+{
+    "id": 2519,
+    "name": "Sayonara",
+    "author": "DawiGD",
+    "creators": [],
+    "verifier": "DawiGD",
+    "verification": "https://youtu.be/La52CnlLkOc?si=_DxkqQyWONTxxOiy",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "Skylar",
+			"link": "https://youtu.be/QxOd_CIuT14",
+			"percent": 100,
+			"hz": 160
+		},
+	       {
+			"user": "Mathey",
+			"link": "https://youtu.be/a7D46q6ysPE",
+			"percent": 100,
+			"hz": 144
+		}
+    ]
+}

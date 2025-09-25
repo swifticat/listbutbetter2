@@ -1,0 +1,25 @@
+{
+    "id": 98,
+    "name": "The Hallucination",
+    "author": "Luna",
+    "creators": [],
+    "verifier": "Luna",
+    "verification": "https://youtu.be/H6BeQPRaAOA",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/72LuuCrD1U4",
+			"percent": 100,
+			"hz": 999
+		},
+        {
+			"user": "Mathey",
+			"link": "stream",
+			"percent": 100,
+			"hz": 144
+		}
+	],
+		"tags": ["Former Top 1"]
+}

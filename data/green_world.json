@@ -1,0 +1,54 @@
+{
+    "id": 1158,
+    "name": "Green World",
+    "author": "Kubikk",
+    "creators": [],
+    "verifier": "Mathey",
+    "verification": "https://youtu.be/DPY9TCkQ25Q?si=UxQdi8FUiaPCpit5",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+          {
+			"user": "Kyy",
+			"link": "https://www.youtube.com/watch?v=Yra6_GXM__o",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "doom",
+			"link": "https://youtu.be/dtDlpLeB2os",
+			"percent": 100,
+			"hz": 240
+        },
+        {
+			"user": "probablyAleksandra",
+			"link": "goonworld.mp4",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "kubikk",
+			"link": "https://youtu.be/iPBpHRXfzlk",
+			"percent": 100,
+			"hz": 165
+		},
+	    {
+			"user": "Luna",
+			"link": "https://youtu.be/gTKFYiAcEbc",
+			"percent": 100,
+			"hz": 480
+		},
+	       {
+			"user": "C1GAMER",
+			"link": "hhttps://www.youtube.com/watch?v=WP1-sHgE_KY",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "Awennue",
+			"link": "https://youtu.be/PK4bjAfMdhM",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

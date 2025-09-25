@@ -1,0 +1,54 @@
+{
+    "id": 722,
+    "name": "Mayday",
+    "author": "R3SERT1",
+    "creators": [],
+    "verifier": "R3SERT1",
+    "verification": "https://www.youtube.com/watch?v=66vCPdYwtSk",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1g8pOx5zcNk",
+			"percent": 100,
+			"hz": 999
+		},
+        {
+			"user": "Luna",
+			"link": "https://cdn.discordapp.com/attachments/1259932507202126014/1317436148313886720/MAYDAYMAYDAY_ITS_GOING_DOWN.mp4?ex=675ead86&is=675d5c06&hm=745186b20c12916b8f8fd70207b79008cb7a481a8053b1e2942e361d9d535935&",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "Kuramishiro",
+			"link": "https://www.youtube.com/watch?v=SxuQvfIkOe8",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "Krieger",
+			"link": "https://youtu.be/tK9VnDIcmk0?si=jvPo84OQ766YrlCJ",
+			"percent": 100,
+			"hz": 60
+		},
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/Pgc-SJlNTiQ",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1depl_tQEx7tl2cNL7Lc8WBoWd2l8Yuu7/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		},
+	     {
+			"user": "Hexy",
+			"link": "https://youtu.be/mz94QWBy6TM",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "id": 1235,
+    "name": "Break Stuff",
+    "author": "Rae",
+    "creators": [],
+    "verifier": "Rae",
+    "verification": "https://youtu.be/ZzunJZYRjPo",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+		{
+			"user": "doom",
+			"link": "https://youtu.be/Ngv_wyb-aPw",
+			"percent": 100,
+			"hz": 999
+		},
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/FNx4WimocH8",
+			"percent": 100,
+			"hz": 144
+		}
+	]
+}
+	

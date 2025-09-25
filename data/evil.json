@@ -1,0 +1,48 @@
+{
+    "id": 1219,
+    "name": "Evil",
+    "author": "Rae",
+    "creators": ["Rae"],
+    "verifier": "Rae",
+    "verification": "https://www.youtube.com/watch?v=BM4vHVLPjqQ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "evil",
+			"link": "https://www.youtube.com/watch?v=xjU0PaonPoQ",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1VG6C459Urw?t=92",
+			"percent": 100,
+			"hz": 240
+		},
+         {
+			"user": "kubikk",
+			"link": "https://www.youtube.com/watch?v=YOwFWqh4LEk&ab_channel=KubixGD",
+			"percent": 100,
+			"hz": 165
+		},
+          {
+			"user": "syrcx",
+			"link": "https://www.youtube.com/watch?v=ghCLaglM-uw",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "C1GAMER",
+			"link": "https://www.youtube.com/watch?v=bu7yrRvevp8",
+			"percent": 100,
+			"hz": 240
+		},
+	       {
+			"user": "verizat",
+			"link": "https://youtu.be/2qy-gyLIMco",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

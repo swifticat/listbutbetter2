@@ -1,0 +1,30 @@
+{
+    "id": 242,
+    "name": "Witburst",
+    "author": "Hex",
+    "creators": ["Hex","Qwapi","Rain","Th3K1ll3r72","Ozzy"],
+    "verifier": "Luna",
+    "verification": "Link",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1g8pOx5zcNk",
+			"percent": 100,
+			"hz": 999
+		},
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/Mfl5cp1MOzY",
+			"percent": 100,
+			"hz": 144
+		},
+          {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1jXphFo3-MMmopV0a4Mmdepw71pCS0rso/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "id": 335,
+    "name": "DeathClub",
+    "author": "12s",
+    "creators": [],
+    "verifier": "12s",
+    "verification": "Link",
+    "percentToQualify": 100,
+    "password": "Copyable",
+	"records": [
+		{
+			"user": "sk80",
+			"link": "https://youtu.be/nonexistant",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "Qwapi",
+			"link": "https://youtu.be/nonexistant",
+			"percent": 100,
+			"hz": 90
+		},
+        {
+			"user": "Tourbillon",
+			"link": "https://youtu.be/nonexistant",
+			"percent": 100,
+			"hz": 90
+		},
+        {
+            "user": "Rusted",
+            "link": "https://youtu.be/nonexistant",
+            "percent": 100,
+            "hz": 60
+        }
+	]
+}

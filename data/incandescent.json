@@ -1,0 +1,24 @@
+{
+    "id": 2278,
+    "name": "INCANDESCENT",
+    "author": "Rae",
+    "creators": [],
+    "verifier": "Rae",
+    "verification": "https://youtu.be/Kev-ITexzrM",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+          {
+			"user": "evil",
+			"link": "https://youtu.be/gs4oBo8EHDs?si=LPNT5laGO81UsRy0",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "syrcx",
+			"link": "https://www.youtube.com/watch?v=8Ix7VFXdQfI",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

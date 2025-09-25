@@ -1,0 +1,30 @@
+{
+    "id": 358,
+    "name": "Uranium Circles",
+    "author": "Kultrixx",
+    "creators": [],
+    "verifier": "doom",
+    "verification": "https://www.youtube.com/watch?v=72LuuCrD1U4",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "Mathey",
+			"link": "https://www.youtube.com/watch?v=-nreW8Mhfhc",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1depl_tQEx7tl2cNL7Lc8WBoWd2l8Yuu7/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		},
+	    {
+			"user": "Luna",
+			"link": "https://www.youtube.com/watch?v=7cLf0ZrxXak&t=18s&pp=0gcJCb8Ag7Wk3p_U",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

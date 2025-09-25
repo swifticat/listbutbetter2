@@ -1,0 +1,19 @@
+{
+    "id": 1824,
+    "name": "confuse me",
+    "author": "Skylar",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/FJIA0IvheB0",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=CZL2F9AGtWc",
+			"percent": 100,
+			"hz": 120,
+			"mobile": true
+		}
+	]
+}

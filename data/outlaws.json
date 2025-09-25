@@ -1,0 +1,18 @@
+{
+    "id": 2746,
+    "name": "Outlaws",
+    "author": "octo",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/HjHkUUdxBgY",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+	     {
+			"user": "Filipogem",
+			"link": "https://www.youtube.com/watch?v=2wvXHEnya50&ab_channel=AnotherGem",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "id": 1963,
+    "name": "Death Jumper Minus",
+    "author": "kubikk",
+    "creators": ["Luna"],
+    "verifier": "Luna",
+    "verification": "https://youtu.be/0_7KRpE9kbs",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Mathey",
+			"link": "https://youtu.be/1jPYN8yTGWM",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "probablyAleksandra",
+			"link": "https://drive.google.com/file/d/1depl_tQEx7tl2cNL7Lc8WBoWd2l8Yuu7/view?usp=sharing",
+			"percent": 100,
+			"hz": 360
+		},
+	      {
+			"user": "Awennue",
+			"link": "https://youtu.be/PK4bjAfMdhM",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

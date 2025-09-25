@@ -1,0 +1,36 @@
+{
+    "id": 1056,
+    "name": "Outlaw",
+    "author": "Aquatic",
+    "creators": [],
+    "verifier": "Aquatic",
+    "verification": "https://www.youtube.com/watch?v=YtBXZUg75d8",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "mathey",
+			"link": "https://youtu.be/ChKL2nyYzAY",
+			"percent": 100,
+			"hz": 144
+		},
+	      {
+			"user": "Luna",
+			"link": "https://youtu.be/VtIWRuttBgQ",
+			"percent": 100,
+			"hz": 480
+		},
+	      {
+			"user": "kubikk",
+			"link": "https://www.youtube.com/watch?v=tVskAuY0xbs",
+			"percent": 100,
+			"hz": 480
+		},
+	     {
+			"user": "Krieger",
+			"link": "https://youtu.be/cMTWUrj2ycI?si=0SjDlvrgcHNt6Yvr",
+			"percent": 100,
+			"hz": 120
+		}
+    ]
+}

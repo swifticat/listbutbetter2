@@ -1,0 +1,24 @@
+{
+    "id": 3282,
+    "name": "A Red Level",
+    "author": "Azure1Flare",
+    "creators": [],
+    "verifier": "Azure1Flare",
+    "verification": "https://youtu.be/JhnkV0BDQBE",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+	     {
+			"user": "Skylar",
+			"link": "https://youtu.be/xBvaUIDbTKI",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/30gfpO3TfL4",
+			"percent": 100,
+			"hz": 144
+		}
+    ]
+}

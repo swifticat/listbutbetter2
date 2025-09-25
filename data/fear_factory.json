@@ -1,0 +1,18 @@
+{
+    "id": 338,
+    "name": "Fear Factory",
+    "author": "12s",
+    "creators": ["12s","Th3K1ll3r72"],
+    "verifier": "12s",
+    "verification": "https://www.youtu.be./nonexistant",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "sk80",
+			"link": "https://youtu.be/nonexistant",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

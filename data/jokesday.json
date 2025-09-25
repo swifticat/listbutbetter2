@@ -1,0 +1,18 @@
+{
+    "id": 3390,
+    "name": "Jokesday",
+    "author": "Shumbs",
+    "creators": [],
+    "verifier": "Shumbs",
+    "verification": "https://www.youtube.com/watch?v=0U4S-xHLSjI",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+            {
+			"user": "Kuramishiro",
+			"link": "https://youtu.be/RDb1ctqFK8k",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

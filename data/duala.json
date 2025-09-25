@@ -1,0 +1,18 @@
+{
+    "id": 308,
+    "name": "Duala",
+    "author": "Th3K1ll3r72",
+    "creators": [],
+    "verifier": "Th3K1ll3r72",
+    "verification": "Link",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "bobert",
+			"link": "https://youtu.be/nonexistant",
+			"percent": 100,
+			"hz": 60
+		}
+    ]
+}

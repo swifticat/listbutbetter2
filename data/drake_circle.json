@@ -1,0 +1,18 @@
+{
+    "id": 3021,
+    "name": "Drake Circle",
+    "author": "YVL",
+    "creators": [],
+    "verifier": "frizbee",
+    "verification": "https://www.youtube.com/watch?v=AB8TOBkF2rs&embeds_referring_euri=https%3A%2F%2Fpgdl.pages.dev%2F&source_ve_path=MjM4NTE",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+           {
+			"user": "Firelia",
+			"link": "https://youtu.be/rffQpHgQBko",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

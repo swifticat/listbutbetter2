@@ -1,0 +1,31 @@
+{
+    "id": 123,
+    "name": "Maybe Possibly Thingy",
+    "author": "Th3K1ll3r72",
+    "creators": [],
+    "verifier": "Th3K1ll3r72",
+    "verification": "https://youtu.be/hDUZSa0nCPM",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "Mathey",
+			"link": "https://www.youtube.com/watch?v=V8A-uzs4vLY",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "doom",
+			"link": "https://www.youtube.com/watch?v=6VlaE8waw_o",
+			"percent": 100,
+			"hz": 999
+		},
+	    {
+			"user": "Skylar",
+			"link": "https://youtu.be/brUP0Ds3lf8?si=KKrWvS3oZOkIegin",
+			"percent": 100,
+			"hz": 165
+		}
+	],
+	"tags": ["Former Top 1"]
+}

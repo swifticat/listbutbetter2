@@ -1,0 +1,30 @@
+{
+    "id": 977,
+    "name": "Silent Machine",
+    "author": "stamhonk",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://www.youtube.com/watch?v=wY7Wh4BXqzk",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "mathey",
+			"link": "https://youtu.be/SPoMGpRmYe0",
+			"percent": 100,
+			"hz": 144
+		},
+          {
+			"user": "Hexy",
+			"link": "https://www.youtube.com/watch?v=2z8EJFnrN84",
+			"percent": 100,
+			"hz": 360
+		},
+	      {
+			"user": "Luna",
+			"link": "https://youtu.be/czbwLXphX4I",
+			"percent": 100,
+			"hz": 480
+		}
+	]
+}

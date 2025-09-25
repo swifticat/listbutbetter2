@@ -1,0 +1,30 @@
+{
+    "id": 1716,
+    "name": "cryon",
+    "author": "stamhonk",
+    "creators": [],
+    "verifier": "stamhonk",
+    "verification": "https://youtu.be/mQoVkXG0SKA?si=ssetKPTA--r023PZ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "Furrious",
+			"link": "https://www.youtube.com/watch?v=yujkhCEIA0g&ab_channel=Furrious%5BGD%5D",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "C1GAMER",
+			"link": "https://www.youtube.com/watch?v=QW2ZguqZpt8",
+			"percent": 100,
+			"hz": 240
+		},
+	      {
+			"user": "Krieger",
+			"link": "https://youtu.be/4QZmFdsQ9Vw?si=zXSMA7DPS3zfGdBo¾",
+			"percent": 100,
+			"hz": 120
+		}
+	]
+}

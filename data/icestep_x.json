@@ -1,0 +1,24 @@
+{
+    "id": 1061,
+    "name": "Icestep X",
+    "author": "Aquatic",
+    "creators": [],
+    "verifier": "Aquatic",
+    "verification": "Link",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Mathey",
+			"link": "https://youtu.be/DeKhIVFa67w",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=pukbFc63I2I",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

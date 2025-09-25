@@ -1,0 +1,18 @@
+{
+    "id": 516,
+    "name": "riA",
+    "author": "Luna",
+    "creators": ["ihazhamburger","Luna"],
+    "verifier": "Luna",
+    "verification": "Link",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=FjUGlsqRm7s",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
+}

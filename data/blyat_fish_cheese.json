@@ -1,0 +1,24 @@
+{
+    "id": 2545,
+    "name": "Blyat Fish Cheese",
+    "author": "Triscis",
+    "creators": ["gamecheese"],
+    "verifier": "Triscis",
+    "verification": "https://youtu.be/Y_Z10Z0pWE4",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+         {
+			"user": "Kuramishiro",
+			"link": "https://www.youtube.com/watch?v=hPjjqaD6TXI",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "gamecheese",
+			"link": "https://youtu.be/caXw5axCFpw?si=Uc4EdNZxaE-N0Cwn",
+			"percent": 100,
+			"hz": 60
+		}
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "id": 966,
+    "name": "Thanatos",
+    "author": "Skylar",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/tiHRqu43t00?si=wj4O46eKuA1ndtxC",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+	    {
+			"user": "Mathey",
+			"link": "https://youtu.be/yCq3UyIUmRw",
+			"percent": 100,
+			"hz": 144
+		},
+         {
+			"user": "Furrious",
+			"link": "https://www.youtube.com/watch?v=8zZPV3AWlYA",
+			"percent": 100,
+			"hz": 240
+		},
+	      {
+			"user": "Luna",
+			"link": "https://youtu.be/VtIWRuttBgQ",
+			"percent": 100,
+			"hz": 480
+		},
+	         {
+			"user": "kubikk",
+			"link": "https://www.youtube.com/watch?v=qsoFwmw50x4",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

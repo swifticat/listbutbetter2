@@ -1,0 +1,36 @@
+{
+    "id": 656,
+    "name": "MindBend",
+    "author": "Skylar",
+    "creators": [],
+    "verifier": "Skylar",
+    "verification": "https://www.youtube.com/watch?v=o55LH1NvjmQ",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+           {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=pPyRT8kOl-I",
+			"percent": 100,
+			"hz": 240
+		},
+	     {
+			"user": "Awennue",
+			"link": "https://youtu.be/PK4bjAfMdhM",
+			"percent": 100,
+			"hz": 360
+		},
+	     {
+			"user": "Luna",
+			"link": "https://youtu.be/14lYV8bPYew",
+			"percent": 100,
+			"hz": 480
+		},
+	     {
+			"user": "Mathey",
+			"link": "https://www.youtube.com/watch?v=5NVSEZBe-2k&ab_channel=Mathey",
+			"percent": 100,
+			"hz": 480
+		}
+	]
+}

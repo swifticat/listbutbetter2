@@ -1,0 +1,48 @@
+{
+    "id": 419,
+    "name": "Death Jumper",
+    "author": "rusted",
+    "creators": [],
+    "verifier": "rusted",
+    "verification": "https://youtu.be/ShZTzCU3cBM?si=5xzG77J-qn-eqg72",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+			"user": "DubbyBall",
+			"link": "https://www.youtube.com/watch?v=_wyQ7QRslh0",
+			"percent": 100,
+			"hz": 240
+		},
+        {
+			"user": "Mathey",
+			"link": "https://youtu.be/H2LUNVfTudw",
+			"percent": 100,
+			"hz": 144
+		},
+        {
+			"user": "Kyy",
+			"link": "https://www.youtube.com/watch?v=81aOMkTTO50",
+			"percent": 100,
+			"hz": 360
+		},
+        {
+			"user": "doom",
+			"link": "https://youtu.be/1g8pOx5zcNk",
+			"percent": 100,
+			"hz": 999
+		},
+	      {
+			"user": "Awennue",
+			"link": "https://youtu.be/PK4bjAfMdhM",
+			"percent": 100,
+			"hz": 360
+		},
+	         {
+			"user": "Luna",
+			"link": "https://youtu.be/fVZGE_ifjFo",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

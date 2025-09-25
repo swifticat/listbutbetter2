@@ -1,0 +1,18 @@
+{
+    "id": 2325,
+    "name": "CYTOWAVE",
+    "author": "KuraTheGuy",
+    "creators": [],
+    "verifier": "Kuramishiro",
+    "verification": "https://www.youtube.com/watch?v=Gzt9fa1eZCs",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+                   {
+			"user": "Awennue",
+			"link": "https://youtu.be/pKnDBZ35SvY",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
+}

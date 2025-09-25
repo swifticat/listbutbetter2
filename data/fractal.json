@@ -1,0 +1,18 @@
+{
+    "id": 2254,
+    "name": "fractal",
+    "author": "rocket",
+    "creators": [],
+    "verifier": "mathey",
+    "verification": "https://www.youtube.com/watch?v=LJihPuKPmqI",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+             {
+			"user": "Kyy",
+			"link": "https://www.youtube.com/watch?v=lBYH5IDJqEo",
+			"percent": 100,
+			"hz": 480
+		}
+    ]
+}

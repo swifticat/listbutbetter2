@@ -1,0 +1,30 @@
+{
+    "id": 157,
+    "name": "Cosmic Ray",
+    "author": "Lanhua",
+    "creators": ["Lanhua","ink","cherries"],
+    "verifier": "Skylar",
+    "verification": "https://youtu.be/qeVgO0m5v6k?si=vRD96rINr5tNLW7O",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+          {
+			"user": "Luna",
+			"link": "https://youtu.be/czbwLXphX4I",
+			"percent": 100,
+			"hz": 480
+		},
+	      {
+			"user": "Firelia",
+			"link": "https://www.youtube.com/watch?v=k0GQA76C1TE",
+			"percent": 100,
+			"hz": 240
+		},
+	    {
+			"user": "C1GAMER",
+			"link": "https://www.youtube.com/watch?v=MaBUmmKONz8",
+			"percent": 100,
+			"hz": 240
+	    }
+    ]
+}
