@@ -1,7 +1,7 @@
 .page-list {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* pushes content to the right */
 }
 
 .page-list .list-container {
@@ -23,17 +23,12 @@
     color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
-    transition: background-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* subtle shadow */
 }
 
 .level-box:hover {
     background-color: rgba(0, 0, 0, 0.25);
-}
-
-main:not(.dark) .level-box {
-    background-color: #ffffff;
-    color: #000000;
 }
 
 .thumbnail {
@@ -78,10 +73,21 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
+/* Author text: only the name is italic, slight downward position adjustment */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
     color: inherit;
-    margin-top: 2px; /* keeps it slightly below title */
-    font-style: italic; /* only author name italic */
+    margin-top: 4px; /* moved slightly downward */
+    font-style: italic; /* only the author name is italic */
+}
+
+/* Light mode overrides */
+body:not(.dark) .level-box {
+    background-color: #ffffff; /* boxes white */
+    color: #000000; /* text black */
+}
+
+body:not(.dark) .level-info .author {
+    color: #000000; /* author text black in light mode */
 }
