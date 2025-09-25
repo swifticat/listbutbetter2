@@ -1,5 +1,6 @@
 import { store } from '../main.js';
 import { fetchList } from '../content.js';
+import { rankLabel } from '../score.js'; // Import the rankLabel helper
 
 export default {
     data: () => ({
@@ -26,7 +27,8 @@ export default {
                 return '';
             }
             return '';
-        }
+        },
+        rankLabel, // make rankLabel available in template
     },
     template: `
         <main v-if="loading">
@@ -48,7 +50,7 @@ export default {
                     </div>
                     <div class="level-info">
                         <p class="title">
-                            <span class="rank">#{{ rank }}</span> –
+                            <span class="rank">{{ rankLabel(rank) }}</span> –
                             <span class="name">{{ level.name }}</span>
                         </p>
                         <p class="author">Published by <span class="author-name">{{ level.author }}</span></p>
