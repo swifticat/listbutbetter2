@@ -5,30 +5,45 @@
     --color-on-primary: white;
 }
 
+/* Navigation container */
 .nav {
     display: flex;
     column-gap: 2rem;
 }
+
+/* Navigation tabs (List, Leaderboard, Roulette, etc.) */
 .nav .nav__tab {
-    padding-top: 4px;
-    border-bottom: 4px solid transparent;
     display: flex;
     align-items: center;
-    padding-inline: 0.5rem;
-    transition: border-color 100ms ease;
+    justify-content: center;
+    padding: 0 1.5rem;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-on-primary);
+    border: none !important;         /* no borders (remove underline effect) */
+    border-radius: 0;                /* no rounded corners */
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* smooth fade hover */
+    text-decoration: none !important;
 }
+
+/* Hover / active states for nav buttons */
+.nav .nav__tab:hover,
 .nav .nav__tab.router-link-active {
-    border-color: var(--color-on-primary);
+    background-color: rgba(255, 255, 255, 0.25);
 }
-.nav .nav__tab:hover {
-    border-color: var(--color-on-primary);
-}
+
+/* Actions container (Discord + Dark/Light mode toggle + Submit Record) */
 .nav .nav__actions {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 0.8rem;
 }
+
+/* Icon buttons (Discord + Dark/Light mode) */
 .nav .nav__actions .nav__icon {
     height: 3rem;
     width: 3rem;
@@ -39,23 +54,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 100ms ease;
+    transition: background-color 0.2s ease;
 }
+
 .nav .nav__actions .nav__icon:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
 .nav .nav__actions .nav__icon img {
     height: 1.5rem;
+    width: auto;
 }
+
+/* Submit Record button */
 .nav .nav__actions .nav__cta {
     margin-left: 1rem;
-    padding: 1rem;
+    padding: 0 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--color-on-primary);
     color: var(--color-primary);
-    border-radius: 0.5rem;
+    border: none;
+    border-radius: 0; /* match other buttons */
     box-shadow: 0 1px 0.5rem 0 rgba(0, 0, 102, 0.5);
-    transition: transform 100ms ease;
+    transition: background-color 0.2s ease, transform 100ms ease;
+    text-decoration: none !important;
 }
+
 .nav .nav__actions .nav__cta:hover:not(:active) {
+    background-color: rgba(255, 255, 255, 0.85);
     transform: translateY(-2px);
 }
