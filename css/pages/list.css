@@ -24,7 +24,7 @@
     color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
-    transition: background-color 0.2s, box-shadow 0.2s;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
@@ -37,6 +37,7 @@ main:not(.dark) .level-box {
     background-color: #ffffff; /* white boxes */
     color: #000000;            /* black text */
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05); /* subtle light-mode shadow */
+    border: 1px dashed #999999; /* thin gray dashed border */
 }
 
 .thumbnail {
@@ -72,7 +73,7 @@ main:not(.dark) .level-box {
     overflow-wrap: anywhere;
     line-height: 1.4;
     position: relative;
-    top: 8px; /* moves the rank, dash, and name downward by 4px */
+    top: 8px; /* moves the rank, dash, and name downward by 8px */
 }
 
 .level-info .title .rank {
@@ -87,7 +88,7 @@ main:not(.dark) .level-box {
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 16px; /* move author text downward by 11px */
+    margin-top: 16px; /* move author text downward */
     font-style: italic;
 }
 
