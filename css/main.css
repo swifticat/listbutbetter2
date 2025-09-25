@@ -34,6 +34,7 @@ body {
     margin: 0;
 }
 
+/* Sticky Header */
 header {
     display: flex;
     align-items: center;
@@ -43,6 +44,9 @@ header {
     min-height: 4.5rem;
     background-color: rgba(0, 0, 0, 0.7);
     color: var(--color-on-primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .logo {
@@ -60,32 +64,28 @@ header .logo {
 .nav-buttons {
     display: flex;
     height: 100%;
-    gap: 0; /* no gaps, buttons touch */
-    margin-left: 2rem; /* move buttons slightly to the right */
+    gap: 0; /* buttons touch each other */
 }
 
-/* Equal-width main buttons */
+/* Equal-width main buttons based on widest text */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__cta {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    min-width: 13rem; /* all same width */
+    flex-basis: 14rem; /* slightly wider for Submit Record */
     height: 100%;
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.15);
     color: var(--color-on-primary);
-    text-decoration: none !important;
+    text-decoration: none;
     border: none;
     margin: 0;
-    transition: background-color 0.2s ease;
-    border-radius: 0;
+    transition: background-color 0.2s;
+    border-radius: 0; /* remove rounded corners */
     box-sizing: border-box;
-    white-space: nowrap; /* no wrapping */
 }
 
-/* Hover / active */
 .nav-buttons .nav__tab:hover,
 .nav-buttons .nav__cta:hover {
     background-color: rgba(255, 255, 255, 0.25);
@@ -96,15 +96,11 @@ header .logo {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Remove underlines globally for header buttons */
+/* Remove underlines globally for all main buttons */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__tab span,
 .nav-buttons .nav__cta,
 .nav-buttons .nav__cta span {
-    text-decoration: none !important;
-}
-
-.nav__tab span {
     text-decoration: none !important;
 }
 
@@ -114,7 +110,7 @@ header .logo {
     align-items: center;
     gap: 0.8rem;
     height: 100%;
-    margin-left: 0.5rem;
+    margin-left: 0.5rem; /* shift slightly to the left to center header content */
 }
 
 .nav__icon {
@@ -140,6 +136,7 @@ main {
     background-color: var(--color-background);
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
+    padding-top: 4.5rem; /* avoid content being hidden behind sticky header */
 }
 
 main > div {
