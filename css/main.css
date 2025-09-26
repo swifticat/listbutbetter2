@@ -8,6 +8,9 @@
     --color-primary-disabled: #1f213c;
     --color-error: #de0000;
     --color-on-error: white;
+
+    /* background image (change filename/path here if needed) */
+    --site-bg-image: url('/assets/background.jpg');
 }
 
 /* Dark-mode variables when applied to the main/header element that has .dark */
@@ -29,12 +32,20 @@ body {
     height: 100%;
 }
 
+/* BODY: site background image */
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-on-background);
+
+    /* background image layer */
+    background-image: var(--site-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* HEADER */
@@ -153,18 +164,35 @@ header .logo {
     transition: filter 0.12s ease;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT
+   We keep the background image on the body and use a translucent
+   overlay for `main` so content reads well on top of the image.
+*/
 main {
     flex: 1;
     display: grid;
     grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
     column-gap: 2rem;
-    background-color: var(--color-background);
+    /* main background will be semi-transparent on top of body image */
+    background-color: transparent; /* default, overridden below */
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
     padding-top: 4.5rem; /* offset for fixed header */
 }
 
+/* Light mode: soft translucent white overlay + subtle blur for readability */
+main:not(.dark) {
+    background-color: rgba(255,255,255,0.65);
+    backdrop-filter: blur(4px);
+}
+
+/* Dark mode: dark translucent overlay */
+main.dark {
+    background-color: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+}
+
+/* Keep scrollable sections inside main */
 main > div {
     overflow-y: auto;
 }
@@ -242,11 +270,6 @@ header:not(.dark) .nav__icon img {
     /* force a dark/black appearance for icons */
     filter: brightness(0) saturate(100%);
 }
-
-/* If you need a slightly less aggressive icon color, use:
-   filter: grayscale(100%) brightness(0.12);
-   but brightness(0) makes them solid black for clear contrast.
-*/
 
 /* LEVEL BOXES - default (dark-mode friendly default values)
    (If you had more rules here originally, keep them below)
