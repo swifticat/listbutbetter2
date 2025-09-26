@@ -86,19 +86,26 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
+/* Author text */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 16px;
-    font-style: italic;
+    font-style: normal; /* no italics */
+    color: #333333; /* slightly gray black for "Published by" */
+}
+
+.level-info .author .author-name {
+    color: #000000; /* pure black for the fetched author name */
+    font-weight: 500;
 }
 
 main.dark .level-info .author {
-    color: var(--color-on-primary);
+    color: var(--color-on-primary); /* light text in dark mode */
 }
 
-main:not(.dark) .level-info .author {
-    color: #000000;
+main.dark .level-info .author .author-name {
+    color: var(--color-on-primary); /* match light text for dark mode */
 }
 
 /* GUIDELINES BOX */
