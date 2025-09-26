@@ -118,7 +118,7 @@ export default {
                     </p>
                 </div>
 
-                <!-- Box 2: Records -->
+                <!-- Box 2: Records with striped layout -->
                 <div class="level-records-box">
                     <p style="text-align:center; font-weight:500;">Records</p>
                     <p style="text-align:center; font-size:0.9rem;">
@@ -128,31 +128,30 @@ export default {
                         {{ selectedLevel.records.length }} completions overall registered.
                     </p>
 
-                    <!-- Loop over all records -->
+                    <!-- Header Bar -->
+                    <div class="record-header">
+                        <div>Record Holder</div>
+                        <div>Video Proof</div>
+                    </div>
+
+                    <!-- Record Rows -->
                     <div 
-                        class="record-chart" 
+                        class="record-row" 
                         v-for="(record, idx) in selectedLevel.records" 
                         :key="idx" 
-                        style="display:flex; justify-content:space-between; background-color:#111; color:#fff; padding:8px; margin-top:8px;"
+                        :class="{'even-row': idx % 2 === 0, 'odd-row': idx % 2 !== 0}"
                     >
-                        <div style="text-align:center; flex:1;">
-                            <p style="margin:0;">Record Holder</p>
-                            <p style="margin:0; font-size:0.9rem;">{{ record.user || '-' }}</p>
-                        </div>
-                        <div style="text-align:center; flex:1;">
-                            <p style="margin:0;">Video Proof</p>
-                            <p style="margin:0; font-size:0.9rem;">
-                                <a 
-                                    v-if="record.link" 
-                                    :href="record.link" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    style="color:#00f;"
-                                >
-                                    YouTube
-                                </a>
-                                <span v-else>-</span>
-                            </p>
+                        <div>{{ record.user || '-' }}</div>
+                        <div>
+                            <a 
+                                v-if="record.link" 
+                                :href="record.link" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
+                                YouTube
+                            </a>
+                            <span v-else>-</span>
                         </div>
                     </div>
 
