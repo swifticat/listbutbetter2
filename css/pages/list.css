@@ -309,3 +309,9 @@ main:not(.dark) .level-detail-box button {
 main:not(.dark) .level-detail-box button:hover {
     background-color: #ccc;
 }
+
+.guidelines-box.shifted {
+    transform: translateX(100px);
+    transition: transform 0.3s ease;
+}
+
