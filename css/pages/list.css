@@ -206,14 +206,6 @@ main:not(.dark) .level-detail-box {
     text-align: center;
 }
 
-/* Author / verifier line */
-.level-detail-box .author-verifier {
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
 /* Embedded YouTube */
 .level-detail-box iframe {
     width: 100%;
@@ -253,34 +245,37 @@ main:not(.dark) .level-records-box {
     text-align: center;
 }
 
-/* Chart rectangle for record holder / video proof */
-.record-chart {
+/* Record Header Bar */
+.record-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: #111; /* black bar */
+    background-color: #111; /* black header */
     color: #fff;
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-    border-radius: 4px;
-}
-
-main:not(.dark) .record-chart {
-    background-color: #222;
-    color: #000;
-}
-
-.record-chart div {
-    flex: 1;
+    padding: 8px;
+    border-radius: 4px 4px 0 0;
+    font-weight: 500;
     text-align: center;
 }
 
-.record-chart div p {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
+/* Record Rows with striped pattern */
+.record-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 8px;
+    text-align: center;
 }
 
-.record-chart div a {
+.record-row.even-row {
+    background-color: #f0f0f0; /* light gray */
+}
+
+.record-row.odd-row {
+    background-color: #d9d9d9; /* darker gray */
+}
+
+.record-row a {
     color: #00f;
     text-decoration: underline;
 }
@@ -289,28 +284,4 @@ main:not(.dark) .record-chart {
 .level-detail-box button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color: rgba(0,0,0,0.2);
-    color: var(--color-on-primary);
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: all 0.2s;
-}
-
-.level-detail-box button:hover {
-    background-color: rgba(0,0,0,0.35);
-}
-
-main:not(.dark) .level-detail-box button {
-    background-color: #ddd;
-    color: #000;
-}
-
-main:not(.dark) .level-detail-box button:hover {
-    background-color: #ccc;
-}
-
-.guidelines-box.shifted {
-    transform: translateX(100px);
-    transition: transform 0.3s ease;
-}
+    background-color:
