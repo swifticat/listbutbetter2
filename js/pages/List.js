@@ -159,8 +159,8 @@ export default {
                 </div>
             </div>
 
-            <!-- Guidelines box remains -->
-            <div class="guidelines-box">
+            <!-- Guidelines box remains; it will shift instantly when in detail view -->
+            <div class="guidelines-box" :class="{ shifted: selectedLevel }">
                 <h2>Guidelines</h2>
                 <hr />
                 <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
