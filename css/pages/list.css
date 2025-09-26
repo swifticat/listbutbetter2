@@ -63,6 +63,7 @@ main:not(.dark) .level-box {
     justify-content: center;
     flex: 1;
     min-width: 0;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 .level-info .title {
@@ -188,6 +189,7 @@ main:not(.dark) .guidelines-box {
     border-radius: 8px;
     transition: all 0.2s;
     margin-bottom: 2rem;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 main:not(.dark) .level-detail-box {
@@ -232,6 +234,7 @@ main:not(.dark) .level-detail-box {
     margin-bottom: 2rem;
     border-radius: 8px;
     gap: 0.5rem;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 main:not(.dark) .level-records-box {
@@ -256,6 +259,7 @@ main:not(.dark) .level-records-box {
     border-radius: 4px 4px 0 0;
     font-weight: 500;
     text-align: center;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 /* Record Rows with striped pattern */
@@ -265,14 +269,33 @@ main:not(.dark) .level-records-box {
     width: 100%;
     padding: 6px 8px;
     text-align: center;
+    font-family: "Lexend Deca", sans-serif;
 }
 
-.record-row.even-row {
+/* Light mode stripes */
+main:not(.dark) .record-row.even-row {
     background-color: #f0f0f0; /* light gray */
 }
 
-.record-row.odd-row {
+main:not(.dark) .record-row.odd-row {
     background-color: #d9d9d9; /* darker gray */
+}
+
+/* Dark mode stripes */
+main.dark .record-row.even-row {
+    background-color: #111; /* almost black */
+}
+
+main.dark .record-row.odd-row {
+    background-color: #1a1a1a; /* very dark gray */
+}
+
+/* Center text in each half */
+.record-row div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .record-row a {
@@ -284,4 +307,28 @@ main:not(.dark) .level-records-box {
 .level-detail-box button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color:
+    background-color: rgba(0,0,0,0.2);
+    color: var(--color-on-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s;
+}
+
+.level-detail-box button:hover {
+    background-color: rgba(0,0,0,0.35);
+}
+
+main:not(.dark) .level-detail-box button {
+    background-color: #ddd;
+    color: #000;
+}
+
+main:not(.dark) .level-detail-box button:hover {
+    background-color: #ccc;
+}
+
+.guidelines-box.shifted {
+    transform: translateX(100px);
+    transition: transform 0.3s ease;
+}
