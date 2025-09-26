@@ -23,9 +23,16 @@
     <link rel="stylesheet" type="text/css" href="/css/components/tabs.css" />
     <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
     <script src="https://unpkg.com/vue-router@4.0.14/dist/vue-router.global.prod.js"></script>
-    <script type="module" src="/js/main.js"></script>
+
+    <!-- new canvas background script -->
+    <script type="module" src="/js/bg-fractal.js" defer></script>
+
+    <script type="module" src="/js/main.js" defer></script>
 </head>
 <body id="app">
+    <!-- Canvas background (fixed behind everything) -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
     <header :class="{ dark: store.dark }">
         <nav class="nav">
             <div class="nav-buttons">
