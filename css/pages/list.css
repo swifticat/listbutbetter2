@@ -1,7 +1,7 @@
 .page-list {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* levels left, guidelines right */
+    justify-content: flex-start;
     gap: 2rem;
     align-items: flex-start;
 }
@@ -34,7 +34,6 @@
     background-color: rgba(0, 0, 0, 0.25);
 }
 
-/* LIGHT MODE OVERRIDES */
 main:not(.dark) .level-box {
     background-color: #ffffff;
     color: #000000;
@@ -70,12 +69,7 @@ main:not(.dark) .level-box {
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0;
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: anywhere;
     line-height: 1.4;
-    position: relative;
-    top: 8px;
 }
 
 .level-info .title .rank {
@@ -86,17 +80,15 @@ main:not(.dark) .level-box {
     font-weight: 500;
 }
 
-/* Author text */
 .level-info .author {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 16px;
-    font-style: normal;
-    color: #333333; /* slightly gray black */
+    color: #333;
 }
 
 .level-info .author .author-name {
-    color: #000000; /* pure black for fetched author */
+    color: #000;
     font-weight: 500;
 }
 
@@ -108,26 +100,25 @@ main.dark .level-info .author .author-name {
     color: var(--color-on-primary);
 }
 
-/* Score text */
 .level-info .score-text {
     font-size: 0.8rem;
     font-weight: 300;
     margin-top: 8px;
-    color: #555555;
+    color: #555;
     line-height: 1.3;
 }
 
 .level-info .score-text .score-value {
-    color: #000000;
+    color: #000;
     font-weight: 400;
 }
 
 main.dark .level-info .score-text {
-    color: #bbbbbb;
+    color: #bbb;
 }
 
 main.dark .level-info .score-text .score-value {
-    color: #ffffff;
+    color: #fff;
 }
 
 /* GUIDELINES BOX */
@@ -137,7 +128,6 @@ main.dark .level-info .score-text .score-value {
     color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
-    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
@@ -147,11 +137,17 @@ main.dark .level-info .score-text .score-value {
     margin-top: 2rem;
     position: relative;
     left: -480px;
+    transition: opacity 0.3s ease;
+}
+
+.guidelines-box.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 main:not(.dark) .guidelines-box {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #fff;
+    color: #000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
 }
@@ -178,35 +174,32 @@ main:not(.dark) .guidelines-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* push stats to bottom */
-    width: 50%; /* narrower to prevent overlapping guidelines */
+    justify-content: space-between;
+    width: 35%; /* narrower and centered */
     min-height: calc(5 * 90px + 5rem);
     background-color: rgba(0,0,0,0.15);
     padding: 1.5rem;
     gap: 1rem;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     border-radius: 8px;
-    transition: all 0.2s;
-    margin-bottom: 2rem;
+    margin: 2rem auto; /* centered horizontally */
 }
 
 main:not(.dark) .level-detail-box {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #fff;
+    color: #000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
 }
 
-/* Title bigger */
 .level-detail-box h2 {
     font-family: "Lexend Deca", sans-serif;
     font-size: 2rem;
     font-weight: 700;
-    margin: 0.5rem 0;
     text-align: center;
+    margin: 0.5rem 0;
 }
 
-/* Author / verifier line */
 .level-detail-box .author-verifier {
     font-size: 1rem;
     font-weight: 400;
@@ -214,17 +207,14 @@ main:not(.dark) .level-detail-box {
     margin-bottom: 1rem;
 }
 
-/* Embedded YouTube */
 .level-detail-box iframe {
     width: 100%;
-    aspect-ratio: 16/9; /* maintain 16:9 */
+    aspect-ratio: 16/9;
     border-radius: 4px;
 }
 
-/* Bottom stats */
 .level-detail-box p.stats {
     font-size: 0.9rem;
-    font-weight: 400;
     text-align: center;
     margin-top: 1rem;
 }
@@ -234,10 +224,10 @@ main:not(.dark) .level-detail-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%; /* narrower */
+    width: 35%; /* narrower and centered */
     background-color: rgba(0,0,0,0.1);
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem auto; /* centered */
     border-radius: 8px;
     gap: 0.5rem;
 }
@@ -247,18 +237,16 @@ main:not(.dark) .level-records-box {
     color: #000;
 }
 
-/* Records title */
 .level-records-box p {
     margin: 0.25rem 0;
     text-align: center;
 }
 
-/* Chart rectangle for record holder / video proof */
 .record-chart {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: #111; /* black bar */
+    background-color: #111;
     color: #fff;
     padding: 0.5rem 0;
     margin-top: 0.5rem;
@@ -285,7 +273,6 @@ main:not(.dark) .record-chart {
     text-decoration: underline;
 }
 
-/* Buttons inside level detail box */
 .level-detail-box button {
     padding: 0.5rem 1rem;
     border: none;
@@ -308,9 +295,4 @@ main:not(.dark) .level-detail-box button {
 
 main:not(.dark) .level-detail-box button:hover {
     background-color: #ccc;
-}
-
-.guidelines-box.shifted {
-    transform: translateX(100px);
-    transition: transform 0.3s ease;
 }
