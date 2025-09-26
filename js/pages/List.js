@@ -127,19 +127,24 @@ export default {
                     <p style="text-align:center; font-size:0.85rem;">
                         {{ selectedLevel.records.length }} completions overall registered.
                     </p>
-                    <div class="record-chart" style="display:flex; justify-content:space-between; background-color:#111; color:#fff; padding:8px; margin-top:8px;">
+
+                    <!-- Loop over all records -->
+                    <div 
+                        class="record-chart" 
+                        v-for="(record, idx) in selectedLevel.records" 
+                        :key="idx" 
+                        style="display:flex; justify-content:space-between; background-color:#111; color:#fff; padding:8px; margin-top:8px;"
+                    >
                         <div style="text-align:center; flex:1;">
                             <p style="margin:0;">Record Holder</p>
-                            <p style="margin:0; font-size:0.9rem;">
-                                {{ selectedLevel.records[0]?.user || '-' }}
-                            </p>
+                            <p style="margin:0; font-size:0.9rem;">{{ record.user || '-' }}</p>
                         </div>
                         <div style="text-align:center; flex:1;">
                             <p style="margin:0;">Video Proof</p>
                             <p style="margin:0; font-size:0.9rem;">
                                 <a 
-                                    v-if="selectedLevel.records[0]?.link" 
-                                    :href="selectedLevel.records[0].link" 
+                                    v-if="record.link" 
+                                    :href="record.link" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     style="color:#00f;"
@@ -150,6 +155,7 @@ export default {
                             </p>
                         </div>
                     </div>
+
                     <button @click="deselectLevel()" style="margin-top:12px; display:block; margin-left:auto; margin-right:auto;">Back</button>
                 </div>
             </div>
