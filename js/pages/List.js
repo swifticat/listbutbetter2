@@ -43,8 +43,20 @@ export default {
                     :key="level.id"
                 >
                     <div class="thumbnail">
+                        <a 
+                            v-if="level.verification" 
+                            :href="level.verification" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
+                                alt="Thumbnail"
+                            />
+                        </a>
                         <img
-                            :src="level.verification ? \`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\` : '/assets/default-thumbnail.png'"
+                            v-else
+                            src="/assets/default-thumbnail.png"
                             alt="Thumbnail"
                         />
                     </div>
