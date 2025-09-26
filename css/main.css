@@ -42,9 +42,9 @@ body {
     color: var(--color-on-background);
 }
 
-/* BG CANVAS (full-screen, behind everything)
+/* BG CANVAS (full-screen, behind content but above body background)
    pointer-events: none so it doesn't interfere with user interaction.
-   z-index: -1 places it behind the content (header has z-index:1000).
+   z-index: 0 places it above the body's background paint but below content.
 */
 #bg-canvas {
     position: fixed;
@@ -52,7 +52,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0; /* IMPORTANT: not -1 so it's visible above the body's background */
     display: block;
 }
 
@@ -70,7 +70,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* keep header above canvas and content */
 }
 
 /* Light-mode header overrides:
@@ -170,18 +170,23 @@ header .logo {
     transition: filter 0.12s ease;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT
+   We keep the background color on body and ensure main sits above the canvas.
+*/
 main {
+    position: relative;
+    z-index: 1; /* content above the canvas */
     flex: 1;
     display: grid;
     grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
     column-gap: 2rem;
-    background-color: transparent; /* content sits on top of canvas and body solid color */
+    background-color: transparent; /* canvas shows through */
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
     padding-top: 4.5rem; /* offset for fixed header */
 }
 
+/* Make sure main.scrollable children remain scrollable */
 main > div {
     overflow-y: auto;
 }
