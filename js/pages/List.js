@@ -14,63 +14,17 @@ export default {
         this.loading = false;
     },
     methods: {
-        /**
-         * Robust YouTube ID extractor.
-         * - Tries URL parsing first (works when full URL with protocol is provided)
-         * - Falls back to regex matching to support:
-         *   - youtu.be/ID
-         *   - youtube.com/watch?v=ID
-         *   - youtube.com/embed/ID
-         *   - youtube.com/shorts/ID
-         * - Returns '' when no ID found
-         */
         extractYouTubeID(url) {
             if (!url) return '';
-            // quick guard for non-string values
             try {
-                url = String(url).trim();
+                const u = new URL(url);
+                if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
+                if (u.hostname.includes('youtube.com')) return u.searchParams.get('v');
             } catch (e) {
                 return '';
             }
-
-            // Try using the URL API when possible
-            try {
-                // If the URL is missing a protocol, prepend https:// to allow parsing
-                const maybeUrl = url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
-                const u = new URL(maybeUrl);
-
-                // youtu.be short link
-                if (u.hostname.includes('youtu.be')) {
-                    const id = u.pathname.slice(1);
-                    return id || '';
-                }
-
-                // youtube.com - check query param v, or path segments (embed/shorts)
-                if (u.hostname.includes('youtube.com') || u.hostname.includes('www.youtube.com')) {
-                    const v = u.searchParams.get('v');
-                    if (v) return v;
-                    // path-based ids: /embed/ID, /shorts/ID
-                    const segments = u.pathname.split('/').filter(Boolean);
-                    // segments like ["embed", "ID"] or ["shorts","ID"]
-                    if (segments.length >= 2) return segments[1] || '';
-                }
-            } catch (e) {
-                // fall through to regex fallback
-            }
-
-            // Regex fallback: capture typical patterns
-            // Supports:
-            //  - youtu.be/ID
-            //  - youtube.com/watch?v=ID
-            //  - youtube.com/embed/ID
-            //  - youtube.com/shorts/ID
-            const re = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,20})/i;
-            const m = url.match(re);
-            if (m && m[1]) return m[1];
-
             return '';
         },
-
         rankLabel,
         calcScore(level, percent = 100) {
             if (!level.rank) return null;
@@ -107,21 +61,17 @@ export default {
                     style="cursor:pointer"
                 >
                     <div class="thumbnail">
-                        <!-- compute id and only request YouTube thumbnail if we have an id -->
-                        <template v-if="level.verification && extractYouTubeID(level.verification)">
-                            <a 
-                                :href="level.verification" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                            >
-                                <img
-                                    :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
-                                    alt="Thumbnail"
-                                />
-                            </a>
-                        </template>
-
-                        <!-- fallback when no valid youtube id -->
+                        <a 
+                            v-if="level.verification" 
+                            :href="level.verification" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
+                                alt="Thumbnail"
+                            />
+                        </a>
                         <img
                             v-else
                             src="/assets/default-thumbnail.png"
@@ -151,10 +101,8 @@ export default {
                     <p style="text-align:center; font-size:0.9rem;">
                         by {{ selectedLevel.author }}, verified by {{ selectedLevel.verifier }}
                     </p>
-
-                    <!-- only embed if we have a valid youtube id -->
                     <iframe
-                        v-if="selectedLevel.verification && extractYouTubeID(selectedLevel.verification)"
+                        v-if="selectedLevel.verification"
                         width="100%"
                         height="50%"
                         :src="\`https://www.youtube.com/embed/\${extractYouTubeID(selectedLevel.verification)}\`"
@@ -163,7 +111,6 @@ export default {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                     ></iframe>
-
                     <p style="text-align:center; margin-top: 8px;">
                         Level ID: {{ selectedLevel.id }} &nbsp;&nbsp;&nbsp;
                         Points Awarded: {{ calcScore(selectedLevel, 100).toFixed(2) }} &nbsp;&nbsp;&nbsp;
