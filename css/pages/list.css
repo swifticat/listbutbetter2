@@ -39,7 +39,7 @@ main:not(.dark) .level-box {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-    border: 1px dashed #f0f0f0;
+    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
 }
 
 .thumbnail {
@@ -124,7 +124,7 @@ main:not(.dark) .guidelines-box {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-    border: 1px dashed #f0f0f0;
+    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
 }
 
 .guidelines-box h2 {
