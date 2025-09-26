@@ -1,87 +1,152 @@
-import { store } from '../main.js';
-import { fetchList } from '../content.js';
-import { rankLabel } from '../score.js'; // Import the rankLabel helper
+.page-list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* levels left, guidelines right */
+    gap: 2rem;
+    align-items: flex-start;
+}
 
-export default {
-    data: () => ({
-        list: [],
-        loading: true,
-        store,
-    }),
-    async mounted() {
-        this.list = await fetchList();
-        this.loading = false;
-    },
-    methods: {
-        extractYouTubeID(url) {
-            if (!url) return '';
-            try {
-                const u = new URL(url);
-                if (u.hostname.includes('youtu.be')) {
-                    return u.pathname.slice(1);
-                }
-                if (u.hostname.includes('youtube.com')) {
-                    return u.searchParams.get('v');
-                }
-            } catch (e) {
-                return '';
-            }
-            return '';
-        },
-        rankLabel, // make rankLabel available in template
-    },
-    template: `
-        <main v-if="loading">
-            <p style="text-align:center; margin-top: 2rem;">Loading...</p>
-        </main>
-        <main v-else class="page-list">
-            <!-- Levels list -->
-            <div class="list-container">
-                <div
-                    class="level-box"
-                    v-for="([err, rank, level], i) in list"
-                    :key="level.id"
-                >
-                    <div class="thumbnail">
-                        <a 
-                            v-if="level.verification" 
-                            :href="level.verification" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                        >
-                            <img
-                                :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
-                                alt="Thumbnail"
-                            />
-                        </a>
-                        <img
-                            v-else
-                            src="/assets/default-thumbnail.png"
-                            alt="Thumbnail"
-                        />
-                    </div>
-                    <div class="level-info">
-                        <p class="title">
-                            <span class="rank">{{ rankLabel(rank) }}</span> –
-                            <span class="name">{{ level.name }}</span>
-                        </p>
-                        <p class="author">Published by <span class="author-name">{{ level.author }}</span></p>
-                    </div>
-                </div>
-            </div>
+.page-list .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%; /* narrower container for level boxes */
+    max-width: 2000px;
+    padding: 2rem 1rem;
+    align-items: center;
+}
 
-            <!-- Guidelines box -->
-            <div class="guidelines-box">
-                <h2>Guidelines</h2>
-                <hr />
-                <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
-                <p>CBF usage is permitted.</p>
-                <p>Make sure to include split audio tracks for a faster review of your record.</p>
-                <p>For a level harder than Carmine Clutter, you must also include raw footage of your recording.</p>
-                <p>Physics Bypass is not allowed and will get your record rejected.</p>
-                <p>If you have Mega Hack, make sure to enable cheat indicator upon reaching the end screen, as well as the ingame clock.</p>
-                <p>Make sure that the recording shows a few frames of the end card dropping down.</p>
-            </div>
-        </main>
-    `
-};
+/* LEVEL BOX DEFAULT (dark-mode friendly by default) */
+.level-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--color-on-primary);
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.level-box:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* LIGHT MODE OVERRIDES */
+main:not(.dark) .level-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
+}
+
+.thumbnail {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.level-info .title {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+    position: relative;
+    top: 8px;
+}
+
+.level-info .title .rank {
+    font-weight: 700;
+}
+
+.level-info .title .name {
+    font-weight: 500;
+}
+
+/* Author text */
+.level-info .author {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 16px;
+    font-style: normal; /* no italics */
+    color: #333333; /* slightly gray black for "Published by" */
+}
+
+.level-info .author .author-name {
+    color: #000000; /* pure black for the fetched author name */
+    font-weight: 500;
+}
+
+main.dark .level-info .author {
+    color: var(--color-on-primary); /* light text in dark mode */
+}
+
+main.dark .level-info .author .author-name {
+    color: var(--color-on-primary); /* match light text for dark mode */
+}
+
+/* GUIDELINES BOX */
+.guidelines-box {
+    width: 330px;
+    background-color: rgba(0,0,0,0.15);
+    color: var(--color-on-primary);
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-top: 2rem; /* keeps box top aligned with #1 level */
+    position: relative; /* enable manual positioning */
+    left: -480px; /* adjust horizontally: negative = move left, positive = move right */
+}
+
+main:not(.dark) .guidelines-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
+}
+
+.guidelines-box h2 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem; /* moved further down for spacing */
+}
+
+.guidelines-box hr {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+}
+
+.guidelines-box p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
