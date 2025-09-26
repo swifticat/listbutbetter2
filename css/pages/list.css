@@ -110,19 +110,20 @@ main.dark .level-info .author .author-name {
 
 /* Score text */
 .level-info .score-text {
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin-top: 6px;
-    color: #555555; /* subtle gray */
+    font-size: 0.8rem;   /* smaller than author text */
+    font-weight: 300;    /* thin text */
+    margin-top: 4px;     /* a little tighter spacing */
+    color: #555555;      /* subtle gray */
+    line-height: 1.3;
 }
 
 .level-info .score-text .score-value {
-    color: #000000;
-    font-weight: 600;
+    color: #000000; /* pitch black for emphasis if needed */
+    font-weight: 400; /* normal, not bold */
 }
 
 main.dark .level-info .score-text {
-    color: #cccccc;
+    color: #bbbbbb;
 }
 
 main.dark .level-info .score-text .score-value {
