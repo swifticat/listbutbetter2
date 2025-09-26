@@ -54,6 +54,18 @@ header {
     z-index: 1000;
 }
 
+/* Light-mode header overrides:
+   - white, semi-transparent background
+   - black text and icons
+   - header bottom light-gray solid line
+*/
+header:not(.dark) {
+    background-color: rgba(255, 255, 255, 0.78); /* white but slightly transparent */
+    color: var(--color-on-background); /* black */
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* subtle light gray line */
+}
+
+/* ensure the logo behaviour remains */
 header .logo {
     display: none;
 }
@@ -73,6 +85,7 @@ header .logo {
     margin: 0;
 }
 
+/* default nav button styles (kept) */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__cta {
     display: flex;
@@ -97,6 +110,7 @@ header .logo {
     flex-basis: 16rem; /* Submit Record wider */
 }
 
+/* default hover/active */
 .nav-buttons .nav__tab:hover,
 .nav-buttons .nav__cta:hover {
     background-color: rgba(255, 255, 255, 0.25);
@@ -136,6 +150,7 @@ header .logo {
 .nav__icon img {
     height: 2rem;
     width: auto;
+    transition: filter 0.12s ease;
 }
 
 /* MAIN CONTENT */
@@ -197,6 +212,47 @@ a, a:visited, a:hover, a:active, button {
     outline: none;
 }
 
-/* LEVEL BOXES - default (dark-mode friendly default values) */
+/* ===== Light-mode specific header & nav overrides =====
+   These ensure nav buttons & icons appear black and backgrounds
+   switch from transparent white -> transparent gray on hover.
+   We scope them to `header:not(.dark)` so dark mode uses your
+   existing color variables.
+*/
+header:not(.dark) .nav-buttons .nav__tab,
+header:not(.dark) .nav-buttons .nav__cta {
+    /* box behind nav text: transparent white */
+    background-color: rgba(255,255,255,0.55);
+    color: var(--color-on-background); /* black */
+}
+
+/* on hover, make it a subtle transparent gray so it changes */
+header:not(.dark) .nav-buttons .nav__tab:hover,
+header:not(.dark) .nav-buttons .nav__cta:hover {
+    background-color: rgba(0,0,0,0.06); /* transparent gray */
+}
+
+/* active state in light mode */
+header:not(.dark) .nav-buttons .nav__tab:active,
+header:not(.dark) .nav-buttons .nav__cta:active {
+    background-color: rgba(0,0,0,0.04);
+}
+
+/* Make the icon images dark/black in light mode (for SVGs/PNGs) */
+header:not(.dark) .nav__icon img {
+    /* force a dark/black appearance for icons */
+    filter: brightness(0) saturate(100%);
+}
+
+/* If you need a slightly less aggressive icon color, use:
+   filter: grayscale(100%) brightness(0.12);
+   but brightness(0) makes them solid black for clear contrast.
+*/
+
+/* LEVEL BOXES - default (dark-mode friendly default values)
+   (If you had more rules here originally, keep them below)
+*/
 .page-list .level-box {
-    d
+    /* placeholder: keep existing behavior from your other CSS files */
+}
+
+/* END OF FILE */
