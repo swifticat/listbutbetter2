@@ -1,11 +1,12 @@
 .page-list {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* levels left, guidelines right */
     gap: 2rem;
     align-items: flex-start;
 }
 
+/* List container */
 .page-list .list-container {
     display: flex;
     flex-direction: column;
@@ -35,12 +36,13 @@
 }
 
 main:not(.dark) .level-box {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #fff;
+    color: #000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
 }
 
+/* Thumbnails */
 .thumbnail {
     flex-shrink: 0;
     width: 160px;
@@ -56,6 +58,7 @@ main:not(.dark) .level-box {
     display: block;
 }
 
+/* Level Info */
 .level-info {
     display: flex;
     flex-direction: column;
@@ -134,15 +137,11 @@ main.dark .level-info .score-text .score-value {
     text-align: center;
     justify-content: flex-start;
     align-items: stretch;
-    margin-top: 2rem;
-    position: relative;
-    left: -480px;
     transition: opacity 0.3s ease;
 }
 
 .guidelines-box.hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: none; /* fully hide */
 }
 
 main:not(.dark) .guidelines-box {
@@ -169,20 +168,27 @@ main:not(.dark) .guidelines-box {
     font-size: 0.95rem;
 }
 
+/* DETAILED LEVEL + RECORDS CONTAINER */
+.detail-view-container {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: flex-start; /* align top edges */
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
+}
+
 /* LEVEL DETAIL BOX */
 .level-detail-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    width: 35%; /* narrower and centered */
-    min-height: calc(5 * 90px + 5rem);
+    width: 45%; /* use wider space */
     background-color: rgba(0,0,0,0.15);
     padding: 1.5rem;
     gap: 1rem;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     border-radius: 8px;
-    margin: 2rem auto; /* centered horizontally */
 }
 
 main:not(.dark) .level-detail-box {
@@ -200,13 +206,6 @@ main:not(.dark) .level-detail-box {
     margin: 0.5rem 0;
 }
 
-.level-detail-box .author-verifier {
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
 .level-detail-box iframe {
     width: 100%;
     aspect-ratio: 16/9;
@@ -219,15 +218,38 @@ main:not(.dark) .level-detail-box {
     margin-top: 1rem;
 }
 
+.level-detail-box button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgba(0,0,0,0.2);
+    color: var(--color-on-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s;
+}
+
+.level-detail-box button:hover {
+    background-color: rgba(0,0,0,0.35);
+}
+
+main:not(.dark) .level-detail-box button {
+    background-color: #ddd;
+    color: #000;
+}
+
+main:not(.dark) .level-detail-box button:hover {
+    background-color: #ccc;
+}
+
 /* LEVEL RECORDS BOX */
 .level-records-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 35%; /* narrower and centered */
+    width: 45%; /* same as detail box */
     background-color: rgba(0,0,0,0.1);
     padding: 1rem;
-    margin: 0 auto 2rem auto; /* centered */
     border-radius: 8px;
     gap: 0.5rem;
 }
@@ -271,28 +293,4 @@ main:not(.dark) .record-chart {
 .record-chart div a {
     color: #00f;
     text-decoration: underline;
-}
-
-.level-detail-box button {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: rgba(0,0,0,0.2);
-    color: var(--color-on-primary);
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: all 0.2s;
-}
-
-.level-detail-box button:hover {
-    background-color: rgba(0,0,0,0.35);
-}
-
-main:not(.dark) .level-detail-box button {
-    background-color: #ddd;
-    color: #000;
-}
-
-main:not(.dark) .level-detail-box button:hover {
-    background-color: #ccc;
 }
