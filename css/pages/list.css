@@ -10,13 +10,13 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 100%; /* narrower container for level boxes */
+    width: 100%;
     max-width: 2000px;
     padding: 2rem 1rem;
     align-items: center;
 }
 
-/* LEVEL BOX DEFAULT (dark-mode friendly by default) */
+/* LEVEL BOX DEFAULT */
 .level-box {
     display: flex;
     align-items: center;
@@ -39,7 +39,7 @@ main:not(.dark) .level-box {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
+    border: 1px dashed #d9d9d9;
 }
 
 .thumbnail {
@@ -91,21 +91,42 @@ main:not(.dark) .level-box {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 16px;
-    font-style: normal; /* no italics */
-    color: #333333; /* slightly gray black for "Published by" */
+    font-style: normal;
+    color: #333333; /* slightly gray black */
 }
 
 .level-info .author .author-name {
-    color: #000000; /* pure black for the fetched author name */
+    color: #000000; /* pure black for fetched author */
     font-weight: 500;
 }
 
 main.dark .level-info .author {
-    color: var(--color-on-primary); /* light text in dark mode */
+    color: var(--color-on-primary);
 }
 
 main.dark .level-info .author .author-name {
-    color: var(--color-on-primary); /* match light text for dark mode */
+    color: var(--color-on-primary);
+}
+
+/* Score text */
+.level-info .score-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 6px;
+    color: #555555; /* subtle gray */
+}
+
+.level-info .score-text .score-value {
+    color: #000000;
+    font-weight: 600;
+}
+
+main.dark .level-info .score-text {
+    color: #cccccc;
+}
+
+main.dark .level-info .score-text .score-value {
+    color: #ffffff;
 }
 
 /* GUIDELINES BOX */
@@ -122,22 +143,22 @@ main.dark .level-info .author .author-name {
     text-align: center;
     justify-content: flex-start;
     align-items: stretch;
-    margin-top: 2rem; /* keeps box top aligned with #1 level */
-    position: relative; /* enable manual positioning */
-    left: -480px; /* adjust horizontally: negative = move left, positive = move right */
+    margin-top: 2rem;
+    position: relative;
+    left: -480px;
 }
 
 main:not(.dark) .guidelines-box {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-    border: 1px dashed #d9d9d9; /* slightly darker than #f0f0f0 */
+    border: 1px dashed #d9d9d9;
 }
 
 .guidelines-box h2 {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    margin-top: 1.5rem; /* moved further down for spacing */
+    margin-top: 1.5rem;
 }
 
 .guidelines-box hr {
