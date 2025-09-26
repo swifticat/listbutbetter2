@@ -110,16 +110,16 @@ main.dark .level-info .author .author-name {
 
 /* Score text */
 .level-info .score-text {
-    font-size: 0.8rem;   /* smaller than author text */
-    font-weight: 300;    /* thin text */
-    margin-top: 8px;     /* a little tighter spacing */
-    color: #555555;      /* subtle gray */
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 8px;
+    color: #555555;
     line-height: 1.3;
 }
 
 .level-info .score-text .score-value {
-    color: #000000; /* pitch black for emphasis if needed */
-    font-weight: 400; /* normal, not bold */
+    color: #000000;
+    font-weight: 400;
 }
 
 main.dark .level-info .score-text {
@@ -173,13 +173,13 @@ main:not(.dark) .guidelines-box {
     font-size: 0.95rem;
 }
 
-/* LEVEL DETAIL BOX (clicked level view) */
+/* LEVEL DETAIL BOX */
 .level-detail-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 60%;
+    justify-content: space-between; /* push stats to bottom */
+    width: 50%; /* narrower to prevent overlapping guidelines */
     min-height: calc(5 * 90px + 5rem);
     background-color: rgba(0,0,0,0.15);
     padding: 1.5rem;
@@ -197,40 +197,44 @@ main:not(.dark) .level-detail-box {
     border: 1px dashed #d9d9d9;
 }
 
+/* Title bigger */
 .level-detail-box h2 {
     font-family: "Lexend Deca", sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin: 0.5rem 0;
+    text-align: center;
 }
 
-.level-detail-box p {
-    font-size: 0.95rem;
-    margin: 0.25rem 0;
+/* Author / verifier line */
+.level-detail-box .author-verifier {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 /* Embedded YouTube */
 .level-detail-box iframe {
-    border-radius: 4px;
-    margin-top: 1rem;
     width: 100%;
-    height: 45%; /* roughly half the box height */
+    aspect-ratio: 16/9; /* maintain 16:9 */
+    border-radius: 4px;
 }
 
-/* Bottom stats in Box 1 */
+/* Bottom stats */
 .level-detail-box p.stats {
-    margin-top: 1rem;
     font-size: 0.9rem;
     font-weight: 400;
     text-align: center;
+    margin-top: 1rem;
 }
 
-/* LEVEL RECORDS BOX (Box 2) */
+/* LEVEL RECORDS BOX */
 .level-records-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 50%; /* narrower */
     background-color: rgba(0,0,0,0.1);
     padding: 1rem;
     margin-bottom: 2rem;
@@ -243,7 +247,7 @@ main:not(.dark) .level-records-box {
     color: #000;
 }
 
-/* Records title and info */
+/* Records title */
 .level-records-box p {
     margin: 0.25rem 0;
     text-align: center;
@@ -262,7 +266,7 @@ main:not(.dark) .level-records-box {
 }
 
 main:not(.dark) .record-chart {
-    background-color: #222; /* slightly lighter for light mode */
+    background-color: #222;
     color: #000;
 }
 
