@@ -52,6 +52,7 @@ class TriangleField {
             this.theme = newTheme;
             // regenerate triangles with new color base
             this.generateTriangles();
+            console.info('[bg-fractal] theme changed, regenerated triangles (theme=%s)', this.theme);
         }
     }
 
@@ -140,15 +141,29 @@ class TriangleField {
 
         // small post adjustments: sort triangles by size so rendering is nicer
         this.triangles.sort((a, b) => a.size - b.size);
+
+        console.info('[bg-fractal] generated %d triangles (theme=%s)', this.triangles.length, this.theme);
     }
 
     _animate(t) {
         if (!this.running) return;
+        if (!this.triangles || this.triangles.length === 0) {
+            // nothing to draw; try regenerating once
+            // (shouldn't be necessary normally)
+            // avoid spamming regen every frame - only do once
+            if (!this._triedRegen) {
+                this._triedRegen = true;
+                this.generateTriangles();
+            }
+            requestAnimationFrame(this._animate);
+            return;
+        }
+
         const ctx = this.ctx;
         const w = this.canvas.width / this.dpr;
         const h = this.canvas.height / this.dpr;
 
-        // clear but keep full alpha clear (transparent so body background shows through)
+        // clear
         ctx.clearRect(0, 0, w, h);
 
         const time = t * 0.001;
@@ -157,7 +172,6 @@ class TriangleField {
             const tri = this.triangles[i];
             // alpha oscillation between ~0 and alphaBase*1.8
             const alpha = tri.alphaBase * (0.6 + 0.4 * Math.sin(time * tri.speed + tri.phase) + 0.5 * Math.random() * 0.1);
-            // clamp
             const opa = Math.max(0, Math.min(1.0, alpha));
 
             ctx.save();
