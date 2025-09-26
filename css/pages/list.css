@@ -112,7 +112,7 @@ main.dark .level-info .author .author-name {
 .level-info .score-text {
     font-size: 0.8rem;   /* smaller than author text */
     font-weight: 300;    /* thin text */
-    margin-top: 4px;     /* a little tighter spacing */
+    margin-top: 8px;     /* a little tighter spacing */
     color: #555555;      /* subtle gray */
     line-height: 1.3;
 }
