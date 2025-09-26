@@ -8,9 +8,6 @@
     --color-primary-disabled: #1f213c;
     --color-error: #de0000;
     --color-on-error: white;
-
-    /* background color for the site (solid color) */
-    --site-background-color: #0f1724; /* default dark-blue-ish — change as you like */
 }
 
 /* Dark-mode variables when applied to the main/header element that has .dark */
@@ -32,28 +29,12 @@ body {
     height: 100%;
 }
 
-/* BODY: solid base background color (triangles are drawn on canvas) */
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    /* use the site background variable for a solid color */
-    background-color: var(--site-background-color);
+    background-color: var(--color-background);
     color: var(--color-on-background);
-}
-
-/* BG CANVAS (full-screen, behind content but above body background)
-   pointer-events: none so it doesn't interfere with user interaction.
-   z-index: 0 places it above the body's background paint but below content.
-*/
-#bg-canvas {
-    position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0; */
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0; /* IMPORTANT: not -1 so it's visible above the body's background */
-    display: block;
 }
 
 /* HEADER */
@@ -70,7 +51,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* keep header above canvas and content */
+    z-index: 1000;
 }
 
 /* Light-mode header overrides:
@@ -104,6 +85,7 @@ header .logo {
     margin: 0;
 }
 
+/* default nav button styles (kept) */
 .nav-buttons .nav__tab,
 .nav-buttons .nav__cta {
     display: flex;
@@ -128,6 +110,7 @@ header .logo {
     flex-basis: 16rem; /* Submit Record wider */
 }
 
+/* default hover/active */
 .nav-buttons .nav__tab:hover,
 .nav-buttons .nav__cta:hover {
     background-color: rgba(255, 255, 255, 0.25);
@@ -170,23 +153,18 @@ header .logo {
     transition: filter 0.12s ease;
 }
 
-/* MAIN CONTENT
-   We keep the background color on body and ensure main sits above the canvas.
-*/
+/* MAIN CONTENT */
 main {
-    position: relative;
-    z-index: 1; /* content above the canvas */
     flex: 1;
     display: grid;
     grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
     column-gap: 2rem;
-    background-color: transparent; /* canvas shows through */
+    background-color: var(--color-background);
     color: var(--color-on-background);
     grid-template-rows: minmax(0, 1fr);
     padding-top: 4.5rem; /* offset for fixed header */
 }
 
-/* Make sure main.scrollable children remain scrollable */
 main > div {
     overflow-y: auto;
 }
@@ -264,6 +242,11 @@ header:not(.dark) .nav__icon img {
     /* force a dark/black appearance for icons */
     filter: brightness(0) saturate(100%);
 }
+
+/* If you need a slightly less aggressive icon color, use:
+   filter: grayscale(100%) brightness(0.12);
+   but brightness(0) makes them solid black for clear contrast.
+*/
 
 /* LEVEL BOXES - default (dark-mode friendly default values)
    (If you had more rules here originally, keep them below)
