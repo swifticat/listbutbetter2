@@ -7,7 +7,7 @@ export default {
         list: [],
         loading: true,
         store,
-        selectedLevel: null, // Track which level is clicked
+        expandedLevel: null, // track clicked level
     }),
     async mounted() {
         this.list = await fetchList();
@@ -25,6 +25,9 @@ export default {
             }
             return '';
         },
+        toggleLevel(level) {
+            this.expandedLevel = this.expandedLevel === level ? null : level;
+        },
         rankLabel,
         calcScore(level, percent = 100) {
             if (!level.rank) return null;
@@ -34,31 +37,26 @@ export default {
         formatScoreText(level) {
             const baseScore = this.calcScore(level, 100);
             if (baseScore === null) return '';
-            if (level.percentToQualify === 100) return `${baseScore.toFixed(2)} points`;
-            const reqScore = this.calcScore(level, level.percentToQualify);
-            return `${reqScore.toFixed(2)} (${level.percentToQualify}%) — ${baseScore.toFixed(2)} (100%) points`;
-        },
-        selectLevel(level) {
-            this.selectedLevel = level;
-        },
-        deselectLevel() {
-            this.selectedLevel = null;
+            if (level.percentToQualify === 100) {
+                return `${baseScore.toFixed(2)} points`;
+            } else {
+                const reqScore = this.calcScore(level, level.percentToQualify);
+                return `${reqScore.toFixed(2)} (${level.percentToQualify}%) — ${baseScore.toFixed(2)} (100%) points`;
+            }
         },
     },
     template: `
         <main v-if="loading">
             <p style="text-align:center; margin-top: 2rem;">Loading...</p>
         </main>
-
         <main v-else class="page-list">
-            <!-- Level List -->
-            <div v-if="!selectedLevel" class="list-container">
+            <!-- Levels list -->
+            <div class="list-container">
                 <div
                     class="level-box"
                     v-for="([err, rank, level], i) in list"
                     :key="level.id"
-                    @click="selectLevel(level)"
-                    style="cursor:pointer"
+                    @click="toggleLevel(level)"
                 >
                     <div class="thumbnail">
                         <a 
@@ -80,7 +78,7 @@ export default {
                     </div>
                     <div class="level-info">
                         <p class="title">
-                            <span class="rank">{{ rankLabel(rank) }}</span> –
+                            <span class="rank">{{ rankLabel(rank) }}</span> – 
                             <span class="name">{{ level.name }}</span>
                         </p>
                         <p class="author">
@@ -91,71 +89,38 @@ export default {
                         </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Level Detail View -->
-            <div v-else class="list-container">
-                <!-- Box 1: Level Info -->
-                <div class="level-detail-box">
-                    <h2 style="text-align:center">{{ selectedLevel.name }}</h2>
-                    <p style="text-align:center; font-size:0.9rem;">
-                        by {{ selectedLevel.author }}, verified by {{ selectedLevel.verifier }}
+                <!-- Expanded Level Box -->
+                <div
+                    v-if="expandedLevel"
+                    class="expanded-level-box"
+                >
+                    <h1 class="expanded-title">{{ expandedLevel.name }}</h1>
+                    <p class="expanded-author">
+                        by {{ expandedLevel.author }}, verified by {{ expandedLevel.verifier }}
                     </p>
-                    <iframe
-                        v-if="selectedLevel.verification"
-                        width="100%"
-                        height="50%"
-                        :src="\`https://www.youtube.com/embed/\${extractYouTubeID(selectedLevel.verification)}\`"
-                        title="Verification Video"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
-                    <p style="text-align:center; margin-top: 8px;">
-                        Level ID: {{ selectedLevel.id }} &nbsp;&nbsp;&nbsp;
-                        Points Awarded: {{ calcScore(selectedLevel, 100).toFixed(2) }} &nbsp;&nbsp;&nbsp;
-                        Password: {{ selectedLevel.password }}
-                    </p>
-                </div>
-
-                <!-- Box 2: Records -->
-                <div class="level-records-box">
-                    <p style="text-align:center; font-weight:500;">Records</p>
-                    <p style="text-align:center; font-size:0.9rem;">
-                        {{ selectedLevel.percentToQualify }}% or better required to qualify
-                    </p>
-                    <p style="text-align:center; font-size:0.85rem;">
-                        {{ selectedLevel.records.length }} completions overall registered.
-                    </p>
-                    <div class="record-chart" style="display:flex; justify-content:space-between; background-color:#111; color:#fff; padding:8px; margin-top:8px;">
-                        <div style="text-align:center; flex:1;">
-                            <p style="margin:0;">Record Holder</p>
-                            <p style="margin:0; font-size:0.9rem;">
-                                {{ selectedLevel.records[0]?.user || '-' }}
-                            </p>
-                        </div>
-                        <div style="text-align:center; flex:1;">
-                            <p style="margin:0;">Video Proof</p>
-                            <p style="margin:0; font-size:0.9rem;">
-                                <a 
-                                    v-if="selectedLevel.records[0]?.link" 
-                                    :href="selectedLevel.records[0].link" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    style="color:#00f;"
-                                >
-                                    YouTube
-                                </a>
-                                <span v-else>-</span>
-                            </p>
-                        </div>
+                    <div class="expanded-video">
+                        <iframe 
+                            v-if="expandedLevel.verification"
+                            :src="'https://www.youtube.com/embed/' + extractYouTubeID(expandedLevel.verification)"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
                     </div>
-                    <button @click="deselectLevel()" style="margin-top:12px; display:block; margin-left:auto; margin-right:auto;">Back</button>
+                    <div class="expanded-stats">
+                        <div>Level ID:<br>{{ expandedLevel.id }}</div>
+                        <div>Points Awarded:<br>{{ calcScore(expandedLevel) }}</div>
+                        <div>Password:<br>{{ expandedLevel.password }}</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Guidelines box remains -->
-            <div class="guidelines-box">
+            <!-- Guidelines box -->
+            <div 
+                class="guidelines-box"
+                :class="{ shifted: expandedLevel }"
+            >
                 <h2>Guidelines</h2>
                 <hr />
                 <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
