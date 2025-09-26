@@ -148,6 +148,7 @@ main.dark .level-info .score-text .score-value {
     margin-top: 2rem;
     position: relative;
     left: -480px;
+    /* no transform here by default; shifted state overrides */
 }
 
 main:not(.dark) .guidelines-box {
@@ -262,6 +263,14 @@ main:not(.dark) .level-records-box {
     font-family: "Lexend Deca", sans-serif;
 }
 
+/* Ensure header columns center their content */
+.record-header div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Record Rows with striped pattern */
 .record-row {
     display: flex;
@@ -328,7 +337,12 @@ main:not(.dark) .level-detail-box button:hover {
     background-color: #ccc;
 }
 
+/* Instantly shift guidelines box right by 100px when in detail view */
 .guidelines-box.shifted {
     transform: translateX(100px);
-    transition: transform 0.3s ease;
+    transition: none; /* instant */
+}
+
+.guidelines-box.shifted main {
+    /* no-op, kept for future adjustments */
 }
