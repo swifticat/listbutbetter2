@@ -5,8 +5,13 @@ export const store = Vue.reactive({
     toggleDark() {
         this.dark = !this.dark;
         localStorage.setItem('dark', JSON.stringify(this.dark));
+        // Keep <body> class in sync so CSS can target body.dark / body:not(.dark)
+        document.body.classList.toggle('dark', this.dark);
     },
 });
+
+// Ensure body has the initial dark class if saved
+document.body.classList.toggle('dark', store.dark);
 
 const app = Vue.createApp({
     data: () => ({ store }),
