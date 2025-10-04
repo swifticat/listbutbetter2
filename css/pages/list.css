@@ -393,3 +393,33 @@ body:not(.dark) main {
 html, body {
   overflow-y: auto;
 }
+
+/* Close button for guidelines box */
+.guidelines-box .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    color: var(--color-on-primary);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.guidelines-box .close-btn:hover {
+    background: rgba(0,0,0,0.35);
+}
+
+main:not(.dark) .guidelines-box .close-btn {
+    background: #ddd;
+    color: #000;
+}
+
+main:not(.dark) .guidelines-box .close-btn:hover {
+    background: #ccc;
+}
+
