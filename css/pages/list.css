@@ -346,3 +346,13 @@ main:not(.dark) .level-detail-box button:hover {
 .guidelines-box.shifted main {
     /* no-op, kept for future adjustments */
 }
+
+/* Dark mode stripes (contrast improved slightly) */
+main.dark .record-row.even-row {
+    background-color: #141414; /* slightly lighter than before */
+}
+
+main.dark .record-row.odd-row {
+    background-color: #222; /* more contrast than #1a1a1a */
+}
+
