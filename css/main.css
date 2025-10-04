@@ -10,7 +10,8 @@
     --color-on-error: white;
 }
 
-/* Dark-mode variables when applied to the main/header element that has .dark */
+/* Dark-mode variables when applied to body/main/header that has .dark */
+body.dark,
 main.dark,
 header.dark {
     color-scheme: dark;
