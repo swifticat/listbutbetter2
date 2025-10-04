@@ -8,6 +8,7 @@ export default {
         loading: true,
         store,
         selectedLevel: null, // Track which level is clicked
+        showGuidelines: true, // Track visibility of guidelines box
     }),
     async mounted() {
         this.list = await fetchList();
@@ -44,6 +45,9 @@ export default {
         deselectLevel() {
             this.selectedLevel = null;
         },
+        closeGuidelines() {
+            this.showGuidelines = false;
+        },
     },
     template: `
         <main v-if="loading">
@@ -58,8 +62,6 @@ export default {
                     v-for="([err, rank, level], i) in list"
                     :key="level.id"
                     @click="selectLevel(level)"
-                    @keyup.enter="selectLevel(level)" 
-                    tabindex="0" 
                     style="cursor:pointer"
                 >
                     <div class="thumbnail">
@@ -71,15 +73,13 @@ export default {
                         >
                             <img
                                 :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
-                                :alt="\`Verification video thumbnail for \${level.name}\`"
-                                loading="lazy"
+                                alt="Thumbnail"
                             />
                         </a>
                         <img
                             v-else
                             src="/assets/default-thumbnail.png"
-                            :alt="\`Default thumbnail for \${level.name}\`"
-                            loading="lazy"
+                            alt="Thumbnail"
                         />
                     </div>
                     <div class="level-info">
@@ -163,8 +163,9 @@ export default {
                 </div>
             </div>
 
-            <!-- Guidelines box remains; it will shift instantly when in detail view -->
-            <div class="guidelines-box" :class="{ shifted: selectedLevel }">
+            <!-- Guidelines box with close button -->
+            <div v-if="showGuidelines" class="guidelines-box" :class="{ shifted: selectedLevel }">
+                <button class="close-btn" @click="closeGuidelines">×</button>
                 <h2>Guidelines</h2>
                 <hr />
                 <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
