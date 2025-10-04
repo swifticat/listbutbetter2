@@ -358,19 +358,25 @@ main.dark .record-row.odd-row {
 
 /* --- Light mode background for List Page --- */
 
-/* Ensure base layout still scrolls normally */
+/* Base state — keep dark mode's solid background as default */
 .page-list {
   position: relative;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color: var(--color-background);
+  background-image: none;
 }
 
-/* Light mode only — add a full-page background image */
-:root:not([data-theme="dark"]) .page-list {
+/* Light mode only — add a full-page fixed background image */
+main:not(.dark) .page-list {
   background-image: url("/assets/background-light.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  background-color: #ffffff;
 }
 
+/* Ensure the body scrolls normally */
+html, body {
+  overflow-y: auto;
+}
