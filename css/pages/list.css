@@ -366,21 +366,27 @@ main.dark .record-row.odd-row {
   background-image: none;
 }
 
-/* Show image only when the main .page-list does NOT have the .dark class */
-.page-list:not(.dark) {
+/* Move the background to <body> in light mode so it stays under everything and remains fixed.
+   We mirror the theme on the <body> via main.js so this works reliably.
+*/
+body:not(.dark) {
   background-image: url("/assets/background-light.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  /* fallback background color for readability */
   background-color: #ffffff;
 }
 
-/* In dark mode ensure the image is removed and the color is used */
-.page-list.dark {
+/* Remove the background image in dark mode and use the dark color */
+body.dark {
   background-image: none;
   background-color: var(--color-background);
+}
+
+/* When body holds the image, make main transparent so the image shows through behind content */
+body:not(.dark) main {
+  background-color: transparent;
 }
 
 /* Make sure scrolling works on the page */
