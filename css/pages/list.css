@@ -355,3 +355,22 @@ main.dark .record-row.even-row {
 main.dark .record-row.odd-row {
     background-color: #222; /* more contrast than #1a1a1a */
 }
+
+/* --- Light mode background for List Page --- */
+
+/* Ensure base layout still scrolls normally */
+.page-list {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+/* Light mode only — add a full-page background image */
+:root:not([data-theme="dark"]) .page-list {
+  background-image: url("/assets/background-light.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
