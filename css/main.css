@@ -256,4 +256,35 @@ header:not(.dark) .nav__icon img {
     /* placeholder: keep existing behavior from your other CSS files */
 }
 
+/* === Light-mode full-page background for all pages === */
+main:not(.dark) {
+  background-image: url("/assets/background-light-1920.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #ffffff; /* fallback in case image fails */
+}
+
+/* Higher-res images for larger screens */
+@media (min-width: 1400px) {
+  main:not(.dark) {
+    background-image: url("/assets/background-light-2560.webp");
+  }
+}
+
+/* High-DPI / Retina screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  main:not(.dark) {
+    background-image: url("/assets/background-light-3840.webp");
+  }
+}
+
+/* Ultra-wide / 4K monitors */
+@media (min-width: 3200px) {
+  main:not(.dark) {
+    background-image: url("/assets/background-light-3840.webp");
+  }
+}
+
 /* END OF FILE */
