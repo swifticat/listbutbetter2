@@ -7,5 +7,12 @@
     "verification": "https://youtu.be/OYZ7FIUmJDw",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+           {
+			"user": "kas ia",
+			"link": "https://www.youtube.com/watch?v=_5rl0XobcI4",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
 }
