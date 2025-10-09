@@ -8,6 +8,12 @@
     "percentToQualify": 100,
     "password": "Copyable",
     "records": [
+			{
+			"user": "Aquatic",
+			"link": "https://www.youtube.com/watch?v=9MDFRBDI0Xw",
+			"percent": 100,
+			"hz": 480
+		},
 	     {
 			"user": "Filipogem",
 			"link": "https://www.youtube.com/watch?v=2wvXHEnya50&ab_channel=AnotherGem",
