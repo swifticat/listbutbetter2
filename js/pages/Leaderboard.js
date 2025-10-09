@@ -152,7 +152,6 @@ export default {
         this.err = err || [];
 
         // fetch the levels list (same shape used by list.js)
-        // fetchList returns array of [err, rank, level] per item
         try {
             const rawList = await fetchList();
             if (Array.isArray(rawList)) {
@@ -165,20 +164,38 @@ export default {
                     const [, rank, level] = item;
                     if (!level) continue;
 
-                    // `creators` may be an array or a single string; normalize
+                    // prefer level.creators, fallback to level.author/publisher when creators absent or empty
                     let creators = level.creators;
-                    if (!creators) {
-                        // some levels may have 'author' but no 'creators'
+                    if (!creators || (Array.isArray(creators) && creators.length === 0)) {
+                        // use author as publisher fallback
                         creators = level.author ? [level.author] : [];
                     } else if (typeof creators === 'string') {
                         creators = [creators];
                     }
 
+                    // ensure unique creator list (trim, normalize)
+                    creators = creators
+                        .filter(Boolean)
+                        .map(c => String(c).trim())
+                        .filter((v, i, arr) => arr.indexOf(v) === i);
+
+                    // if still empty, skip
+                    if (!creators.length) continue;
+
+                    // push created info for each creator, avoiding duplicates per creator by level.id
                     for (const creatorName of creators) {
                         if (!creatorName) continue;
                         if (!createdMap[creatorName]) createdMap[creatorName] = [];
 
+                        // ensure level has an id for dedupe; fallback to name-based id if missing
+                        const levelId = typeof level.id !== 'undefined' ? level.id : `name:${level.name}`;
+
+                        // check for duplicates by id
+                        const already = createdMap[creatorName].some(ci => ci.id === levelId);
+                        if (already) continue;
+
                         createdMap[creatorName].push({
+                            id: levelId,
                             level: level.name,
                             rank: typeof rank !== 'undefined' ? rank : null,
                             link: level.verification || null,
@@ -192,10 +209,34 @@ export default {
                     // try to find an existing leaderboard entry for this user
                     let target = this.leaderboard.find(x => x.user === creatorName);
                     if (target) {
-                        // attach created array (overwrite if present)
-                        this.$set ? this.$set(target, 'created', createdArr) : (target.created = createdArr);
+                        // Merge while avoiding duplicates if target.created already exists
+                        const existing = target.created || [];
+                        const merged = existing.slice(); // copy
+
+                        for (const ci of createdArr) {
+                            const exists = merged.some(m => m.id === ci.id);
+                            if (!exists) {
+                                merged.push(ci);
+                            }
+                        }
+
+                        // remove internal id before assigning to UI (or keep it, harmless)
+                        // assign merged array
+                        if (this.$set) {
+                            this.$set(target, 'created', merged);
+                        } else {
+                            target.created = merged;
+                        }
                     } else {
                         // create a new minimal entry and push it
+                        // for UI cleanliness, strip the internal id field when presenting (optional)
+                        const publicCreated = createdArr.map(ci => ({
+                            level: ci.level,
+                            rank: ci.rank,
+                            link: ci.link,
+                            // no score
+                        }));
+
                         const newEntry = {
                             user: creatorName,
                             country: undefined,
@@ -203,7 +244,7 @@ export default {
                             verified: [],
                             completed: [],
                             progressed: [],
-                            created: createdArr,
+                            created: publicCreated,
                         };
                         this.leaderboard.push(newEntry);
                     }
