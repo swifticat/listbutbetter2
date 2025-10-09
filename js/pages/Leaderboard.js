@@ -1,4 +1,5 @@
 import { fetchLeaderboard } from '../content.js';
+import { fetchList } from '../content.js';
 import { localize } from '../util.js';
 
 import Spinner from '../components/Spinner.js';
@@ -108,7 +109,7 @@ export default {
                             </tr>
                         </table>
 
-                        <!-- Created (new) -->
+                        <!-- Created (generated from /data level files) -->
                         <h2 v-if="entry && entry.created && entry.created.length > 0">Created</h2>
                         <table v-if="entry && entry.created && entry.created.length > 0" class="table">
                             <tr v-for="item in entry.created">
@@ -117,7 +118,6 @@ export default {
                                     <p v-else>#{{ item.rank }}</p>
                                 </td>
                                 <td class="level">
-                                    <!-- created entries may not have a score; show as link if available -->
                                     <a
                                         v-if="item.link"
                                         class="type-label-lg"
@@ -129,7 +129,7 @@ export default {
                                     <span v-else class="type-label-lg">{{ item.level }}</span>
                                 </td>
                                 <td class="score">
-                                    <!-- some backends may include a score for created entries; show if present -->
+                                    <!-- created entries don't award points; show if backend provided one -->
                                     <p v-if="typeof item.score !== 'undefined'">+{{ localize(item.score) }}</p>
                                 </td>
                             </tr>
@@ -146,9 +146,74 @@ export default {
         },
     },
     async mounted() {
+        // fetch leaderboard + handle errors
         const [leaderboard, err] = await fetchLeaderboard();
-        this.leaderboard = leaderboard;
-        this.err = err;
+        this.leaderboard = leaderboard || [];
+        this.err = err || [];
+
+        // fetch the levels list (same shape used by list.js)
+        // fetchList returns array of [err, rank, level] per item
+        try {
+            const rawList = await fetchList();
+            if (Array.isArray(rawList)) {
+                // Build a map: creatorName -> array of created items
+                const createdMap = Object.create(null);
+
+                for (const item of rawList) {
+                    // defensive: item should be [err, rank, level]
+                    if (!Array.isArray(item)) continue;
+                    const [, rank, level] = item;
+                    if (!level) continue;
+
+                    // `creators` may be an array or a single string; normalize
+                    let creators = level.creators;
+                    if (!creators) {
+                        // some levels may have 'author' but no 'creators'
+                        creators = level.author ? [level.author] : [];
+                    } else if (typeof creators === 'string') {
+                        creators = [creators];
+                    }
+
+                    for (const creatorName of creators) {
+                        if (!creatorName) continue;
+                        if (!createdMap[creatorName]) createdMap[creatorName] = [];
+
+                        createdMap[creatorName].push({
+                            level: level.name,
+                            rank: typeof rank !== 'undefined' ? rank : null,
+                            link: level.verification || null,
+                            // no score for creations by default
+                        });
+                    }
+                }
+
+                // Merge created entries into leaderboard; if user doesn't exist, create an account entry
+                for (const [creatorName, createdArr] of Object.entries(createdMap)) {
+                    // try to find an existing leaderboard entry for this user
+                    let target = this.leaderboard.find(x => x.user === creatorName);
+                    if (target) {
+                        // attach created array (overwrite if present)
+                        this.$set ? this.$set(target, 'created', createdArr) : (target.created = createdArr);
+                    } else {
+                        // create a new minimal entry and push it
+                        const newEntry = {
+                            user: creatorName,
+                            country: undefined,
+                            total: 0,
+                            verified: [],
+                            completed: [],
+                            progressed: [],
+                            created: createdArr,
+                        };
+                        this.leaderboard.push(newEntry);
+                    }
+                }
+            }
+        } catch (e) {
+            // non-fatal: if fetchList fails, we just won't show Created
+            console.warn('Failed to build Created map:', e);
+        }
+
         // Hide loading spinner
         this.loading = false;
     },
