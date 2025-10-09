@@ -54,51 +54,87 @@ export default {
                 </div>
                 <div class="player-container">
                     <div class="player">
-                        <h1>#{{ selected + 1 }} {{ entry.user }}</h1>
-                        <h3>{{ localize(entry.total) }}</h3>
-                        <h2 v-if="entry.verified.length > 0">Verified</h2>
-                        <table class="table">
+                        <h1 v-if="entry">#{{ selected + 1 }} {{ entry.user }}</h1>
+                        <h3 v-if="entry">{{ localize(entry.total) }}</h3>
+
+                        <!-- Verified -->
+                        <h2 v-if="entry && entry.verified && entry.verified.length > 0">Verified</h2>
+                        <table v-if="entry && entry.verified && entry.verified.length > 0" class="table">
                             <tr v-for="score in entry.verified">
                                 <td class="rank">
-                                    <p v-if="score.rank === null">&mdash;</p>
+                                    <p v-if="score.rank === null || score.rank === undefined">&mdash;</p>
                                     <p v-else>#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
                                     <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
                                 </td>
                                 <td class="score">
-                                    <p>+{{ localize(score.score) }}</p>
+                                    <p v-if="typeof score.score !== 'undefined'">+{{ localize(score.score) }}</p>
                                 </td>
                             </tr>
                         </table>
-                        <h2 v-if="entry.completed.length > 0">Completed</h2>
-                        <table class="table">
+
+                        <!-- Completed -->
+                        <h2 v-if="entry && entry.completed && entry.completed.length > 0">Completed</h2>
+                        <table v-if="entry && entry.completed && entry.completed.length > 0" class="table">
                             <tr v-for="score in entry.completed">
                                 <td class="rank">
-                                    <p>#{{ score.rank }}</p>
+                                    <p v-if="score.rank === null || score.rank === undefined">&mdash;</p>
+                                    <p v-else>#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
                                     <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
                                 </td>
                                 <td class="score">
-                                    <p>+{{ localize(score.score) }}</p>
+                                    <p v-if="typeof score.score !== 'undefined'">+{{ localize(score.score) }}</p>
                                 </td>
                             </tr>
                         </table>
-                        <h2 v-if="entry.progressed.length > 0">Progressed</h2>
-                        <table class="table">
+
+                        <!-- Progressed -->
+                        <h2 v-if="entry && entry.progressed && entry.progressed.length > 0">Progressed</h2>
+                        <table v-if="entry && entry.progressed && entry.progressed.length > 0" class="table">
                             <tr v-for="score in entry.progressed">
                                 <td class="rank">
-                                    <p>#{{ score.rank }}</p>
+                                    <p v-if="score.rank === null || score.rank === undefined">&mdash;</p>
+                                    <p v-else>#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
                                     <a class="type-label-lg" target="_blank" :href="score.link">{{ score.percent }}% {{ score.level }}</a>
                                 </td>
                                 <td class="score">
-                                    <p>+{{ localize(score.score) }}</p>
+                                    <p v-if="typeof score.score !== 'undefined'">+{{ localize(score.score) }}</p>
                                 </td>
                             </tr>
                         </table>
+
+                        <!-- Created (new) -->
+                        <h2 v-if="entry && entry.created && entry.created.length > 0">Created</h2>
+                        <table v-if="entry && entry.created && entry.created.length > 0" class="table">
+                            <tr v-for="item in entry.created">
+                                <td class="rank">
+                                    <p v-if="item.rank === null || item.rank === undefined">&mdash;</p>
+                                    <p v-else>#{{ item.rank }}</p>
+                                </td>
+                                <td class="level">
+                                    <!-- created entries may not have a score; show as link if available -->
+                                    <a
+                                        v-if="item.link"
+                                        class="type-label-lg"
+                                        target="_blank"
+                                        :href="item.link"
+                                    >
+                                        {{ item.level }}
+                                    </a>
+                                    <span v-else class="type-label-lg">{{ item.level }}</span>
+                                </td>
+                                <td class="score">
+                                    <!-- some backends may include a score for created entries; show if present -->
+                                    <p v-if="typeof item.score !== 'undefined'">+{{ localize(item.score) }}</p>
+                                </td>
+                            </tr>
+                        </table>
+
                     </div>
                 </div>
             </div>
