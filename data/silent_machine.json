@@ -8,6 +8,12 @@
     "percentToQualify": 100,
     "password": "Copyable",
     "records": [
+		 {
+			"user": "Aquatic",
+			"link": "https://www.youtube.com/watch?v=c-WW2qM3vc8",
+			"percent": 100,
+			"hz": 480
+		},
         {
 			"user": "mathey",
 			"link": "https://youtu.be/SPoMGpRmYe0",
