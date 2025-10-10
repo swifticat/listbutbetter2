@@ -16,7 +16,7 @@ export default {
 					<span class="note">* Inputs marked with an asterisk are required!</span>
 					<select name="demon-name" id="demon-name" v-model="level">
 						<option selected disabled="disabled">Select level*</option>
-						<option v-for="([level, err], i) in list" :value="level">{{ i + 1 }}. {{ level?.name }}</option>
+						<option v-for="([err, rank, level], i) in list" :value="level">{{rank}}. {{ level?.name }}</option>
 					</select>
 		
 					<input type="text" v-model="holder" name="record-holder" id="record-holder" placeholder="Name to show in the record*" required>
@@ -62,12 +62,18 @@ export default {
 		// Hide loading spinner
 		this.list = await fetchList();
 
+		this.list.forEach(element => {
+			if(element[1] === null){
+				this.list.splice(this.list.indexOf(element), 1);
+			}
+		});
 
 		this.loading = false;
 	},
 
 	methods: {
 		sendWebhook() {
+			console.log(this.level)
 			if (this.level === 'Select level*' || this.holder === '' || this.footage === '' || this.percentage < 0 || this.percentage > 100) {
 				this.errortimes += 1
 				switch (this.errortimes) {
@@ -119,7 +125,7 @@ export default {
 				return;
 			}
 			return new Promise((resolve, reject) => {
-				fetch("https://discord.com/api/webhooks/1424343990056128512/rhVNLGz3rbiB5M8EozsXriJpzJ2h9cotpDp95-eZkmyrePeDj3sZwySedIOAEUeA7-7i", {
+				fetch("https://discord.com/api/webhooks/1381004484066676836/6xEAzw51JCpIouI7L_C35GBAh6iE22c-hdzwa3HSSyDlY8dZKMSDappeSSKiLsViL5zN", {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
