@@ -22,10 +22,60 @@ export default {
                 if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
                 if (u.hostname.includes('youtube.com')) return u.searchParams.get('v');
             } catch (e) {
+                // If the user passed a plain id instead of a URL, return it directly
+                if (typeof url === 'string' && url.trim().length > 0) return url.trim();
                 return '';
             }
             return '';
         },
+
+        /**
+         * Return an array of thumbnail URLs in descending preference.
+         * YouTube supports several known filenames:
+         *  - maxresdefault.jpg (1280x720 if available)
+         *  - sddefault.jpg (640x480)
+         *  - hqdefault.jpg (480x360)
+         *  - mqdefault.jpg (320x180)
+         *  - 0.jpg (default)
+         */
+        getYouTubeThumbs(verificationUrl) {
+            const id = this.extractYouTubeID(verificationUrl);
+            if (!id) return [];
+            const base = `https://img.youtube.com/vi/${id}`;
+            return [
+                `${base}/maxresdefault.jpg`,
+                `${base}/sddefault.jpg`,
+                `${base}/hqdefault.jpg`,
+                `${base}/mqdefault.jpg`,
+                `${base}/0.jpg`,
+            ];
+        },
+
+        /**
+         * Error handler for thumbnail <img> elements.
+         * The element should have a data-fallbacks attribute containing a comma-separated
+         * list of fallback URLs (not including the initial src).
+         */
+        thumbError(e) {
+            const el = e.target;
+            // prevent infinite loops if something else goes wrong
+            if (!el) return;
+            // count attempts
+            const attempted = parseInt(el.dataset.attempt || '0', 10);
+            const fallbacks = (el.dataset.fallbacks || '').split(',').map(s => s.trim()).filter(Boolean);
+
+            if (attempted < fallbacks.length) {
+                // try the next fallback
+                const next = fallbacks[attempted];
+                el.dataset.attempt = String(attempted + 1);
+                el.src = next;
+            } else {
+                // no fallbacks left — use the site's default thumbnail
+                el.onerror = null; // stop further error loops
+                el.src = '/assets/default-thumbnail.png';
+            }
+        },
+
         rankLabel,
         calcScore(level, percent = 100) {
             if (!level.rank) return null;
@@ -71,15 +121,20 @@ export default {
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
+                            <!-- Use the best-quality thumbnail first and fall back if it 404s -->
                             <img
-                                :src="\`https://img.youtube.com/vi/\${extractYouTubeID(level.verification)}/0.jpg\`"
-                                alt="Thumbnail"
+                                :src="getYouTubeThumbs(level.verification)[0]"
+                                :data-fallbacks="getYouTubeThumbs(level.verification).slice(1).join(',')"
+                                @error="thumbError"
+                                loading="lazy"
+                                :alt="\`Verification video thumbnail for \${level.name}\`"
                             />
                         </a>
                         <img
                             v-else
                             src="/assets/default-thumbnail.png"
-                            alt="Thumbnail"
+                            :alt="\`Default thumbnail for \${level.name}\`"
+                            loading="lazy"
                         />
                     </div>
                     <div class="level-info">
