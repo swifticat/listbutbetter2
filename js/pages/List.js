@@ -52,26 +52,66 @@ export default {
         },
 
         /**
-         * Error handler for thumbnail <img> elements.
-         * The element should have a data-fallbacks attribute containing a comma-separated
-         * list of fallback URLs (not including the initial src).
+         * Called when an <img> fails to load (404 etc).
+         * Attempts the next fallback URL (if any), otherwise uses default image.
          */
         thumbError(e) {
             const el = e.target;
-            // prevent infinite loops if something else goes wrong
             if (!el) return;
-            // count attempts
+            // parse the fallbacks list stored in data-fallbacks
+            const fallbacks = (el.dataset.fallbacks || '').split(',').map(s => s.trim()).filter(Boolean);
+            const attempted = parseInt(el.dataset.attempt || '0', 10);
+
+            if (attempted < fallbacks.length) {
+                // try next fallback
+                const next = fallbacks[attempted];
+                el.dataset.attempt = String(attempted + 1);
+                // set src to the next fallback; onload/onerror handlers will manage further checks
+                el.src = next;
+                return;
+            }
+
+            // no fallbacks left -> set site default and remove handlers
+            el.onerror = null;
+            el.onload = null;
+            el.src = '/assets/default-thumbnail.png';
+        },
+
+        /**
+         * Called when an <img> successfully loads.
+         * Some YouTube URLs return a generic low-res placeholder image (still 200 OK).
+         * Detect small placeholders by checking naturalWidth/naturalHeight, and if too small,
+         * try the next fallback (if available).
+         */
+        thumbLoad(e) {
+            const el = e.target;
+            if (!el) return;
+
+            // how many fallback attempts have already occurred
             const attempted = parseInt(el.dataset.attempt || '0', 10);
             const fallbacks = (el.dataset.fallbacks || '').split(',').map(s => s.trim()).filter(Boolean);
 
-            if (attempted < fallbacks.length) {
-                // try the next fallback
+            // Dimensions that indicate a placeholder / low-res image.
+            // HQ thumbnails are at least ~320px wide; maxres is 1280x720.
+            // If naturalWidth is smaller than this threshold, we probably got a placeholder.
+            const NATURAL_WIDTH_THRESHOLD = 300; // conservative threshold
+
+            const naturalWidth = el.naturalWidth || 0;
+            const naturalHeight = el.naturalHeight || 0;
+
+            // If the loaded image is too small and we have additional fallbacks, try the next one.
+            if ((naturalWidth > 0 && naturalWidth < NATURAL_WIDTH_THRESHOLD) && attempted < fallbacks.length) {
                 const next = fallbacks[attempted];
                 el.dataset.attempt = String(attempted + 1);
                 el.src = next;
-            } else {
-                // no fallbacks left — use the site's default thumbnail
-                el.onerror = null; // stop further error loops
+                return;
+            }
+
+            // If size is fine, keep it. If it's tiny but no fallbacks left, use default thumbnail.
+            if (naturalWidth > 0 && naturalWidth < NATURAL_WIDTH_THRESHOLD && attempted >= fallbacks.length) {
+                // remove handlers to avoid loops
+                el.onerror = null;
+                el.onload = null;
                 el.src = '/assets/default-thumbnail.png';
             }
         },
@@ -121,11 +161,13 @@ export default {
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
-                            <!-- Use the best-quality thumbnail first and fall back if it 404s -->
+                            <!-- Try the best thumb first, then fallbacks. Handlers manage placeholder detection. -->
                             <img
                                 :src="getYouTubeThumbs(level.verification)[0]"
                                 :data-fallbacks="getYouTubeThumbs(level.verification).slice(1).join(',')"
+                                :data-attempt="0"
                                 @error="thumbError"
+                                @load="thumbLoad"
                                 loading="lazy"
                                 :alt="\`Verification video thumbnail for \${level.name}\`"
                             />
