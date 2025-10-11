@@ -423,3 +423,13 @@ main:not(.dark) .guidelines-box .close-btn:hover {
     background: #ccc;
 }
 
+/* Ensure thumbnails from assets and YouTube look identical */
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* keep existing rounded corners if you'd like */
+    border-radius: 0;
+}
+
