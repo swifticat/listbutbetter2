@@ -30,13 +30,7 @@ export default {
         },
 
         /**
-         * Return an array of thumbnail URLs in descending preference.
-         * YouTube supports several known filenames:
-         *  - maxresdefault.jpg (1280x720 if available)
-         *  - sddefault.jpg (640x480)
-         *  - hqdefault.jpg (480x360)
-         *  - mqdefault.jpg (320x180)
-         *  - 0.jpg (default)
+         * Return an array of thumbnail URLs in descending preference for YouTube.
          */
         getYouTubeThumbs(verificationUrl) {
             const id = this.extractYouTubeID(verificationUrl);
@@ -52,21 +46,18 @@ export default {
         },
 
         /**
-         * Called when an <img> fails to load (404 etc).
+         * Called when an <img> for YouTube fails to load (404 etc).
          * Attempts the next fallback URL (if any), otherwise uses default image.
          */
         thumbError(e) {
             const el = e.target;
             if (!el) return;
-            // parse the fallbacks list stored in data-fallbacks
             const fallbacks = (el.dataset.fallbacks || '').split(',').map(s => s.trim()).filter(Boolean);
             const attempted = parseInt(el.dataset.attempt || '0', 10);
 
             if (attempted < fallbacks.length) {
-                // try next fallback
                 const next = fallbacks[attempted];
                 el.dataset.attempt = String(attempted + 1);
-                // set src to the next fallback; onload/onerror handlers will manage further checks
                 el.src = next;
                 return;
             }
@@ -79,27 +70,18 @@ export default {
 
         /**
          * Called when an <img> successfully loads.
-         * Some YouTube URLs return a generic low-res placeholder image (still 200 OK).
-         * Detect small placeholders by checking naturalWidth/naturalHeight, and if too small,
-         * try the next fallback (if available).
+         * Detects low-res placeholder images by naturalWidth and tries next fallback if necessary.
          */
         thumbLoad(e) {
             const el = e.target;
             if (!el) return;
 
-            // how many fallback attempts have already occurred
             const attempted = parseInt(el.dataset.attempt || '0', 10);
             const fallbacks = (el.dataset.fallbacks || '').split(',').map(s => s.trim()).filter(Boolean);
 
-            // Dimensions that indicate a placeholder / low-res image.
-            // HQ thumbnails are at least ~320px wide; maxres is 1280x720.
-            // If naturalWidth is smaller than this threshold, we probably got a placeholder.
-            const NATURAL_WIDTH_THRESHOLD = 300; // conservative threshold
-
+            const NATURAL_WIDTH_THRESHOLD = 300;
             const naturalWidth = el.naturalWidth || 0;
-            const naturalHeight = el.naturalHeight || 0;
 
-            // If the loaded image is too small and we have additional fallbacks, try the next one.
             if ((naturalWidth > 0 && naturalWidth < NATURAL_WIDTH_THRESHOLD) && attempted < fallbacks.length) {
                 const next = fallbacks[attempted];
                 el.dataset.attempt = String(attempted + 1);
@@ -107,13 +89,22 @@ export default {
                 return;
             }
 
-            // If size is fine, keep it. If it's tiny but no fallbacks left, use default thumbnail.
             if (naturalWidth > 0 && naturalWidth < NATURAL_WIDTH_THRESHOLD && attempted >= fallbacks.length) {
-                // remove handlers to avoid loops
                 el.onerror = null;
                 el.onload = null;
                 el.src = '/assets/default-thumbnail.png';
             }
+        },
+
+        /**
+         * Simple handler for custom asset thumbnails (from /assets).
+         * If the asset fails to load, fall back to default thumbnail.
+         */
+        assetThumbError(e) {
+            const el = e.target;
+            if (!el) return;
+            el.onerror = null;
+            el.src = '/assets/default-thumbnail.png';
         },
 
         rankLabel,
@@ -155,23 +146,50 @@ export default {
                     style="cursor:pointer"
                 >
                     <div class="thumbnail">
-                        <a 
-                            v-if="level.verification" 
-                            :href="level.verification" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                        >
-                            <!-- Try the best thumb first, then fallbacks. Handlers manage placeholder detection. -->
+                        <!-- If level.thumbnail is provided, use it (asset path). Wrap in link if verification exists -->
+                        <template v-if="level.thumbnail">
+                            <a 
+                                v-if="level.verification"
+                                :href="level.verification"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    :src="\`/assets/\${level.thumbnail}\`"
+                                    loading="lazy"
+                                    :alt="\`Thumbnail for \${level.name}\`"
+                                    @error="assetThumbError"
+                                />
+                            </a>
                             <img
-                                :src="getYouTubeThumbs(level.verification)[0]"
-                                :data-fallbacks="getYouTubeThumbs(level.verification).slice(1).join(',')"
-                                :data-attempt="0"
-                                @error="thumbError"
-                                @load="thumbLoad"
+                                v-else
+                                :src="\`/assets/\${level.thumbnail}\`"
                                 loading="lazy"
-                                :alt="\`Verification video thumbnail for \${level.name}\`"
+                                :alt="\`Thumbnail for \${level.name}\`"
+                                @error="assetThumbError"
                             />
-                        </a>
+                        </template>
+
+                        <!-- Otherwise try YouTube thumbnails with progressive fallback/placeholder detection -->
+                        <template v-else-if="level.verification">
+                            <a 
+                                :href="level.verification" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    :src="getYouTubeThumbs(level.verification)[0]"
+                                    :data-fallbacks="getYouTubeThumbs(level.verification).slice(1).join(',')"
+                                    :data-attempt="0"
+                                    @error="thumbError"
+                                    @load="thumbLoad"
+                                    loading="lazy"
+                                    :alt="\`Verification video thumbnail for \${level.name}\`"
+                                />
+                            </a>
+                        </template>
+
+                        <!-- final fallback -->
                         <img
                             v-else
                             src="/assets/default-thumbnail.png"
