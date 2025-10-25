@@ -3,6 +3,12 @@
     --color-on-background: black;
     --color-primary: #000000;
     --color-on-primary: white;
+
+    /* Dark-mode tweaks (these will be overridden by body/main/header .dark variables if present) */
+    --header-dark-bg: #111;       /* fallback header bg in dark mode */
+    --header-dark-hover: rgba(255,255,255,0.06);
+    --header-dark-hover-strong: rgba(255,255,255,0.08);
+    --header-dark-text: #eeeeee;
 }
 
 /* Navigation container */
@@ -12,6 +18,7 @@
 }
 
 /* Navigation tabs (List, Leaderboard, Roulette, etc.) */
+/* Light-mode default — preserves your previous appearance */
 .nav .nav__tab {
     display: flex;
     align-items: center;
@@ -24,11 +31,11 @@
     border-radius: 0;
     box-shadow: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.12s ease;
     text-decoration: none !important;
 }
 
-/* Hover / active states for nav buttons */
+/* Hover / active states for nav buttons (light mode) */
 .nav .nav__tab:hover,
 .nav .nav__tab.router-link-active {
     background-color: rgba(255, 255, 255, 0.25);
@@ -54,7 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.12s ease;
 }
 
 .nav .nav__actions .nav__icon:hover {
@@ -66,7 +73,7 @@
     width: auto;
 }
 
-/* Submit Record button */
+/* Submit Record button (light-mode default) */
 .nav .nav__actions .nav__cta {
     margin-left: 0; /* make it touch others */
     padding: 0 1.5rem;
@@ -79,7 +86,7 @@
     border: none;
     border-radius: 0;
     box-shadow: 0 1px 0.5rem 0 rgba(0, 0, 102, 0.5);
-    transition: background-color 0.2s ease, transform 100ms ease;
+    transition: background-color 0.2s ease, transform 100ms ease, color 0.12s ease;
     text-decoration: none !important;
 
     /* Ensure text fits in one line */
@@ -91,3 +98,94 @@
     background-color: rgba(255, 255, 255, 0.85);
     transform: translateY(-2px);
 }
+
+/* ---------------------------
+   Dark-mode unified header
+   ---------------------------
+   When <header> has the .dark class (or body.dark/main.dark),
+   make header and all nav buttons share the same dark background,
+   and light them up slightly on hover.
+*/
+
+/* Use --color-background / --color-on-background when available (main.css sets these in dark mode).
+   Fallback to the local header variables above if not present.
+*/
+header.dark,
+body.dark header,
+.main.dark header {
+    /* ensure header background uses the theme variable if present */
+    background-color: var(--color-background, var(--header-dark-bg));
+}
+
+/* Keep nav transparent — header provides background */
+header.dark .nav,
+body.dark header .nav {
+    background-color: transparent;
+}
+
+/* Make nav elements blend into the header in dark mode */
+header.dark .nav__tab,
+header.dark .nav__icon,
+header.dark .nav__cta,
+body.dark header .nav__tab,
+body.dark header .nav__icon,
+body.dark header .nav__cta {
+    background-color: var(--color-background, var(--header-dark-bg));
+    color: var(--color-on-background, var(--header-dark-text));
+    border: none !important;
+    box-shadow: none;
+    transition: background-color 0.22s ease, color 0.12s ease;
+}
+
+/* Hover effect in dark mode — subtle lightening */
+header.dark .nav__tab:hover,
+header.dark .nav__icon:hover,
+header.dark .nav__cta:hover,
+body.dark header .nav__tab:hover,
+body.dark header .nav__icon:hover,
+body.dark header .nav__cta:hover {
+    background-color: var(--header-dark-hover, rgba(255,255,255,0.06));
+    color: var(--color-on-background, var(--header-dark-text));
+}
+
+/* Slightly stronger hover for active/selected state in dark mode */
+header.dark .nav__tab.router-link-active,
+body.dark header .nav__tab.router-link-active {
+    background-color: var(--header-dark-hover-strong, rgba(255,255,255,0.08));
+    color: var(--color-on-background, var(--header-dark-text));
+}
+
+/* Make submit CTA match header in dark mode (no bright white button) */
+header.dark .nav__actions .nav__cta,
+body.dark header .nav__actions .nav__cta {
+    background-color: var(--color-background, var(--header-dark-bg));
+    color: var(--color-on-background, var(--header-dark-text));
+    box-shadow: none; /* remove light-mode shadow */
+    transform: none;
+}
+
+/* Keep the subtle hover lift for CTA in dark mode but using lighten color */
+header.dark .nav__actions .nav__cta:hover:not(:active),
+body.dark header .nav__actions .nav__cta:hover:not(:active) {
+    background-color: var(--header-dark-hover, rgba(255,255,255,0.06));
+    transform: translateY(-2px);
+}
+
+/* Focus styles (keyboard accessibility) in dark mode */
+header.dark .nav__tab:focus,
+header.dark .nav__icon:focus,
+header.dark .nav__cta:focus,
+body.dark header .nav__tab:focus,
+body.dark header .nav__icon:focus,
+body.dark header .nav__cta:focus {
+    outline: 2px solid rgba(255,255,255,0.08);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+/* If page has a light header (header:not(.dark)), preserve previous light-mode icon/filter tweaks */
+header:not(.dark) .nav__icon img {
+    filter: brightness(0) saturate(100%);
+}
+
+/* End of file */
