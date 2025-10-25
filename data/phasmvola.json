@@ -9,6 +9,18 @@
     "password": "Copyable",
     "records": [
 		{
+		   "user": "GreenCat",
+		   "link": "iforgot",
+		   "percent": 100,
+		   "hz": 240
+		},
+		{
+		   "user": "Fejugae",
+		   "link": "https://youtu.be/yB_UhcjeGHI",
+		   "percent": 57,
+		   "hz": 240
+		},
+		{
 		   "user": "Luna",
 		   "link": "https://youtu.be/H5I4wesd9LU",
 		   "percent": 53,
