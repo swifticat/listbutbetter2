@@ -4,10 +4,6 @@
     justify-content: flex-start; /* levels left, guidelines right */
     gap: 2rem;
     align-items: flex-start;
-    position: relative;
-    min-height: 100vh;
-    background-color: var(--color-background);
-    background-image: none;
 }
 
 .page-list .list-container {
@@ -31,9 +27,9 @@
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* ensure children don't bleed out and corners stay clean */
     background-clip: padding-box;
 }
 
@@ -47,17 +43,16 @@ main:not(.dark) .level-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
-    overflow: visible;
+    overflow: visible; /* keep previous light-mode behavior */
 }
 
-/* THUMBNAILS */
 .thumbnail {
     flex-shrink: 0;
     width: 160px;
     height: 90px;
-    overflow: hidden;
+    overflow: hidden; /* clip thumbnail to rounded corners */
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 0; /* removed rounding */
+    border-radius: 6px;
 }
 
 .thumbnail img {
@@ -65,8 +60,15 @@ main:not(.dark) .level-box {
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 0;
 }
+
+/* Make thumbnail corners align with level-box corners on the left */
+.level-box .thumbnail {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* If you later add a thumbnail that needs inner rounding, it'll be clipped by overflow hidden */
 
 /* LEVEL INFO */
 .level-info {
@@ -83,7 +85,9 @@ main:not(.dark) .level-box {
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0;
+    white-space: normal;
     word-break: break-word;
+    overflow-wrap: anywhere;
     line-height: 1.4;
     position: relative;
     top: 8px;
@@ -102,15 +106,19 @@ main:not(.dark) .level-box {
     font-size: 1rem;
     font-weight: 400;
     margin-top: 16px;
-    color: #333333;
+    font-style: normal;
+    color: #333333; /* slightly gray black */
 }
 
 .level-info .author .author-name {
-    color: #000000;
+    color: #000000; /* pure black for fetched author */
     font-weight: 500;
 }
 
-main.dark .level-info .author,
+main.dark .level-info .author {
+    color: var(--color-on-primary);
+}
+
 main.dark .level-info .author .author-name {
     color: var(--color-on-primary);
 }
@@ -121,6 +129,7 @@ main.dark .level-info .author .author-name {
     font-weight: 300;
     margin-top: 8px;
     color: #555555;
+    line-height: 1.3;
 }
 
 .level-info .score-text .score-value {
@@ -128,9 +137,12 @@ main.dark .level-info .author .author-name {
     font-weight: 400;
 }
 
-main.dark .level-info .score-text,
+main.dark .level-info .score-text {
+    color: #bbbbbb;
+}
+
 main.dark .level-info .score-text .score-value {
-    color: #d4d9de;
+    color: #ffffff;
 }
 
 /* GUIDELINES BOX */
@@ -141,7 +153,7 @@ main.dark .level-info .score-text .score-value {
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -165,7 +177,8 @@ main:not(.dark) .guidelines-box {
 
 .guidelines-box h2 {
     font-weight: bold;
-    margin: 1.5rem 0 0.5rem 0;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
 }
 
 .guidelines-box hr {
@@ -184,13 +197,13 @@ main:not(.dark) .guidelines-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    width: 50%;
+    justify-content: space-between; /* push stats to bottom */
+    width: 50%; /* narrower to prevent overlapping guidelines */
     min-height: calc(5 * 90px + 5rem);
     background-color: rgba(0,0,0,0.15);
     padding: 1.5rem;
     gap: 1rem;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     border-radius: 10px;
     transition: all 0.2s;
     margin-bottom: 2rem;
@@ -207,12 +220,36 @@ main:not(.dark) .level-detail-box {
     overflow: visible;
 }
 
+/* Title bigger */
+.level-detail-box h2 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+/* Embedded YouTube */
+.level-detail-box iframe {
+    width: 100%;
+    aspect-ratio: 16/9; /* maintain 16:9 */
+    border-radius: 4px;
+}
+
+/* Bottom stats */
+.level-detail-box p.stats {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1rem;
+}
+
 /* LEVEL RECORDS BOX */
 .level-records-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 50%; /* narrower */
     background-color: rgba(0,0,0,0.1);
     padding: 1rem;
     margin-bottom: 2rem;
@@ -227,23 +264,27 @@ main:not(.dark) .level-records-box {
     color: #000;
 }
 
-/* Record Header */
+/* Records title */
+.level-records-box p {
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+/* Record Header Bar */
 .record-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: rgba(0,0,0,0.9); /* pitch black with opacity */
+    background-color: #111; /* black header */
     color: #fff;
     padding: 8px;
     border-radius: 4px 4px 0 0;
     font-weight: 500;
     text-align: center;
+    font-family: "Lexend Deca", sans-serif;
 }
 
-main.dark .record-header {
-    background-color: rgba(0,0,0,0.95);
-}
-
+/* Ensure header columns center their content */
 .record-header div {
     flex: 1;
     display: flex;
@@ -251,7 +292,7 @@ main.dark .record-header {
     align-items: center;
 }
 
-/* Record Rows */
+/* Record Rows with striped pattern */
 .record-row {
     display: flex;
     justify-content: space-between;
@@ -261,11 +302,25 @@ main.dark .record-header {
     font-family: "Lexend Deca", sans-serif;
 }
 
-main:not(.dark) .record-row.even-row { background-color: #f0f0f0; }
-main:not(.dark) .record-row.odd-row { background-color: #d9d9d9; }
-main.dark .record-row.even-row { background: rgba(255,255,255,0.02); }
-main.dark .record-row.odd-row { background: rgba(255,255,255,0.01); }
+/* Light mode stripes */
+main:not(.dark) .record-row.even-row {
+    background-color: #f0f0f0; /* light gray */
+}
 
+main:not(.dark) .record-row.odd-row {
+    background-color: #d9d9d9; /* darker gray */
+}
+
+/* Dark mode stripes (subtle on new panels) */
+main.dark .record-row.even-row {
+    background: rgba(255,255,255,0.02);
+}
+
+main.dark .record-row.odd-row {
+    background: rgba(255,255,255,0.01);
+}
+
+/* Center text in each half */
 .record-row div {
     flex: 1;
     display: flex;
@@ -273,67 +328,213 @@ main.dark .record-row.odd-row { background: rgba(255,255,255,0.01); }
     align-items: center;
 }
 
-/* Dark Mode Background Adjustments */
+.record-row a {
+    color: #00f;
+    text-decoration: underline;
+}
+
+/* Buttons inside level detail box */
+.level-detail-box button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgba(0,0,0,0.2);
+    color: var(--color-on-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s;
+}
+
+.level-detail-box button:hover {
+    background-color: rgba(0,0,0,0.35);
+}
+
+main:not(.dark) .level-detail-box button {
+    background-color: #ddd;
+    color: #000;
+}
+
+main:not(.dark) .level-detail-box button:hover {
+    background-color: #ccc;
+}
+
+/* Instantly shift guidelines box right by 100px when in detail view */
+.guidelines-box.shifted {
+    transform: translateX(100px);
+    transition: none; /* instant */
+}
+
+.guidelines-box.shifted main {
+    /* no-op, kept for future adjustments */
+}
+
+/* --- Light mode background for List Page --- */
+
+/* Default base for .page-list: no background image by default; use variables */
+.page-list {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  background-image: none;
+}
+
+/* Move the background to <body> in light mode so it stays under everything and remains fixed.
+   We mirror the theme on the <body> via main.js so this works reliably.
+*/
+body:not(.dark) {
+  background-image: url("/assets/background-light.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #ffffff;
+}
+
+/* Dark mode page background: horizontal gradient (black -> deep desaturated blue) */
 body.dark {
-    background-image: linear-gradient(90deg, #000000 0%, #0a2235 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #071a2b;
+  background-image: linear-gradient(90deg, #000000 0%, #071a2b 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #071a2b;
 }
 
+/* Make main transparent in dark mode so body gradient shows through */
 body.dark main {
-    background-color: transparent;
+  background-color: transparent;
 }
 
-/* Dark Mode Box Gradient */
+/* Boxes should use the same gradient but lighter (semi-opaque) so they read as panels */
 main.dark .level-box,
 main.dark .guidelines-box,
 main.dark .level-detail-box,
 main.dark .level-records-box {
-    background-image: linear-gradient(90deg, rgba(10, 20, 30, 0.65) 0%, rgba(10, 40, 65, 0.65) 100%);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.65);
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(7,26,43,0.55) 100%);
+    background-blend-mode: overlay;
     color: var(--color-on-primary);
-    border: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    border: none; /* remove the faint white border that created the light rim */
+    overflow: hidden;
+    background-clip: padding-box;
 }
 
-/* Slightly lighter for guidelines box */
+/* Slightly lighter variant for guidelines to make it feel more "panel-like" */
 main.dark .guidelines-box {
-    background-image: linear-gradient(90deg, rgba(12, 25, 38, 0.68) 0%, rgba(18, 40, 60, 0.68) 100%);
+    background-image: linear-gradient(90deg, rgba(6,10,14,0.65) 0%, rgba(12,30,46,0.65) 100%);
 }
 
-/* Gradient text (Gold/Silver/Bronze) */
-.level-box[data-rank="1"] .title,
-.level-box:nth-child(1) .title {
-    background-image: linear-gradient(90deg, #fff6cc 0%, #ffd54d 100%);
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+/* Record header in dark mode — keep it readable */
+main.dark .record-header {
+    background-color: rgba(255,255,255,0.05);
+    color: #ffffff;
 }
 
-.level-box[data-rank="2"] .title,
-.level-box:nth-child(2) .title {
-    background-image: linear-gradient(90deg, #f5f7f9 0%, #bfc2c4 100%);
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+/* Ensure the text colors are legible on the darker panels */
+main.dark .level-info .author,
+main.dark .level-info .author .author-name,
+main.dark .level-info .score-text,
+main.dark .level-info .score-text .score-value {
+    color: #d4d9de;
 }
 
-.level-box[data-rank="3"] .title,
-.level-box:nth-child(3) .title {
-    background-image: linear-gradient(90deg, #f0d2b0 0%, #b5733b 100%);
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+/* Ensure thumbnails from assets and YouTube look identical */
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
 }
 
-/* Subtle stronger shadows for boxes */
-.level-box,
-.guidelines-box,
-.level-detail-box {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
-}
-
-/* General cleanups */
+/* Scrolling safety */
 html, body {
-    overflow-y: auto;
+  overflow-y: auto;
 }
+
+/* Close button for guidelines box (keeps previous look but tuned for dark mode panels) */
+.guidelines-box .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    color: var(--color-on-primary);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: background 0.16s ease;
+}
+
+.guidelines-box .close-btn:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+main:not(.dark) .guidelines-box .close-btn {
+    background: #ddd;
+    color: #000;
+}
+
+main:not(.dark) .guidelines-box .close-btn:hover {
+    background: #ccc;
+}
+
+/* -------------------------------
+   Top-3 gradient text (gold/silver/bronze)
+   - applies to .title .rank and .title .name
+   - supports both attribute selector data-rank and nth-child fallback
+   ------------------------------- */
+
+/* helper for gradient text */
+.rank-gradient, .name-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Gold gradient (rank 1) */
+.level-box[data-rank="1"] .title .rank,
+.level-box[data-rank="1"] .title .name,
+.level-box:nth-child(1) .title .rank,
+.level-box:nth-child(1) .title .name {
+  background-image: linear-gradient(180deg, #ffd54d 0%, #fff9e6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+/* Silver gradient (rank 2) */
+.level-box[data-rank="2"] .title .rank,
+.level-box[data-rank="2"] .title .name,
+.level-box:nth-child(2) .title .rank,
+.level-box:nth-child(2) .title .name {
+  background-image: linear-gradient(180deg, #cfcfcf 0%, #f5f7f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+}
+
+/* Bronze gradient (rank 3) */
+.level-box[data-rank="3"] .title .rank,
+.level-box[data-rank="3"] .title .name,
+.level-box:nth-child(3) .title .rank,
+.level-box:nth-child(3) .title .name {
+  background-image: linear-gradient(180deg, #b5733b 0%, #e4b58b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+}
+
+/* Note:
+   - The dash " – " between rank and name is plain text in the template and is therefore
+     unaffected by the gradient styles (only the .rank and .name spans are styled).
+   - For best results, you can add :data-rank="rank" to the .level-box in list.js so the CSS
+     targets levels by their actual rank value rather than DOM position. */
