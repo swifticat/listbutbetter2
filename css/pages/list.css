@@ -478,3 +478,63 @@ main:not(.dark) .guidelines-box .close-btn {
 main:not(.dark) .guidelines-box .close-btn:hover {
     background: #ccc;
 }
+
+/* -------------------------------
+   Top-3 gradient text (gold/silver/bronze)
+   - applies to .title .rank and .title .name
+   - supports both attribute selector data-rank and nth-child fallback
+   ------------------------------- */
+
+/* helper for gradient text */
+.rank-gradient, .name-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Gold gradient (rank 1) */
+.level-box[data-rank="1"] .title .rank,
+.level-box[data-rank="1"] .title .name,
+.level-box:nth-child(1) .title .rank,
+.level-box:nth-child(1) .title .name {
+  background-image: linear-gradient(180deg, #ffd54d 0%, #fff9e6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+/* Silver gradient (rank 2) */
+.level-box[data-rank="2"] .title .rank,
+.level-box[data-rank="2"] .title .name,
+.level-box:nth-child(2) .title .rank,
+.level-box:nth-child(2) .title .name {
+  background-image: linear-gradient(180deg, #cfcfcf 0%, #f5f7f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+}
+
+/* Bronze gradient (rank 3) */
+.level-box[data-rank="3"] .title .rank,
+.level-box[data-rank="3"] .title .name,
+.level-box:nth-child(3) .title .rank,
+.level-box:nth-child(3) .title .name {
+  background-image: linear-gradient(180deg, #b5733b 0%, #e4b58b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+}
+
+/* Note:
+   - The dash " – " between rank and name is plain text in the template and is therefore
+     unaffected by the gradient styles (only the .rank and .name spans are styled).
+   - For best results, you can add :data-rank="rank" to the .level-box in list.js so the CSS
+     targets levels by their actual rank value rather than DOM position. */
