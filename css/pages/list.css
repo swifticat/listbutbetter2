@@ -28,6 +28,7 @@
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
 }
 
 .level-box:hover {
@@ -48,6 +49,7 @@ main:not(.dark) .level-box {
     height: 90px;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
 }
 
 .thumbnail img {
@@ -148,6 +150,7 @@ main.dark .level-info .score-text .score-value {
     margin-top: 2rem;
     position: relative;
     left: -480px;
+    border-radius: 8px;
     /* no transform here by default; shifted state overrides */
 }
 
@@ -378,28 +381,78 @@ body:not(.dark) {
   background-color: #ffffff;
 }
 
-/* Remove the background image in dark mode and use the dark color */
+/* Dark mode page background: horizontal gradient (black -> deep desaturated blue) */
 body.dark {
-  background-image: none;
-  background-color: var(--color-background);
+  background-image: linear-gradient(90deg, #000000 0%, #071a2b 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #071a2b;
 }
 
-/* When body holds the image, make main transparent so the image shows through behind content */
-body:not(.dark) main {
+/* Make main transparent in dark mode so body gradient shows through */
+body.dark main {
   background-color: transparent;
 }
 
-/* Make sure scrolling works on the page */
+/* Boxes should use the same gradient but lighter (semi-opaque) so they read as panels */
+main.dark .level-box,
+main.dark .guidelines-box,
+main.dark .level-detail-box,
+main.dark .level-records-box {
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(7,26,43,0.55) 100%);
+    background-blend-mode: overlay;
+    color: var(--color-on-primary);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Slightly lighter variant for guidelines to make it feel more "panel-like" */
+main.dark .guidelines-box {
+    background-image: linear-gradient(90deg, rgba(6,10,14,0.65) 0%, rgba(12,30,46,0.65) 100%);
+}
+
+/* Record header in dark mode — keep it readable */
+main.dark .record-header {
+    background-color: rgba(255,255,255,0.05);
+    color: #ffffff;
+}
+
+/* Ensure the text colors are legible on the darker panels */
+main.dark .level-info .author,
+main.dark .level-info .author .author-name,
+main.dark .level-info .score-text,
+main.dark .level-info .score-text .score-value {
+    color: #d4d9de;
+}
+
+/* Records stripes updated to match new theme */
+main.dark .record-row.even-row {
+    background: rgba(255,255,255,0.02);
+}
+main.dark .record-row.odd-row {
+    background: rgba(255,255,255,0.01);
+}
+
+/* Ensure thumbnails from assets and YouTube look identical */
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+/* Scrolling safety */
 html, body {
   overflow-y: auto;
 }
 
-/* Close button for guidelines box */
+/* Close button for guidelines box (keeps previous look but tuned for dark mode panels) */
 .guidelines-box .close-btn {
     position: absolute;
     top: 8px;
     right: 8px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.03);
     border: none;
     color: var(--color-on-primary);
     font-size: 1.2rem;
@@ -407,11 +460,11 @@ html, body {
     cursor: pointer;
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
-    transition: all 0.2s;
+    transition: background 0.16s ease;
 }
 
 .guidelines-box .close-btn:hover {
-    background: rgba(0,0,0,0.35);
+    background: rgba(255,255,255,0.06);
 }
 
 main:not(.dark) .guidelines-box .close-btn {
@@ -422,14 +475,3 @@ main:not(.dark) .guidelines-box .close-btn {
 main:not(.dark) .guidelines-box .close-btn:hover {
     background: #ccc;
 }
-
-/* Ensure thumbnails from assets and YouTube look identical */
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    /* keep existing rounded corners if you'd like */
-    border-radius: 0;
-}
-
