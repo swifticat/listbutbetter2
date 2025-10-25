@@ -5,7 +5,7 @@
     --color-on-primary: white;
 
     /* Dark-mode header/buttons:
-       make header & buttons the same base tone; hover uses a lighter tone */
+       header & buttons base color and hover tone (same base for both) */
     --header-dark-base: rgba(18, 20, 22, 0.85);   /* base dark tone for header + buttons */
     --header-dark-hover: rgba(255, 255, 255, 0.06);/* lighter hover tone */
     --header-dark-hover-strong: rgba(255,255,255,0.08);
@@ -112,8 +112,6 @@ header.dark,
 body.dark header,
 main.dark header {
     background-color: var(--header-dark-base);
-    /* keep translucency if desired (base contains alpha) */
-    /* optional: backdrop-filter: blur(4px); */
 }
 
 /* Keep nav transparent — header provides background */
@@ -162,7 +160,7 @@ main.dark header .nav__tab.router-link-active {
     color: var(--header-dark-text);
 }
 
-/* CTA in dark mode same as header/buttons. Keep hover lift but with the same hover tone */
+/* Submit CTA in dark mode should match header/buttons. Keep hover lift but with the same hover tone */
 header.dark .nav__actions .nav__cta,
 body.dark header .nav__actions .nav__cta,
 main.dark header .nav__actions .nav__cta {
@@ -179,19 +177,28 @@ main.dark header .nav__actions .nav__cta:hover:not(:active) {
     transform: translateY(-2px);
 }
 
-/* Focus styles (keyboard accessibility) in dark mode */
-header.dark .nav__tab:focus,
-header.dark .nav__icon:focus,
-header.dark .nav__cta:focus,
-body.dark header .nav__tab:focus,
-body.dark header .nav__icon:focus,
-body.dark header .nav__cta:focus,
-main.dark header .nav__tab:focus,
-main.dark header .nav__icon:focus,
-main.dark header .nav__cta:focus {
-    outline: 2px solid rgba(255,255,255,0.06);
-    outline-offset: 2px;
-    box-shadow: none;
+/* ---------------------------
+   EXCEPTION: remove hover/fade effect for Discord link + theme toggle (utilities area)
+   ---------------------------
+   These live in the `.utilities` container in your header HTML.
+   We disable the hover color/transition so the two icons remain static.
+*/
+header.dark .utilities .nav__icon,
+body.dark header .utilities .nav__icon,
+main.dark header .utilities .nav__icon {
+    /* match the header/button base color and disable hover transition */
+    background-color: var(--header-dark-base);
+    color: var(--header-dark-text);
+    transition: none;
+}
+
+/* ensure hover does nothing for those icons */
+header.dark .utilities .nav__icon:hover,
+body.dark header .utilities .nav__icon:hover,
+main.dark header .utilities .nav__icon:hover {
+    background-color: var(--header-dark-base);
+    color: var(--header-dark-text);
+    cursor: pointer; /* keep pointer but no fade */
 }
 
 /* Keep the light-mode icon tweak for header:not(.dark) so icons remain dark in light mode */
