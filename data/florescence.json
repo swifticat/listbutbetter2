@@ -7,5 +7,12 @@
     "verification": "https://youtu.be/hJUU2xsN-Y4",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+        {
+		   "user": "kubikk",
+		   "link": "https://www.youtube.com/watch?v=SOn1gWzXMew",
+		   "percent": 100,
+		   "hz": 240
+		}
+    ]
 }
