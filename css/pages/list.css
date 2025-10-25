@@ -50,9 +50,9 @@ main:not(.dark) .level-box {
     flex-shrink: 0;
     width: 160px;
     height: 90px;
-    overflow: hidden; /* clip thumbnail to rounded corners */
+    overflow: hidden; /* clip thumbnail to square */
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
+    border-radius: 0; /* thumbnails are now square */
 }
 
 .thumbnail img {
@@ -60,15 +60,10 @@ main:not(.dark) .level-box {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 0; /* ensure image corners are square */
 }
 
-/* Make thumbnail corners align with level-box corners on the left */
-.level-box .thumbnail {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-/* If you later add a thumbnail that needs inner rounding, it'll be clipped by overflow hidden */
+/* NOTE: removed the thumbnail corner alignment rules so the thumbnails remain square */
 
 /* LEVEL INFO */
 .level-info {
@@ -91,6 +86,11 @@ main:not(.dark) .level-box {
     line-height: 1.4;
     position: relative;
     top: 8px;
+    /* allow gradient text + glow to clip to text */
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* fallback for gradient text */
 }
 
 .level-info .title .rank {
@@ -481,60 +481,49 @@ main:not(.dark) .guidelines-box .close-btn:hover {
 
 /* -------------------------------
    Top-3 gradient text (gold/silver/bronze)
-   - applies to .title .rank and .title .name
+   - applies to the entire .title so the dash is included
    - supports both attribute selector data-rank and nth-child fallback
    ------------------------------- */
 
-/* helper for gradient text */
-.rank-gradient, .name-gradient {
-  background-clip: text;
+/* Gold gradient (rank 1) — horizontal, lighter on left */
+.level-box[data-rank="1"] .title,
+.level-box:nth-child(1) .title {
+  background-image: linear-gradient(90deg, #fff9e6 0%, #ffd54d 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  /* broad, subtle glow (large blur, low alpha) */
+  text-shadow: 0 0 18px rgba(255,213,77,0.10), 0 0 48px rgba(255,213,77,0.04);
   display: inline-block;
 }
 
-/* Gold gradient (rank 1) */
-.level-box[data-rank="1"] .title .rank,
-.level-box[data-rank="1"] .title .name,
-.level-box:nth-child(1) .title .rank,
-.level-box:nth-child(1) .title .name {
-  background-image: linear-gradient(180deg, #ffd54d 0%, #fff9e6 100%);
+/* Silver gradient (rank 2) — horizontal, lighter on left */
+.level-box[data-rank="2"] .title,
+.level-box:nth-child(2) .title {
+  background-image: linear-gradient(90deg, #f5f7f9 0%, #cfcfcf 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+  color: transparent;
+  text-shadow: 0 0 18px rgba(207,207,207,0.10), 0 0 48px rgba(207,207,207,0.04);
+  display: inline-block;
 }
 
-/* Silver gradient (rank 2) */
-.level-box[data-rank="2"] .title .rank,
-.level-box[data-rank="2"] .title .name,
-.level-box:nth-child(2) .title .rank,
-.level-box:nth-child(2) .title .name {
-  background-image: linear-gradient(180deg, #cfcfcf 0%, #f5f7f9 100%);
+/* Bronze gradient (rank 3) — horizontal, lighter on left */
+.level-box[data-rank="3"] .title,
+.level-box:nth-child(3) .title {
+  background-image: linear-gradient(90deg, #e4b58b 0%, #b5733b 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
-}
-
-/* Bronze gradient (rank 3) */
-.level-box[data-rank="3"] .title .rank,
-.level-box[data-rank="3"] .title .name,
-.level-box:nth-child(3) .title .rank,
-.level-box:nth-child(3) .title .name {
-  background-image: linear-gradient(180deg, #b5733b 0%, #e4b58b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+  text-shadow: 0 0 18px rgba(181,115,59,0.10), 0 0 48px rgba(181,115,59,0.04);
+  display: inline-block;
 }
 
 /* Note:
-   - The dash " – " between rank and name is plain text in the template and is therefore
-     unaffected by the gradient styles (only the .rank and .name spans are styled).
-   - For best results, you can add :data-rank="rank" to the .level-box in list.js so the CSS
-     targets levels by their actual rank value rather than DOM position. */
+   - The .title element contains the dash now, so it will be included in the gradient.
+   - For robust behavior, add :data-rank="rank" to the .level-box element in list.js so the CSS
+     targets based on the actual rank value instead of DOM order. The nth-child fallback is used only
+     when the data attribute isn't present. */
