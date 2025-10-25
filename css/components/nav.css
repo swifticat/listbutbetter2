@@ -4,11 +4,16 @@
     --color-primary: #000000;
     --color-on-primary: white;
 
-    /* Dark-mode tweaks (these will be overridden by body/main/header .dark variables if present) */
-    --header-dark-bg: #111;       /* fallback header bg in dark mode */
-    --header-dark-hover: rgba(255,255,255,0.06);
-    --header-dark-hover-strong: rgba(255,255,255,0.08);
-    --header-dark-text: #eeeeee;
+    /* Header & nav specific (dark mode) — tweak these to taste */
+    /* header background (darker than page background) */
+    --header-dark-bg: #0c0d0f;         /* very dark header */
+    /* button background (slightly lighter than header so buttons separate) */
+    --header-btn-bg: #141618;         /* nav buttons / CTA */
+    /* hover states (lighten slightly) */
+    --header-btn-hover: rgba(255,255,255,0.04);
+    --header-btn-hover-strong: rgba(255,255,255,0.06);
+    /* text color for buttons in dark header */
+    --header-dark-text: #e9ecef;
 }
 
 /* Navigation container */
@@ -100,74 +105,80 @@
 }
 
 /* ---------------------------
-   Dark-mode unified header
+   Dark-mode unified header (darker than page)
    ---------------------------
-   When <header> has the .dark class (or body.dark/main.dark),
-   make header and all nav buttons share the same dark background,
-   and light them up slightly on hover.
+   header is darker than the page. Buttons sit slightly lighter than the header
+   so they remain separable. Hover slightly lightens the buttons.
 */
 
-/* Use --color-background / --color-on-background when available (main.css sets these in dark mode).
-   Fallback to the local header variables above if not present.
-*/
+/* Target header when dark class is present on header OR body OR main */
 header.dark,
 body.dark header,
-.main.dark header {
-    /* ensure header background uses the theme variable if present */
-    background-color: var(--color-background, var(--header-dark-bg));
+main.dark header {
+    background-color: var(--header-dark-bg);
 }
 
 /* Keep nav transparent — header provides background */
 header.dark .nav,
-body.dark header .nav {
+body.dark header .nav,
+main.dark header .nav {
     background-color: transparent;
 }
 
-/* Make nav elements blend into the header in dark mode */
+/* Nav elements: buttons, icons, CTAs */
 header.dark .nav__tab,
 header.dark .nav__icon,
 header.dark .nav__cta,
 body.dark header .nav__tab,
 body.dark header .nav__icon,
-body.dark header .nav__cta {
-    background-color: var(--color-background, var(--header-dark-bg));
-    color: var(--color-on-background, var(--header-dark-text));
+body.dark header .nav__cta,
+main.dark header .nav__tab,
+main.dark header .nav__icon,
+main.dark header .nav__cta {
+    background-color: var(--header-btn-bg);
+    color: var(--header-dark-text);
     border: none !important;
     box-shadow: none;
     transition: background-color 0.22s ease, color 0.12s ease;
 }
 
-/* Hover effect in dark mode — subtle lightening */
+/* Hover effect — subtle lightening on buttons */
 header.dark .nav__tab:hover,
 header.dark .nav__icon:hover,
 header.dark .nav__cta:hover,
 body.dark header .nav__tab:hover,
 body.dark header .nav__icon:hover,
-body.dark header .nav__cta:hover {
-    background-color: var(--header-dark-hover, rgba(255,255,255,0.06));
-    color: var(--color-on-background, var(--header-dark-text));
+body.dark header .nav__cta:hover,
+main.dark header .nav__tab:hover,
+main.dark header .nav__icon:hover,
+main.dark header .nav__cta:hover {
+    background-color: var(--header-btn-hover);
+    color: var(--header-dark-text);
 }
 
-/* Slightly stronger hover for active/selected state in dark mode */
+/* Stronger hover/active for selected tab */
 header.dark .nav__tab.router-link-active,
-body.dark header .nav__tab.router-link-active {
-    background-color: var(--header-dark-hover-strong, rgba(255,255,255,0.08));
-    color: var(--color-on-background, var(--header-dark-text));
+body.dark header .nav__tab.router-link-active,
+main.dark header .nav__tab.router-link-active {
+    background-color: var(--header-btn-hover-strong);
+    color: var(--header-dark-text);
 }
 
-/* Make submit CTA match header in dark mode (no bright white button) */
+/* Submit CTA in dark mode should match header/button tone (no bright white) */
 header.dark .nav__actions .nav__cta,
-body.dark header .nav__actions .nav__cta {
-    background-color: var(--color-background, var(--header-dark-bg));
-    color: var(--color-on-background, var(--header-dark-text));
+body.dark header .nav__actions .nav__cta,
+main.dark header .nav__actions .nav__cta {
+    background-color: var(--header-btn-bg);
+    color: var(--header-dark-text);
     box-shadow: none; /* remove light-mode shadow */
     transform: none;
 }
 
-/* Keep the subtle hover lift for CTA in dark mode but using lighten color */
+/* CTA hover using the same hover color but lifting slightly */
 header.dark .nav__actions .nav__cta:hover:not(:active),
-body.dark header .nav__actions .nav__cta:hover:not(:active) {
-    background-color: var(--header-dark-hover, rgba(255,255,255,0.06));
+body.dark header .nav__actions .nav__cta:hover:not(:active),
+main.dark header .nav__actions .nav__cta:hover:not(:active) {
+    background-color: var(--header-btn-hover);
     transform: translateY(-2px);
 }
 
@@ -177,15 +188,16 @@ header.dark .nav__icon:focus,
 header.dark .nav__cta:focus,
 body.dark header .nav__tab:focus,
 body.dark header .nav__icon:focus,
-body.dark header .nav__cta:focus {
-    outline: 2px solid rgba(255,255,255,0.08);
+body.dark header .nav__cta:focus,
+main.dark header .nav__tab:focus,
+main.dark header .nav__icon:focus,
+main.dark header .nav__cta:focus {
+    outline: 2px solid rgba(255,255,255,0.06);
     outline-offset: 2px;
     box-shadow: none;
 }
 
-/* If page has a light header (header:not(.dark)), preserve previous light-mode icon/filter tweaks */
+/* Keep the light-mode icon tweak for header:not(.dark) so icons remain dark in light mode */
 header:not(.dark) .nav__icon img {
     filter: brightness(0) saturate(100%);
 }
-
-/* End of file */
