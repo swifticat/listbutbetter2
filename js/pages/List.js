@@ -142,6 +142,7 @@ export default {
                     class="level-box"
                     v-for="([err, rank, level], i) in list"
                     :key="level.id"
+                    :data-rank="rank"
                     @click="selectLevel(level)"
                     style="cursor:pointer"
                 >
