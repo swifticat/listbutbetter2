@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-/* LEVEL BOX DEFAULT */
+/* LEVEL BOX DEFAULT - no rounding, slightly brighter panels in dark mode */
 .level-box {
     display: flex;
     align-items: center;
@@ -27,10 +27,10 @@
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-    border-radius: 8px;
-    overflow: hidden; /* ensure children don't bleed out and corners stay clean */
-    background-clip: padding-box;
+    box-shadow: 0 6px 20px rgba(7,26,43,0.45);
+    border-radius: 0; /* removed rounding */
+    border: none; /* remove faint borders that created rims */
+    overflow: visible;
 }
 
 .level-box:hover {
@@ -43,16 +43,17 @@ main:not(.dark) .level-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
-    overflow: visible; /* keep previous light-mode behavior */
 }
 
+/* THUMBNAIL - no rounding */
 .thumbnail {
     flex-shrink: 0;
     width: 160px;
     height: 90px;
-    overflow: hidden; /* clip thumbnail to rounded corners */
+    overflow: hidden;
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
+    border-radius: 0; /* removed rounding */
+    border: none;
 }
 
 .thumbnail img {
@@ -60,15 +61,8 @@ main:not(.dark) .level-box {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 0; /* ensure image corners are square */
 }
-
-/* Make thumbnail corners align with level-box corners on the left */
-.level-box .thumbnail {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-/* If you later add a thumbnail that needs inner rounding, it'll be clipped by overflow hidden */
 
 /* LEVEL INFO */
 .level-info {
@@ -138,22 +132,22 @@ main.dark .level-info .author .author-name {
 }
 
 main.dark .level-info .score-text {
-    color: #bbbbbb;
+    color: #c9d2d8; /* slightly brighter text for legibility */
 }
 
 main.dark .level-info .score-text .score-value {
-    color: #ffffff;
+    color: #f3f7f9;
 }
 
-/* GUIDELINES BOX */
+/* GUIDELINES BOX - squared corners, brighter panel */
 .guidelines-box {
     width: 330px;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0,0,0,0.18);
     color: var(--color-on-primary);
     padding: 1rem;
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 20px rgba(7,26,43,0.45);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -162,17 +156,16 @@ main.dark .level-info .score-text .score-value {
     margin-top: 2rem;
     position: relative;
     left: -480px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-clip: padding-box;
+    border-radius: 0; /* removed rounding */
+    border: none; /* remove rim */
 }
 
+/* Light-mode guidelines */
 main:not(.dark) .guidelines-box {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
-    overflow: visible;
 }
 
 .guidelines-box h2 {
@@ -192,7 +185,7 @@ main:not(.dark) .guidelines-box {
     font-size: 0.95rem;
 }
 
-/* LEVEL DETAIL BOX */
+/* LEVEL DETAIL BOX - squared, brighter */
 .level-detail-box {
     display: flex;
     flex-direction: column;
@@ -200,16 +193,16 @@ main:not(.dark) .guidelines-box {
     justify-content: space-between; /* push stats to bottom */
     width: 50%; /* narrower to prevent overlapping guidelines */
     min-height: calc(5 * 90px + 5rem);
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0,0,0,0.18);
     padding: 1.5rem;
     gap: 1rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(7,26,43,0.45);
+    border-radius: 0; /* removed rounding */
     transition: all 0.2s;
     margin-bottom: 2rem;
     font-family: "Lexend Deca", sans-serif;
-    overflow: hidden;
-    background-clip: padding-box;
+    border: none;
+    overflow: visible;
 }
 
 main:not(.dark) .level-detail-box {
@@ -217,7 +210,6 @@ main:not(.dark) .level-detail-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
-    overflow: visible;
 }
 
 /* Title bigger */
@@ -233,7 +225,7 @@ main:not(.dark) .level-detail-box {
 .level-detail-box iframe {
     width: 100%;
     aspect-ratio: 16/9; /* maintain 16:9 */
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 /* Bottom stats */
@@ -244,19 +236,20 @@ main:not(.dark) .level-detail-box {
     margin-top: 1rem;
 }
 
-/* LEVEL RECORDS BOX */
+/* LEVEL RECORDS BOX - squared, brighter */
 .level-records-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%; /* narrower */
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.14);
     padding: 1rem;
     margin-bottom: 2rem;
-    border-radius: 10px;
+    border-radius: 0; /* removed rounding */
     gap: 0.5rem;
     font-family: "Lexend Deca", sans-serif;
-    overflow: hidden;
+    border: none;
+    overflow: visible;
 }
 
 main:not(.dark) .level-records-box {
@@ -275,10 +268,10 @@ main:not(.dark) .level-records-box {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: #111; /* black header */
+    background-color: rgba(255,255,255,0.04);
     color: #fff;
     padding: 8px;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0; /* squared */
     font-weight: 500;
     text-align: center;
     font-family: "Lexend Deca", sans-serif;
@@ -292,7 +285,7 @@ main:not(.dark) .level-records-box {
     align-items: center;
 }
 
-/* Record Rows with striped pattern */
+/* Record Rows with subtle stripes */
 .record-row {
     display: flex;
     justify-content: space-between;
@@ -311,11 +304,10 @@ main:not(.dark) .record-row.odd-row {
     background-color: #d9d9d9; /* darker gray */
 }
 
-/* Dark mode stripes (subtle on new panels) */
+/* Dark mode subtle stripes */
 main.dark .record-row.even-row {
     background: rgba(255,255,255,0.02);
 }
-
 main.dark .record-row.odd-row {
     background: rgba(255,255,255,0.01);
 }
@@ -329,7 +321,7 @@ main.dark .record-row.odd-row {
 }
 
 .record-row a {
-    color: #00f;
+    color: #66b0ff; /* slightly desaturated light blue for links */
     text-decoration: underline;
 }
 
@@ -337,9 +329,9 @@ main.dark .record-row.odd-row {
 .level-detail-box button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.22);
     color: var(--color-on-primary);
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     margin-top: 1rem;
     transition: all 0.2s;
@@ -364,33 +356,7 @@ main:not(.dark) .level-detail-box button:hover {
     transition: none; /* instant */
 }
 
-.guidelines-box.shifted main {
-    /* no-op, kept for future adjustments */
-}
-
-/* --- Light mode background for List Page --- */
-
-/* Default base for .page-list: no background image by default; use variables */
-.page-list {
-  position: relative;
-  min-height: 100vh;
-  background-color: var(--color-background);
-  background-image: none;
-}
-
-/* Move the background to <body> in light mode so it stays under everything and remains fixed.
-   We mirror the theme on the <body> via main.js so this works reliably.
-*/
-body:not(.dark) {
-  background-image: url("/assets/background-light.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-color: #ffffff;
-}
-
-/* Dark mode page background: horizontal gradient (black -> deep desaturated blue) */
+/* Dark mode adjustments: replace pure black with deep desaturated blue tone and brighten panels */
 body.dark {
   background-image: linear-gradient(90deg, #000000 0%, #071a2b 100%);
   background-repeat: no-repeat;
@@ -403,28 +369,28 @@ body.dark main {
   background-color: transparent;
 }
 
-/* Boxes should use the same gradient but lighter (semi-opaque) so they read as panels */
+/* Panels in dark mode: very dark desaturated blue base, slightly brighter than before */
 main.dark .level-box,
 main.dark .guidelines-box,
 main.dark .level-detail-box,
 main.dark .level-records-box {
-    background-image: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(7,26,43,0.55) 100%);
+    /* deep desaturated blue tones (not pure black) */
+    background-image: linear-gradient(90deg, rgba(4,18,28,0.78) 0%, rgba(7,26,43,0.78) 100%);
     background-blend-mode: overlay;
-    color: var(--color-on-primary);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    border: none; /* remove the faint white border that created the light rim */
-    overflow: hidden;
-    background-clip: padding-box;
+    color: #dfe8eb; /* brighter copy for legibility */
+    box-shadow: 0 8px 30px rgba(4,18,28,0.55);
+    border: none; /* ensure no rim */
+    overflow: visible;
 }
 
-/* Slightly lighter variant for guidelines to make it feel more "panel-like" */
+/* Slightly brighter guidelines panel so it reads as a separate panel */
 main.dark .guidelines-box {
-    background-image: linear-gradient(90deg, rgba(6,10,14,0.65) 0%, rgba(12,30,46,0.65) 100%);
+    background-image: linear-gradient(90deg, rgba(6,22,34,0.82) 0%, rgba(10,30,50,0.82) 100%);
 }
 
 /* Record header in dark mode — keep it readable */
 main.dark .record-header {
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255,255,255,0.03);
     color: #ffffff;
 }
 
@@ -433,10 +399,10 @@ main.dark .level-info .author,
 main.dark .level-info .author .author-name,
 main.dark .level-info .score-text,
 main.dark .level-info .score-text .score-value {
-    color: #d4d9de;
+    color: #dfe8eb;
 }
 
-/* Ensure thumbnails from assets and YouTube look identical */
+/* Ensure thumbnails from assets and YouTube look identical (no rounding) */
 .thumbnail img {
     width: 100%;
     height: 100%;
@@ -450,7 +416,7 @@ html, body {
   overflow-y: auto;
 }
 
-/* Close button for guidelines box (keeps previous look but tuned for dark mode panels) */
+/* Close button for guidelines box (tuned for squared panels) */
 .guidelines-box .close-btn {
     position: absolute;
     top: 8px;
@@ -462,7 +428,7 @@ html, body {
     line-height: 1;
     cursor: pointer;
     padding: 0.25rem 0.5rem;
-    border-radius: 3px;
+    border-radius: 0;
     transition: background 0.16s ease;
 }
 
