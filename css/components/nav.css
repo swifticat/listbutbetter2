@@ -4,14 +4,14 @@
     --color-primary: #000000;
     --color-on-primary: white;
 
-    /* Header & nav specific (dark mode) — tweak these to taste */
-    /* header background (darker than page background) */
-    --header-dark-bg: #0c0d0f;         /* very dark header */
-    /* button background (slightly lighter than header so buttons separate) */
-    --header-btn-bg: #141618;         /* nav buttons / CTA */
+    /* Header & nav specific (dark mode) — translucent header, darker buttons */
+    /* header background (translucent / lighter than pitch black) */
+    --header-dark-bg: rgba(28, 30, 32, 0.55);   /* translucent, lighter tone */
+    /* button background (slightly darker & more opaque than header so buttons separate) */
+    --header-btn-bg: rgba(18, 20, 22, 0.85);    /* darker, slightly opaque */
     /* hover states (lighten slightly) */
-    --header-btn-hover: rgba(255,255,255,0.04);
-    --header-btn-hover-strong: rgba(255,255,255,0.06);
+    --header-btn-hover: rgba(255,255,255,0.06);
+    --header-btn-hover-strong: rgba(255,255,255,0.08);
     /* text color for buttons in dark header */
     --header-dark-text: #e9ecef;
 }
@@ -105,9 +105,9 @@
 }
 
 /* ---------------------------
-   Dark-mode unified header (darker than page)
+   Dark-mode unified header (translucent lighter header, darker buttons)
    ---------------------------
-   header is darker than the page. Buttons sit slightly lighter than the header
+   header is slightly lighter/translucent; buttons sit darker and more opaque
    so they remain separable. Hover slightly lightens the buttons.
 */
 
@@ -116,6 +116,9 @@ header.dark,
 body.dark header,
 main.dark header {
     background-color: var(--header-dark-bg);
+    /* bring back a little translucency effect - if you want blur, uncomment below:
+       backdrop-filter: blur(4px);
+    */
 }
 
 /* Keep nav transparent — header provides background */
@@ -125,7 +128,7 @@ main.dark header .nav {
     background-color: transparent;
 }
 
-/* Nav elements: buttons, icons, CTAs */
+/* Nav elements: buttons, icons, CTAs — darker and more opaque than header */
 header.dark .nav__tab,
 header.dark .nav__icon,
 header.dark .nav__cta,
