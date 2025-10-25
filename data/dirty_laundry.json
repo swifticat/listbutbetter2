@@ -7,5 +7,12 @@
     "verification": "https://youtu.be/5yHlJKBxafc",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+          {
+		   "user": "Catty",
+		   "link": "https://www.youtube.com/watch?v=9W5DBIokvuc",
+		   "percent": 100,
+		   "hz": 240
+		}
+    ]
 }
