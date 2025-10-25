@@ -28,7 +28,9 @@
     gap: 1rem;
     transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-    border-radius: 6px;
+    border-radius: 8px;
+    overflow: hidden; /* ensure children don't bleed out and corners stay clean */
+    background-clip: padding-box;
 }
 
 .level-box:hover {
@@ -41,15 +43,16 @@ main:not(.dark) .level-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
+    overflow: visible; /* keep previous light-mode behavior */
 }
 
 .thumbnail {
     flex-shrink: 0;
     width: 160px;
     height: 90px;
-    overflow: hidden;
+    overflow: hidden; /* clip thumbnail to rounded corners */
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .thumbnail img {
@@ -59,6 +62,15 @@ main:not(.dark) .level-box {
     display: block;
 }
 
+/* Make thumbnail corners align with level-box corners on the left */
+.level-box .thumbnail {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* If you later add a thumbnail that needs inner rounding, it'll be clipped by overflow hidden */
+
+/* LEVEL INFO */
 .level-info {
     display: flex;
     flex-direction: column;
@@ -150,8 +162,9 @@ main.dark .level-info .score-text .score-value {
     margin-top: 2rem;
     position: relative;
     left: -480px;
-    border-radius: 8px;
-    /* no transform here by default; shifted state overrides */
+    border-radius: 10px;
+    overflow: hidden;
+    background-clip: padding-box;
 }
 
 main:not(.dark) .guidelines-box {
@@ -159,6 +172,7 @@ main:not(.dark) .guidelines-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
+    overflow: visible;
 }
 
 .guidelines-box h2 {
@@ -190,10 +204,12 @@ main:not(.dark) .guidelines-box {
     padding: 1.5rem;
     gap: 1rem;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.2s;
     margin-bottom: 2rem;
     font-family: "Lexend Deca", sans-serif;
+    overflow: hidden;
+    background-clip: padding-box;
 }
 
 main:not(.dark) .level-detail-box {
@@ -201,6 +217,7 @@ main:not(.dark) .level-detail-box {
     color: #000000;
     box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     border: 1px dashed #d9d9d9;
+    overflow: visible;
 }
 
 /* Title bigger */
@@ -236,9 +253,10 @@ main:not(.dark) .level-detail-box {
     background-color: rgba(0,0,0,0.1);
     padding: 1rem;
     margin-bottom: 2rem;
-    border-radius: 8px;
+    border-radius: 10px;
     gap: 0.5rem;
     font-family: "Lexend Deca", sans-serif;
+    overflow: hidden;
 }
 
 main:not(.dark) .level-records-box {
@@ -293,13 +311,13 @@ main:not(.dark) .record-row.odd-row {
     background-color: #d9d9d9; /* darker gray */
 }
 
-/* Dark mode stripes */
+/* Dark mode stripes (subtle on new panels) */
 main.dark .record-row.even-row {
-    background-color: #111; /* almost black */
+    background: rgba(255,255,255,0.02);
 }
 
 main.dark .record-row.odd-row {
-    background-color: #1a1a1a; /* very dark gray */
+    background: rgba(255,255,255,0.01);
 }
 
 /* Center text in each half */
@@ -350,15 +368,6 @@ main:not(.dark) .level-detail-box button:hover {
     /* no-op, kept for future adjustments */
 }
 
-/* Dark mode stripes (contrast improved slightly) */
-main.dark .record-row.even-row {
-    background-color: #141414; /* slightly lighter than before */
-}
-
-main.dark .record-row.odd-row {
-    background-color: #222; /* more contrast than #1a1a1a */
-}
-
 /* --- Light mode background for List Page --- */
 
 /* Default base for .page-list: no background image by default; use variables */
@@ -402,8 +411,10 @@ main.dark .level-records-box {
     background-image: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(7,26,43,0.55) 100%);
     background-blend-mode: overlay;
     color: var(--color-on-primary);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    border: none; /* remove the faint white border that created the light rim */
+    overflow: hidden;
+    background-clip: padding-box;
 }
 
 /* Slightly lighter variant for guidelines to make it feel more "panel-like" */
@@ -423,14 +434,6 @@ main.dark .level-info .author .author-name,
 main.dark .level-info .score-text,
 main.dark .level-info .score-text .score-value {
     color: #d4d9de;
-}
-
-/* Records stripes updated to match new theme */
-main.dark .record-row.even-row {
-    background: rgba(255,255,255,0.02);
-}
-main.dark .record-row.odd-row {
-    background: rgba(255,255,255,0.01);
 }
 
 /* Ensure thumbnails from assets and YouTube look identical */
