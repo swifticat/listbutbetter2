@@ -1,309 +1,480 @@
-/* -------------------------
-   List page styles (optimized)
-   ------------------------- */
-
-/* Theme variables */
-:root {
-  --panel-left: rgba(12,32,48,0.86);     /* panel left tone (lighter deep blue) */
-  --panel-right: rgba(18,40,64,0.86);    /* panel right tone (lighter deep blue) */
-  --panel-guidelines-left: rgba(14,34,54,0.88);
-  --panel-guidelines-right: rgba(20,46,70,0.88);
-
-  --panel-shadow: 0 10px 34px rgba(4,18,28,0.65); /* stronger shadow */
-  --panel-text: #dfe8eb; /* readable copy on panels */
-
-  --link-blue: #66b0ff;
-
-  /* top-3 gradients */
-  --gold-grad: linear-gradient(90deg,#ffd24d,#fff9e6);
-  --silver-grad: linear-gradient(90deg,#cfcfcf,#f5f7f9);
-  --bronze-grad: linear-gradient(90deg,#b0733a,#dd9b6f);
-}
-
-/* -------------------------
-   Layout basics
-   ------------------------- */
-
 .page-list {
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* levels left, guidelines right */
+    gap: 2rem;
+    align-items: flex-start;
 }
 
-.list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 2000px;
-  padding: 2rem 1rem;
-  align-items: center;
-  box-sizing: border-box;
+.page-list .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 2000px;
+    padding: 2rem 1rem;
+    align-items: center;
 }
 
-/* -------------------------
-   Panels: level box, details, records, guidelines
-   All panels share same core styling in dark mode.
-   ------------------------- */
-
-.level-box,
-.guidelines-box,
-.level-detail-box,
-.level-records-box {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  color: var(--panel-text);
-  box-shadow: var(--panel-shadow);
-  border: none;         /* remove rims that made light lines */
-  transition: background 0.2s, box-shadow 0.2s;
-  overflow: visible;
-  background-color: rgba(0,0,0,0.14); /* fallback for light mode */
-}
-
-/* per-component sizing/flow */
+/* LEVEL BOX DEFAULT */
 .level-box {
-  align-items: center;
-  justify-content: flex-start;
-  width: 40%;
-  padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--color-on-primary);
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    overflow: hidden; /* ensure children don't bleed out and corners stay clean */
+    background-clip: padding-box;
 }
 
-.level-detail-box {
-  flex-direction: column;
-  width: 50%;
-  min-height: calc(5 * 90px + 5rem);
-  padding: 1.5rem;
+.level-box:hover {
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
-.level-records-box {
-  flex-direction: column;
-  width: 50%;
-  padding: 1rem;
+/* LIGHT MODE OVERRIDES */
+main:not(.dark) .level-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #d9d9d9;
+    overflow: visible; /* keep previous light-mode behavior */
 }
-
-.guidelines-box {
-  width: 330px;
-  flex-direction: column;
-  margin-top: 2rem;
-  position: relative;
-  left: -480px;
-  padding: 1rem;
-}
-
-/* -------------------------
-   Thumbnails & info
-   ------------------------- */
 
 .thumbnail {
-  flex-shrink: 0;
-  width: 160px;
-  height: 90px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.03);
-  border: none;
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    overflow: hidden; /* clip thumbnail to rounded corners */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
 }
 
 .thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 0; /* squared */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
+/* Make thumbnail corners align with level-box corners on the left */
+.level-box .thumbnail {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* If you later add a thumbnail that needs inner rounding, it'll be clipped by overflow hidden */
+
+/* LEVEL INFO */
 .level-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  min-width: 0;
-  font-family: "Lexend Deca", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    font-family: "Lexend Deca", sans-serif;
 }
 
-.title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.4;
-  display: flex;
-  gap: 0.5rem;
-  align-items: baseline;
-  white-space: normal;
-  overflow-wrap: anywhere;
+.level-info .title {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+    position: relative;
+    top: 8px;
 }
 
-.title .rank,
-.title .name { /* rank + name are separately targetable */
-  display: inline-block;
-  font-weight: 700;
-  /* default text color remains readable */
-  color: inherit;
+.level-info .title .rank {
+    font-weight: 700;
 }
 
-/* author/score */
-.level-info .author { margin-top: 16px; font-size: 1rem; color: #c9d2d8; font-weight: 400; }
-.level-info .author .author-name { font-weight: 500; color: var(--panel-text); }
+.level-info .title .name {
+    font-weight: 500;
+}
 
-.level-info .score-text { font-size: 0.8rem; font-weight: 300; margin-top: 8px; color: #c9d2d8; }
+/* Author text */
+.level-info .author {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 16px;
+    font-style: normal;
+    color: #333333; /* slightly gray black */
+}
 
-/* -------------------------
-   Record header & rows
-   ------------------------- */
+.level-info .author .author-name {
+    color: #000000; /* pure black for fetched author */
+    font-weight: 500;
+}
 
+main.dark .level-info .author {
+    color: var(--color-on-primary);
+}
+
+main.dark .level-info .author .author-name {
+    color: var(--color-on-primary);
+}
+
+/* Score text */
+.level-info .score-text {
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 8px;
+    color: #555555;
+    line-height: 1.3;
+}
+
+.level-info .score-text .score-value {
+    color: #000000;
+    font-weight: 400;
+}
+
+main.dark .level-info .score-text {
+    color: #bbbbbb;
+}
+
+main.dark .level-info .score-text .score-value {
+    color: #ffffff;
+}
+
+/* GUIDELINES BOX */
+.guidelines-box {
+    width: 330px;
+    background-color: rgba(0,0,0,0.15);
+    color: var(--color-on-primary);
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-top: 2rem;
+    position: relative;
+    left: -480px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-clip: padding-box;
+}
+
+main:not(.dark) .guidelines-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #d9d9d9;
+    overflow: visible;
+}
+
+.guidelines-box h2 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.guidelines-box hr {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+}
+
+.guidelines-box p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* LEVEL DETAIL BOX */
+.level-detail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* push stats to bottom */
+    width: 50%; /* narrower to prevent overlapping guidelines */
+    min-height: calc(5 * 90px + 5rem);
+    background-color: rgba(0,0,0,0.15);
+    padding: 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border-radius: 10px;
+    transition: all 0.2s;
+    margin-bottom: 2rem;
+    font-family: "Lexend Deca", sans-serif;
+    overflow: hidden;
+    background-clip: padding-box;
+}
+
+main:not(.dark) .level-detail-box {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border: 1px dashed #d9d9d9;
+    overflow: visible;
+}
+
+/* Title bigger */
+.level-detail-box h2 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+/* Embedded YouTube */
+.level-detail-box iframe {
+    width: 100%;
+    aspect-ratio: 16/9; /* maintain 16:9 */
+    border-radius: 4px;
+}
+
+/* Bottom stats */
+.level-detail-box p.stats {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* LEVEL RECORDS BOX */
+.level-records-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; /* narrower */
+    background-color: rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    gap: 0.5rem;
+    font-family: "Lexend Deca", sans-serif;
+    overflow: hidden;
+}
+
+main:not(.dark) .level-records-box {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+/* Records title */
+.level-records-box p {
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+/* Record Header Bar */
 .record-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: rgba(255,255,255,0.03);
-  color: #fff;
-  padding: 8px;
-  font-weight: 500;
-  text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #111; /* black header */
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px 4px 0 0;
+    font-weight: 500;
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
 }
 
+/* Ensure header columns center their content */
+.record-header div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Record Rows with striped pattern */
 .record-row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 6px 8px;
-  text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 8px;
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
 }
 
-/* subtle stripes in dark mode */
-.record-row.even-row { background: rgba(255,255,255,0.02); }
-.record-row.odd-row  { background: rgba(255,255,255,0.01); }
+/* Light mode stripes */
+main:not(.dark) .record-row.even-row {
+    background-color: #f0f0f0; /* light gray */
+}
 
-.record-row div { flex: 1; display: flex; justify-content: center; align-items: center; }
-.record-row a { color: var(--link-blue); text-decoration: underline; }
+main:not(.dark) .record-row.odd-row {
+    background-color: #d9d9d9; /* darker gray */
+}
 
-/* -------------------------
-   Buttons inside detail box
-   ------------------------- */
+/* Dark mode stripes (subtle on new panels) */
+main.dark .record-row.even-row {
+    background: rgba(255,255,255,0.02);
+}
 
+main.dark .record-row.odd-row {
+    background: rgba(255,255,255,0.01);
+}
+
+/* Center text in each half */
+.record-row div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-row a {
+    color: #00f;
+    text-decoration: underline;
+}
+
+/* Buttons inside level detail box */
 .level-detail-box button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: rgba(0,0,0,0.22);
-  color: var(--panel-text);
-  cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgba(0,0,0,0.2);
+    color: var(--color-on-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s;
 }
 
-/* -------------------------
-   Close button (guidelines)
-   ------------------------- */
-
-.guidelines-box .close-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(255,255,255,0.03);
-  border: none;
-  color: var(--panel-text);
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  transition: background 0.16s;
+.level-detail-box button:hover {
+    background-color: rgba(0,0,0,0.35);
 }
-.guidelines-box .close-btn:hover { background: rgba(255,255,255,0.06); }
 
-/* -------------------------
-   Dark mode specifics (gradient page + panel gradients)
-   ------------------------- */
+main:not(.dark) .level-detail-box button {
+    background-color: #ddd;
+    color: #000;
+}
 
-/* page gradient background */
-body.dark {
-  background-image: linear-gradient(90deg,#000000 0%, #071a2b 100%);
-  background-attachment: fixed;
+main:not(.dark) .level-detail-box button:hover {
+    background-color: #ccc;
+}
+
+/* Instantly shift guidelines box right by 100px when in detail view */
+.guidelines-box.shifted {
+    transform: translateX(100px);
+    transition: none; /* instant */
+}
+
+.guidelines-box.shifted main {
+    /* no-op, kept for future adjustments */
+}
+
+/* --- Light mode background for List Page --- */
+
+/* Default base for .page-list: no background image by default; use variables */
+.page-list {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  background-image: none;
+}
+
+/* Move the background to <body> in light mode so it stays under everything and remains fixed.
+   We mirror the theme on the <body> via main.js so this works reliably.
+*/
+body:not(.dark) {
+  background-image: url("/assets/background-light.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #ffffff;
+}
+
+/* Dark mode page background: horizontal gradient (black -> deep desaturated blue) */
+body.dark {
+  background-image: linear-gradient(90deg, #000000 0%, #071a2b 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-color: #071a2b;
 }
 
-/* let main be transparent so body gradient shows */
-body.dark main { background: transparent; }
+/* Make main transparent in dark mode so body gradient shows through */
+body.dark main {
+  background-color: transparent;
+}
 
-/* panels use a lighter, desaturated deep-blue gradient so they separate from the page */
+/* Boxes should use the same gradient but lighter (semi-opaque) so they read as panels */
 main.dark .level-box,
+main.dark .guidelines-box,
 main.dark .level-detail-box,
 main.dark .level-records-box {
-  background-image: linear-gradient(90deg, var(--panel-left) 0%, var(--panel-right) 100%);
-  background-blend-mode: overlay;
-  color: var(--panel-text);
-  box-shadow: var(--panel-shadow);
-  border: none;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(7,26,43,0.55) 100%);
+    background-blend-mode: overlay;
+    color: var(--color-on-primary);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    border: none; /* remove the faint white border that created the light rim */
+    overflow: hidden;
+    background-clip: padding-box;
 }
 
+/* Slightly lighter variant for guidelines to make it feel more "panel-like" */
 main.dark .guidelines-box {
-  background-image: linear-gradient(90deg, var(--panel-guidelines-left) 0%, var(--panel-guidelines-right) 100%);
-  background-blend-mode: overlay;
-  color: var(--panel-text);
-  box-shadow: var(--panel-shadow);
-  border: none;
+    background-image: linear-gradient(90deg, rgba(6,10,14,0.65) 0%, rgba(12,30,46,0.65) 100%);
 }
 
-/* record header tweak for dark mode readability */
-main.dark .record-header { background-color: rgba(255,255,255,0.03); color: #fff; }
-
-/* -------------------------
-   Top-3 rank coloring (targets data-rank attribute on .level-box)
-   Add :data-rank="rank" in your template onto .level-box for this to work.
-   ------------------------- */
-
-/* common gradient text pattern */
-.rank-gradient, .name-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+/* Record header in dark mode — keep it readable */
+main.dark .record-header {
+    background-color: rgba(255,255,255,0.05);
+    color: #ffffff;
 }
 
-/* gold (1) */
-.level-box[data-rank="1"] .title .rank,
-.level-box[data-rank="1"] .title .name {
-  background-image: var(--gold-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Ensure the text colors are legible on the darker panels */
+main.dark .level-info .author,
+main.dark .level-info .author .author-name,
+main.dark .level-info .score-text,
+main.dark .level-info .score-text .score-value {
+    color: #d4d9de;
 }
 
-/* silver (2) */
-.level-box[data-rank="2"] .title .rank,
-.level-box[data-rank="2"] .title .name {
-  background-image: var(--silver-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Ensure thumbnails from assets and YouTube look identical */
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
 }
 
-/* bronze (3) */
-.level-box[data-rank="3"] .title .rank,
-.level-box[data-rank="3"] .title .name {
-  background-image: var(--bronze-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Scrolling safety */
+html, body {
+  overflow-y: auto;
 }
 
-/* leave the dash between rank and name unstyled in the template so it keeps the default text color */
+/* Close button for guidelines box (keeps previous look but tuned for dark mode panels) */
+.guidelines-box .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    color: var(--color-on-primary);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: background 0.16s ease;
+}
 
-/* -------------------------
-   Light mode adjustments: keep previous light behavior
-   ------------------------- */
+.guidelines-box .close-btn:hover {
+    background: rgba(255,255,255,0.06);
+}
 
-main:not(.dark) .level-box { background-color: #fff; color:#000; box-shadow: 0 15px 25px rgba(0,0,0,0.05); border:1px dashed #d9d9d9; }
-main:not(.dark) .guidelines-box,
-main:not(.dark) .level-detail-box,
-main:not(.dark) .level-records-box { background-color:#fff; color:#000; box-shadow:0 15px 25px rgba(0,0,0,0.05); }
+main:not(.dark) .guidelines-box .close-btn {
+    background: #ddd;
+    color: #000;
+}
 
-/* thumbnails in light mode */
-main:not(.dark) .thumbnail { background-color: rgba(0,0,0,0.03); }
-
-/* -------------------------
-   Small helpers & scrolling
-   ------------------------- */
-
-.page-list, html, body { overflow-y: auto; box-sizing: border-box; }
-
-/* link color fallback for both modes */
-a { color: var(--link-blue); }
+main:not(.dark) .guidelines-box .close-btn:hover {
+    background: #ccc;
+}
