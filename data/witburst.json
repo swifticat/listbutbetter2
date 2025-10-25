@@ -31,6 +31,12 @@
 			"link": "https://youtu.be/x1-9KMb3jxk",
 			"percent": 100,
 			"hz": 360
+		},
+		{
+		   "user": "shib",
+		   "link": "https://youtu.be/jhaHq2EN4Sg?si=AmdYGlkVXRM61fBI",
+		   "percent": 100,
+		   "hz": 240
 		}
     ]
 }
