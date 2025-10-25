@@ -7,5 +7,12 @@
     "verification": "https://youtu.be/d63Xz4rnyRE",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+        {
+			"user": "DawiGD",
+			"link": "https://youtu.be/uYpUAacICAw?si=yEI12CuVhOhtaUX_",
+			"percent": 100,
+			"hz": 360
+		}
+    ]
 }
