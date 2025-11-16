@@ -15,6 +15,12 @@
 		   "hz": 240
 		},
 		{
+		   "user": "Zafsa",
+		   "link": "https://youtu.be/k-asTXwgkII?si=B3-GHu1wSACdS4ep",
+		   "percent": 100,
+		   "hz": 240
+		},
+		{
 		   "user": "Fejugae",
 		   "link": "https://youtu.be/yB_UhcjeGHI",
 		   "percent": 57,
@@ -23,7 +29,7 @@
 		{
 		   "user": "Luna",
 		   "link": "https://youtu.be/H5I4wesd9LU",
-		   "percent": 53,
+		   "percent": 55,
 		   "hz": 240
 		}
      ]
