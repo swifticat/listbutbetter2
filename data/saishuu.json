@@ -9,6 +9,12 @@
     "password": "Copyable",
     "records": [
 		  {
+			"user": "Catty",
+			"link": "https://youtu.be/FS0V_WJPHCA",
+			"percent": 100,
+			"hz": 240
+		},
+		  {
 			"user": "Mathey",
 			"link": "https://youtu.be/t-JCiyJB1Pw",
 			"percent": 100,
