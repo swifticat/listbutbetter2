@@ -7,5 +7,12 @@
     "verification": "https://www.youtube.com/watch?v=2NRL_TEDv7U",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+        {
+			"user": "ToxicHQ",
+			"link": "https://youtu.be/WeUOUiaKNfs?si=Jmen40GGj0vUreY6",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
 }
