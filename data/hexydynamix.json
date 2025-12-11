@@ -7,5 +7,12 @@
     "verification": "www.youtube.com/watch?v=3QgbtIounwg",
     "percentToQualify": 100,
     "password": "Copyable",
-    "records": []
+    "records": [
+         {
+			"user": "Kuramishiro",
+			"link": "https://www.youtube.com/watch?v=kfxDXPtEq-s",
+			"percent": 100,
+			"hz": 240
+		}
+    ]
 }
