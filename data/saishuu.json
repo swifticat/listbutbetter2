@@ -8,6 +8,12 @@
     "percentToQualify": 100,
     "password": "Copyable",
     "records": [
+		  {
+			"user": "Mathey",
+			"link": "https://youtu.be/t-JCiyJB1Pw",
+			"percent": 100,
+			"hz": 240
+		},
         {
 			"user": "ToxicHQ",
 			"link": "https://youtu.be/WeUOUiaKNfs?si=Jmen40GGj0vUreY6",
