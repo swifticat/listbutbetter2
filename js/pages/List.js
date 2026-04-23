@@ -252,6 +252,7 @@ export default {
                     <div class="record-header">
                         <div>Record Holder</div>
                         <div>Video Proof</div>
+                        <div>Enjoyment</div>
                     </div>
 
                     <!-- Record Rows -->
@@ -271,6 +272,7 @@ export default {
                             >
                                 YouTube
                             </a>
+                         <div>{{ record.enjoyment || '-' }}</div>
                             <span v-else>-</span>
                         </div>
                     </div>
