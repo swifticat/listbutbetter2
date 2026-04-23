@@ -263,6 +263,7 @@ export default {
                         :class="{'even-row': idx % 3 === 0, 'odd-row': idx % 3 !== 0}"
                     >
                         <div>{{ record.user || '-' }}</div>
+                        <div>{{ record.enjoyment }}</div>
                         <div>
                             <a 
                                 v-if="record.link" 
@@ -272,7 +273,6 @@ export default {
                             >
                                 YouTube
                             </a>
-                         <div>{{ record.enjoyment }}</div>
                             <span v-else>-</span>
                         </div>
                     </div>
