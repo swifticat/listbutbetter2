@@ -234,7 +234,7 @@ export default {
                     <p style="text-align:center; margin-top: 8px;">
                         Level ID: {{ selectedLevel.id }} &nbsp;&nbsp;&nbsp;
                         Points Awarded: {{ calcScore(selectedLevel, 100).toFixed(2) }} &nbsp;&nbsp;&nbsp;
-                        Password: {{ selectedLevel.password }}
+                        Enjoyment: {{ selectedLevel.enjoyment }}
                     </p>
                 </div>
 
