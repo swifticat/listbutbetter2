@@ -260,7 +260,7 @@ export default {
                         class="record-row" 
                         v-for="(record, idx) in selectedLevel.records" 
                         :key="idx" 
-                        :class="{'even-row': idx % 2 === 0, 'odd-row': idx % 2 !== 0}"
+                        :class="{'even-row': idx % 3 === 0, 'odd-row': idx % 3 !== 0}"
                     >
                         <div>{{ record.user || '-' }}</div>
                         <div>
@@ -272,7 +272,7 @@ export default {
                             >
                                 YouTube
                             </a>
-                         <div>{{ record.enjoyment || '-' }}</div>
+                         <div>{{ record.enjoyment }}</div>
                             <span v-else>-</span>
                         </div>
                     </div>
