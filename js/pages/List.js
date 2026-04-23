@@ -285,7 +285,10 @@ export default {
                 <h2>Guidelines</h2>
                 <hr />
                 <p>All demonlist operations are carried out in accordance to our guidelines. Be sure to check them before submitting a record to ensure a flawless experience!</p>
-                <p>Make sure that the recording shows a few frames of the end card dropping down.</p>
+                <p>Disallowed hacks include, but are not limited to: noclip, speedhack and show hitboxes. FPS Bypass is restricted to a max of 360FPS. Smooth fix is generally not allowed due to the potential for it to act as a speedhack. Polzhax users must have the cheat indicator setting enabled.</p>
+                <p>Videos must contain audible clicks, the death before completion, and the level complete screen.</p>
+                <p>"(1P)" levels must be beaten solo whereas "(2P)" levels must be beaten with another player.</p>
+                <p>All levels must be beaten on the native Rewind19 executable environment to count as a valid record. Completions on other versions such as 2.1 or 2.2 are not acceptable.</p>
             </div>
         </main>
     `
