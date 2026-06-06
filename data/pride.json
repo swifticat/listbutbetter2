@@ -1,0 +1,19 @@
+{
+    "id": 34,
+    "name": "PRIDE",
+    "author": "swifticat",
+    "creators": [],
+    "verifier": "swifticat",
+    "verification": "https://www.youtube.com/watch?v=_OppGkacyJc",
+    "percentToQualify": 100,
+    "enjoyment": "15",
+    "records": [
+	     {
+			"user": "Lunikay",
+			"link": "https://youtu.be/xBvaUIDbTKI",
+			"percent": 100,
+			"hz": 240,
+			"enjoyment": 15
+		}
+    ]
+}
