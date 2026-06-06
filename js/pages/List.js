@@ -251,8 +251,8 @@ export default {
                     <!-- Header Bar -->
                     <div class="record-header">
                         <div>Record Holder</div>
-                        <div>Video Proof</div>
                         <div>Enjoyment</div>
+                        <div>Video Proof</div>
                     </div>
 
                     <!-- Record Rows -->
